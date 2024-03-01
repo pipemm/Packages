@@ -7,13 +7,16 @@ on:
 
 jobs:
   
-  build:
+  job-01:
     
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+    ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+    ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
 
     steps:
       
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         ## https://github.com/actions/checkout
 
       - name: Run a multi-line script
