@@ -13,9 +13,11 @@ jobs:
 
     steps:
       
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        ## https://github.com/actions/checkout
 
       - name: Run a multi-line script
         run: |
+          which --all java
           java --version
           java --help
