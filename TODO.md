@@ -5,7 +5,7 @@ It is to define a framework for retention policies, typically for database backu
 
 ### Assumptions
 
-A assumption in the design phase is the fact that should be largerly hold. A design is based on multiple facts under common sense. However, exceptional senerios are also defined in order to formula paper dry run.
+An assumption in the design phase is a fact that should be largely held. A design is based on multiple facts and common sense. However, exceptional scenarios are also defined in order to increase the resilience of the design or formulate tabletop exercises after the implementation of the framework.
 
 - Period
   - Daily
