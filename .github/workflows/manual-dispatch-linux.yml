@@ -7,7 +7,7 @@ on:
 
 jobs:
   
-  job-01:
+  "Job_Ubuntu":
     
     runs-on: ubuntu-22.04
     ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
@@ -21,6 +21,7 @@ jobs:
 
       - name: Run a multi-line script
         run: |
+          which -a bash
           which -a java
           java --version
           java --help
