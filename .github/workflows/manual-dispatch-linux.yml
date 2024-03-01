@@ -18,6 +18,6 @@ jobs:
 
       - name: Run a multi-line script
         run: |
-          which --all java
+          which --help
           java --version
           java --help
