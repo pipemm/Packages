@@ -1,6 +1,6 @@
 
-[HelloWorld](https://introcs.cs.princeton.edu/java/11hello/HelloWorld.java.html "Hello World by Robert Sedgewick and Kevin Wayne")
-
-[A Closer Look at the "Hello World!" Application](https://docs.oracle.com/javase/tutorial/getStarted/application/index.html)
+- [Programming in Java](https://introcs.cs.princeton.edu/java/home/ "by  Robert Sedgewick and Kevin Wayne")
+  - [HelloWorld.java](https://introcs.cs.princeton.edu/java/11hello/HelloWorld.java)
+- [The Java Tutorials](https://docs.oracle.com/javase/tutorial/index.html "Oracle")
 
 

@@ -12,8 +12,26 @@ curl "${URL_API}" > "${FILE_LIST}"
 
 cat "${FILE_LIST}" |
   jq '[.[] | select(.binary.image_type == "jdk") ]' |
-  jq 'sort_by( .binary.updated_at ) | reverse | .[0]' > "${FILE_LATEST}"
+  jq 'sort_by( .binary.updated_at ) | reverse | .[0]' |
+  tee "${FILE_LATEST}"
 
-cat "${FILE_LATEST}"
+LINK_JAVA=$(
+  cat "${FILE_LATEST}" |
+    jq --raw-output '.binary.package.link'
+  )
+NAME_JAVA=$(
+  cat "${FILE_LATEST}" |
+    jq --raw-output '.binary.package.name'
+  )
 
+SAVE_JAVA="${FOLDER_ARTIFACT%/}/${NAME_JAVA}"
+
+if [ ! -f "${SAVE_JAVA}" ]
+then
+  echo "Downloading ${LINK_JAVA} as ${NAME_JAVA}"
+  curl --output "${SAVE_JAVA}" --verbose --location "${LINK_JAVA}"
+fi
+
+sha256sum "${SAVE_JAVA}"
+cat "${SAVE_JAVA}" | sha256sum
 
