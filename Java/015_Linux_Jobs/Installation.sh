@@ -23,7 +23,6 @@ NAME_JAVA=$(
   cat "${FILE_LATEST}" |
     jq --raw-output '.binary.package.name'
   )
-
 SAVE_JAVA="${FOLDER_ARTIFACT%/}/${NAME_JAVA}"
 
 if [ ! -f "${SAVE_JAVA}" ]
@@ -32,6 +31,24 @@ then
   curl --output "${SAVE_JAVA}" --verbose --location "${LINK_JAVA}"
 fi
 
-sha256sum "${SAVE_JAVA}"
+CODE_CHECKSUM=$(
+  cat "${FILE_LATEST}" |
+    jq --raw-output '.binary.package.checksum'
+  )
+LINK_CHECKSUM=$(
+  cat "${FILE_LATEST}" |
+    jq --raw-output '.binary.package.checksum_link'
+  )
+
+SAVE_CHECKSUM="${FOLDER_ARTIFACT%/}/${LINK_CHECKSUM##*/}"
+curl --verbose --location "${LINK_CHECKSUM}" |
+  tee "${SAVE_CHECKSUM}"
+  
+
+echo "Expecting Checksum   : "
+echo "    ${CODE_CHECKSUM}"
+
+echo "Calculating Checksum : "
+echo -n "    "
 cat "${SAVE_JAVA}" | sha256sum
 
