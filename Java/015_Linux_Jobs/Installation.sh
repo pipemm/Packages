@@ -28,7 +28,7 @@ SAVE_JAVA="${FOLDER_ARTIFACT%/}/${NAME_JAVA}"
 if [ ! -f "${SAVE_JAVA}" ]
 then
   echo "Downloading ${LINK_JAVA} as ${NAME_JAVA}"
-  curl --output "${SAVE_JAVA}" --verbose --no-progress-meter --location "${LINK_JAVA}"
+  curl --output "${SAVE_JAVA}" --verbose --silent --location "${LINK_JAVA}"
 fi
 
 CODE_CHECKSUM=$(
