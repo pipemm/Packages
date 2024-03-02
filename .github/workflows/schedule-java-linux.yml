@@ -30,7 +30,12 @@ jobs:
         uses: actions/checkout@v4
         ## https://github.com/actions/checkout
 
-      - name: Run a multi-line script
+      - name: Run Pre-Check Scripts
         working-directory: ./Java/
         run: |
-          pwd
+          ls 011_Linux_PreCheck/*.sh |
+            while read -r shellfile
+            do
+              echo "Executing ${shellfile}"
+              bash "${shellfile}"
+            done
