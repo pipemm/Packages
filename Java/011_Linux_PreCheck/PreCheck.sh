@@ -8,6 +8,8 @@ whoami --version
 whoami --help
 whoami
 
+echo "${PATH}"
+
 which -a bash
 bash --version
 bash --help
