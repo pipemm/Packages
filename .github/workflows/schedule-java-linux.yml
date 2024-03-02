@@ -31,5 +31,6 @@ jobs:
         ## https://github.com/actions/checkout
 
       - name: Run a multi-line script
+        working-directory: ./Java/
         run: |
           pwd
