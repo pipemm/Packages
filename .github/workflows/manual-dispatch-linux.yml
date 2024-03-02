@@ -7,7 +7,7 @@ on:
 
 jobs:
   
-  "Job Ubuntu":
+  Job_Ubuntu:
     
     runs-on: ubuntu-22.04
     ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories

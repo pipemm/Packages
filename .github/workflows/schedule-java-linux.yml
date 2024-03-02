@@ -18,7 +18,7 @@ on:
 
 jobs:
   
-  "Pre-Check":
+  Pre-Check:
     
     runs-on: ubuntu-22.04
     ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
@@ -50,7 +50,7 @@ jobs:
               bash "${shellfile}"
             done
   
-  "Java Jobs":
+  Java_Jobs:
     
     runs-on: ubuntu-22.04
     ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
