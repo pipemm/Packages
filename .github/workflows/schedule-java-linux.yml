@@ -25,7 +25,17 @@ on:
         - '21'
         - '17'
         - '11'
-  
+      vendor:
+        type: choice
+        description: Vendor
+        required: false
+        default: 'Temurin'
+        options: 
+        - 'Temurin'
+        - 'OpenJDK'
+        - 'Oracle'
+        - 'Corretto'
+        - 'Microsoft'
 
 jobs:
   
