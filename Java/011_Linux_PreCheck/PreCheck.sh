@@ -1,7 +1,10 @@
 #!/bin/bash
 
+echo "OSTYPE=${OSTYPE}"
+
 which -a pwd
 pwd
+man pwd
 
 which -a whoami
 whoami --version
@@ -38,7 +41,7 @@ uname --help
 man uname
 uname
 uname --operating-system
-echo "${OSTYPE}"
+
 
 which -a jq
 jq --version
