@@ -57,4 +57,4 @@ LOCATION_INSTALLATION="${LOCATION_INSTALLATION%/}/"
 sudo mkdir --parent "${LOCATION_INSTALLATION%/}/"
 
 sudo tar --extract --verbose --gunzip --file="${SAVE_JAVA}" --directory="${LOCATION_INSTALLATION%/}/"
-ls "${LOCATION_INSTALLATION%/}/"
+ls --directory "${LOCATION_INSTALLATION%/}/*/bin/"
