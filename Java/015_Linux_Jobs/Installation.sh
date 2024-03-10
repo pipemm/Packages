@@ -54,7 +54,7 @@ echo -n "    "
 cat "${SAVE_JAVA}" | sha256sum
 
 LOCATION_INSTALLATION="${LOCATION_INSTALLATION%/}/"
-mkdir --parent "${LOCATION_INSTALLATION%/}/"
+sudo mkdir --parent "${LOCATION_INSTALLATION%/}/"
 
-tar --extract --verbose --gunzip --file="${SAVE_JAVA}" --directory="${LOCATION_INSTALLATION%/}/"
+sudo tar --extract --verbose --gunzip --file="${SAVE_JAVA}" --directory="${LOCATION_INSTALLATION%/}/"
 ls "${LOCATION_INSTALLATION%/}/"
