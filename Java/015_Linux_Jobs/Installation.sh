@@ -57,4 +57,15 @@ LOCATION_INSTALLATION="${LOCATION_INSTALLATION%/}/"
 sudo mkdir --parent "${LOCATION_INSTALLATION%/}/"
 
 sudo tar --extract --verbose --gunzip --file="${SAVE_JAVA}" --directory="${LOCATION_INSTALLATION%/}/"
-ls --directory ${LOCATION_INSTALLATION%/}/*/bin/
+JAVA_BIN=$(ls --directory ${LOCATION_INSTALLATION%/}/*/bin/)
+
+if [ -n "${GITHUB_ENV}" ]
+then
+  PATH="${JAVA_BIN%/}:${PATH}"
+  JAVA_HOME="${JAVA_BIN%bin/}"
+  echo "PATH=${PATH}"           >> "${GITHUB_ENV}"
+  echo "JAVA_HOME=${JAVA_HOME}" >> "${GITHUB_ENV}"
+fi
+
+echo "PATH=${PATH}"
+echo "JAVA_HOME=${JAVA_HOME}"
