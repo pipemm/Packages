@@ -35,6 +35,9 @@ tar --help
 which -a uname
 uname --version
 uname --help
+man uname
+uname
+uname --operating-system
 echo "${OSTYPE}"
 
 which -a jq
