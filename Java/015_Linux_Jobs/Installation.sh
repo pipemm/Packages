@@ -1,6 +1,7 @@
 #!/bin/bash
 
 VERSION='21'
+LOCATION_INSTALLATION='/etc/alternatives/java/'
 
 FOLDER_ARTIFACT='053_Artifacts/'
 mkdir --parent "${FOLDER_ARTIFACT%/}/"
@@ -52,3 +53,8 @@ echo "Calculating Checksum : "
 echo -n "    "
 cat "${SAVE_JAVA}" | sha256sum
 
+LOCATION_INSTALLATION="${LOCATION_INSTALLATION%/}/"
+mkdir --parent "${LOCATION_INSTALLATION%/}/"
+
+tar --extract --verbose --gunzip --file="${SAVE_JAVA}" --directory="${LOCATION_INSTALLATION%/}/"
+ls "${LOCATION_INSTALLATION%/}/"
