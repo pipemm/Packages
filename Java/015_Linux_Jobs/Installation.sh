@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VERSION='21'
-LOCATION_INSTALLATION='/etc/alternatives/java/'
+LOCATION_INSTALLATION='/etc/alternatives/alternative.java/'
 
 FOLDER_ARTIFACT='053_Artifacts/'
 mkdir --parent "${FOLDER_ARTIFACT%/}/"
@@ -56,8 +56,5 @@ cat "${SAVE_JAVA}" | sha256sum
 LOCATION_INSTALLATION="${LOCATION_INSTALLATION%/}/"
 mkdir --parent "${LOCATION_INSTALLATION%/}/"
 
-ls "/etc/alternatives/"
-ls "/etc/alternatives/java"
-
-##tar --extract --verbose --gunzip --file="${SAVE_JAVA}" --directory="${LOCATION_INSTALLATION%/}/"
-##ls "${LOCATION_INSTALLATION%/}/"
+tar --extract --verbose --gunzip --file="${SAVE_JAVA}" --directory="${LOCATION_INSTALLATION%/}/"
+ls "${LOCATION_INSTALLATION%/}/"
