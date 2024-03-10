@@ -83,12 +83,23 @@ jobs:
         uses: actions/checkout@v4
         ## https://github.com/actions/checkout
 
+      - name: Get Download Link
+        working-directory: ./Java/
+        env:
+          VERSION_JAVA : "${{ github.event.inputs.version || '21' }}"
+          VENDOR_JAVA  : "${{ github.event.inputs.vendor  || 'Temurin' }}"
+        run: |
+          shellfile='015_Jobs/Get_URL.sh'
+          echo "Executing ${shellfile}"
+          bash "${shellfile}"
+
       - name: Download Java
         working-directory: ./Java/
         env:
           VERSION_JAVA : "${{ github.event.inputs.version || '21' }}"
+          VENDOR_JAVA  : "${{ github.event.inputs.vendor  || 'Temurin' }}"
         run: |
-          shellfile='015_Linux_Jobs/Installation.sh'
+          shellfile='015_Jobs/Installation.sh'
           echo "Executing ${shellfile}"
           bash "${shellfile}"
 
@@ -102,3 +113,24 @@ jobs:
               bash "${shellfile}"
             done
 
+  Pre-Check-MacOS:
+    
+    runs-on: macos-12
+    ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+    ## https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md
+
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+        ## https://github.com/actions/checkout
+
+      - name: Run Pre-Check Scripts
+        working-directory: ./Java/
+        run: |
+          ls 011_Linux_PreCheck/*.sh |
+            while read -r shellfile
+            do
+              echo "Executing ${shellfile}"
+              bash "${shellfile}"
+            done

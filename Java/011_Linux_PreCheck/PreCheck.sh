@@ -32,7 +32,13 @@ which -a tar
 tar --version
 tar --help
 
+which -a uname
+uname --version
+uname --help
+echo "${OSTYPE}"
+
 which -a jq
 jq --version
 jq --help
+
 
