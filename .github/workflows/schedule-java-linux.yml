@@ -69,3 +69,13 @@ jobs:
           echo "Executing ${shellfile}"
           bash "${shellfile}"
 
+      - name: Post-check
+        working-directory: ./Java/
+        run: |
+          ls 013_Linux_Check/*.sh |
+            while read -r shellfile
+            do
+              echo "Executing ${shellfile}"
+              bash "${shellfile}"
+            done
+

@@ -28,6 +28,10 @@ which -a tee
 tee --version
 tee --help
 
+which -a tar
+tar --version
+tar --help
+
 which -a jq
 jq --version
 jq --help
