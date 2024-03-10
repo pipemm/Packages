@@ -1,14 +1,14 @@
 #!/bin/bash
 
-VERSION='21'
+VERSION_JAVA="${VERSION_JAVA:-21}"
 LOCATION_INSTALLATION='/etc/alternatives/alternative.java/'
 
 FOLDER_ARTIFACT='053_Artifacts/'
 mkdir --parent "${FOLDER_ARTIFACT%/}/"
-FILE_LIST="${FOLDER_ARTIFACT%/}/linux_list_temurin${VERSION}.json"
-FILE_LATEST="${FOLDER_ARTIFACT%/}/linux_latest_temurin${VERSION}.json"
+FILE_LIST="${FOLDER_ARTIFACT%/}/linux_list_temurin${VERSION_JAVA}.json"
+FILE_LATEST="${FOLDER_ARTIFACT%/}/linux_latest_temurin${VERSION_JAVA}.json"
 
-URL_API="https://api.adoptium.net/v3/assets/latest/${VERSION}/hotspot?os=linux&architecture=x64"
+URL_API="https://api.adoptium.net/v3/assets/latest/${VERSION_JAVA}/hotspot?os=linux&architecture=x64"
 curl "${URL_API}" > "${FILE_LIST}"
 
 cat "${FILE_LIST}" |
