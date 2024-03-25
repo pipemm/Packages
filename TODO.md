@@ -19,3 +19,13 @@ An assumption in the design phase is a fact that should be largely held. A desig
   - Timezone
   - Preferable Period
 
+## Packages
+
+- Java
+  - Hadoop
+  - Hive
+  - Spark
+- nodejs
+  - [qrcode](https://www.npmjs.com/package/qrcode)
+- C++
+  - OpenCV
