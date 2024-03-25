@@ -31,4 +31,4 @@ An assumption in the design phase is a fact that should be largely held. A desig
   - OpenCV
 - Python
   - [TensorFlow](https://www.tensorflow.org/)
-  - 
+  - [scikit-learn](https://scikit-learn.org/stable/) (NumPy, SciPy)
