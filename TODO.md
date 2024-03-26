@@ -25,6 +25,7 @@ An assumption in the design phase is a fact that should be largely held. A desig
   - Hadoop
   - Hive
   - Spark
+  - [Selenium](https://www.selenium.dev/downloads/)
 - nodejs
   - [qrcode](https://www.npmjs.com/package/qrcode)
   - [cheerio](https://cheerio.js.org/)
@@ -33,3 +34,7 @@ An assumption in the design phase is a fact that should be largely held. A desig
 - Python
   - [TensorFlow](https://www.tensorflow.org/)
   - [scikit-learn](https://scikit-learn.org/stable/) (NumPy, SciPy)
+- Others
+  - Chrome
+  - Edge
+  - PotPlayer
