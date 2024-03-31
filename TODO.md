@@ -39,3 +39,5 @@ An assumption in the design phase is a fact that should be largely held. A desig
   - Chrome
   - Edge
   - PotPlayer
+  - FFmpeg
+  - ImageMagick
