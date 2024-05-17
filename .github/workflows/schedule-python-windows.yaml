@@ -94,7 +94,15 @@ jobs:
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
-          echo testing
+          CD Python\
+          FOR /F "delims=" %%L in ('DIR /B *.zip') DO (
+            SET "FILE_ZIP=%%L"
+            SET "FILE_NAME=%%~nL"
+            goto :DONE
+          )
+          :DONE
+          ECHO %FILE_ZIP%
+          ECHO %FILE_NAME%
 
       - name: Unzip Python Package
         env:

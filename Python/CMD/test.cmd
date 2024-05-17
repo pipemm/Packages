@@ -19,3 +19,5 @@ tar --help
 echo PATH=%PATH%
 
 WHERE /?
+
+DIR /?
