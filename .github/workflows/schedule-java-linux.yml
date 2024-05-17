@@ -1,5 +1,6 @@
 
 name: Java (Linux)
+run-name: Java Jobs (Linux)
 
 on:
   

@@ -11,6 +11,9 @@ python3 --version
 
 WHERE tar
 
+tar /?
+tar --help
+
 echo PATH=%PATH%
 
 WHERE /?

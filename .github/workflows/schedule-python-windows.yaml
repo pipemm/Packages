@@ -1,5 +1,6 @@
 
 name: Python (Windows)
+run-name: Python Jobs (Windows)
 
 on:
   
@@ -78,7 +79,7 @@ jobs:
         run: |
           CMD\test.cmd
 
-      - name: Download Python
+      - name: Download Python Package
         env:
           URL_DONWLOAD : ${{needs.Get-Download-URL.outputs.url}}
           FILE_NAME    : ${{needs.Get-Download-URL.outputs.file}}
@@ -90,6 +91,16 @@ jobs:
           mkdir Python\
           curl --output "Python\%FILE_NAME%" "%URL_DONWLOAD%"
           dir Python\
+
+      - name: Unzip Python Package
+        env:
+          FILE_NAME    : ${{needs.Get-Download-URL.outputs.file}}
+        working-directory: .\Python\
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
+        run: |
+          dir Python\
+          tar -xf "Python\%FILE_NAME%"
           
 
 
