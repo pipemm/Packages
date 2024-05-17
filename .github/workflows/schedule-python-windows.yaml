@@ -44,5 +44,5 @@ jobs:
       - name: Get URL List - Simple Version
         working-directory: ./Python/
         run: |
-          bash Bash/get_dowload_url.sh
+          bash Bash/get_download_url.sh
     
