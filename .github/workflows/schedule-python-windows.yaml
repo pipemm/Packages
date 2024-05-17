@@ -30,7 +30,8 @@ jobs:
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
     outputs:
-      url: ${{ steps.url-list.outputs.url }}
+      url  : ${{ steps.url-list.outputs.url }}
+      file : ${{ steps.url-list.outputs.file }}
         ## https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
 
     steps:
@@ -52,6 +53,9 @@ jobs:
           tee >(
             head --lines=1 |
             (read -r line && echo "url=${line}") >> "${GITHUB_OUTPUT}"
+          ) >(
+            head --lines=1 |
+            (read -r line && echo "file=${line##*/}") >> "${GITHUB_OUTPUT}"
           )
   
   Get-Python:
@@ -66,17 +70,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
           ## https://github.com/actions/checkout
+        
+      - name: Run Pre-Check Scripts
+        working-directory: .\Python\
+        shell: cmd
+        run: |
+          cmd test.cmd
 
       - name: Download
         env:
-          URL_DONWLOAD: ${{needs.Get-Download-URL.outputs.url}}
+          URL_DONWLOAD : ${{needs.Get-Download-URL.outputs.url}}
+          FILE_NAME    : ${{needs.Get-Download-URL.outputs.file}}
         working-directory: .\Python\
         shell: cmd
         run: |
           echo %URL_DONWLOAD%
           mkdir Python\
-          curl --output Python\ %URL_DONWLOAD%
+          curl --output "Python\%FILE_NAME%" "%URL_DONWLOAD%"
           dir
+          dir Python\
           
 
 
