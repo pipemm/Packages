@@ -13,11 +13,18 @@ on:
           #   │  └──────────── hour             (0–23)
           #   └─────────────── minute           (0–59)
 
+  push:
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push
+    branches:
+      - 'main'
+    paths:
+      - 'Python/**.*'
+
   workflow_dispatch:
 
 jobs:
   
-  Pre-Check:
+  Get-Download-URL:
     
     runs-on: ubuntu-22.04
     ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
@@ -34,4 +41,8 @@ jobs:
         run: |
           bash Bash/test.sh
 
+      - name: Get URL List - Simple Version
+        working-directory: ./Python/
+        run: |
+          bash Bash/get_dowload_url.sh
     
