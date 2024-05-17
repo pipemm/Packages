@@ -97,7 +97,7 @@ jobs:
         run: |
           CD Python\
           FOR /F "delims=" %%L in ('DIR /B *.zip') DO (
-            SET "FILE_ZIP=%%L"
+            SET "FILE_ZIP=%%~fL"
             SET "FILE_NAME=%%~nL"
             goto :DONE
           )
