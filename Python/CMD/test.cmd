@@ -21,3 +21,4 @@ echo PATH=%PATH%
 WHERE /?
 
 DIR /?
+

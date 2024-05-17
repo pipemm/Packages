@@ -93,6 +93,7 @@ jobs:
         working-directory: .\Python\
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
+        ## [Iterating and file parsing](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for)
         run: |
           CD Python\
           FOR /F "delims=" %%L in ('DIR /B *.zip') DO (
