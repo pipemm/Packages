@@ -87,10 +87,7 @@ jobs:
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
-          echo %URL_DONWLOAD%
-          mkdir Python\
-          curl --output "Python\%FILE_NAME%" "%URL_DONWLOAD%"
-          dir Python\
+          download_python.cmd
 
       - name: Unzip Python Package
         env:
@@ -100,7 +97,8 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
           dir Python\
-          tar -xf "Python\%FILE_NAME%"
+          tar -xf "Python\%FILE_NAME%" -C "Testing\"
+          dir Testing\
           
 
 

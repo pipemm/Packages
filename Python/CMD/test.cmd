@@ -9,7 +9,7 @@ WHERE /T python3
 
 python3 --version
 
-WHERE tar
+WHERE /T tar
 
 tar /?
 tar --help
