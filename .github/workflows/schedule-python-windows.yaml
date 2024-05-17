@@ -1,0 +1,37 @@
+
+name: Python (Windows)
+
+on:
+  
+  schedule:
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+    - cron:  '22 2  *  *  MON'
+          #   │  │  │  │  │
+          #   │  │  │  │  └─── day of the week  (0–6, SUN-SAT)
+          #   │  │  │  └────── month            (1–12)
+          #   │  │  └───────── day of the month (1–31)
+          #   │  └──────────── hour             (0–23)
+          #   └─────────────── minute           (0–59)
+
+  workflow_dispatch:
+
+jobs:
+  
+  Pre-Check:
+    
+    runs-on: ubuntu-22.04
+    ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+    ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+        ## https://github.com/actions/checkout
+
+      - name: Run Pre-Check Scripts
+        working-directory: ./Python/
+        run: |
+          bash Bash/test.sh
+
+    
