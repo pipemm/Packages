@@ -70,7 +70,13 @@ jobs:
       - name: Download
         env:
           URL_DONWLOAD: ${{needs.Get-Download-URL.outputs.url}}
+        working-directory: .\Python\
+        shell: cmd
         run: |
-          echo "${URL_DONWLOAD}"
+          echo %URL_DONWLOAD%
+          mkdir Python\
+          curl --output Python\ %URL_DONWLOAD%
+          dir
+          
 
 
