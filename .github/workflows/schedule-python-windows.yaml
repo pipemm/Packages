@@ -97,6 +97,7 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
           dir Python\
+          mkdir Testing\
           tar -xf "Python\%FILE_NAME%" -C "Testing\"
           dir Testing\
           
