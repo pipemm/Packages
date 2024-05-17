@@ -1,6 +1,8 @@
 
 WHERE /T curl
 
+curl --version
+
 WHERE /T python
 
 python --version
