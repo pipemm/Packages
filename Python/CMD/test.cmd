@@ -16,9 +16,10 @@ WHERE /T tar
 tar /?
 tar --help
 
-echo PATH=%PATH%
+ECHO PATH=%PATH%
 
 WHERE /?
 
 DIR /?
 
+ECHO /?
