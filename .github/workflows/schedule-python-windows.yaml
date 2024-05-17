@@ -64,6 +64,7 @@ jobs:
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
 
+    needs: Get-Download-URL
     steps:
 
       - name: Checkout
@@ -77,7 +78,6 @@ jobs:
           cmd CMD\test.cmd
 
       - name: Download Python
-        needs: Get-Download-URL
         env:
           URL_DONWLOAD : ${{needs.Get-Download-URL.outputs.url}}
           FILE_NAME    : ${{needs.Get-Download-URL.outputs.file}}
