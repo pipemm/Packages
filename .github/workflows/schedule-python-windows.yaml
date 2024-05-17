@@ -27,14 +27,17 @@ jobs:
   Get-Download-URL:
     
     runs-on: ubuntu-22.04
-    ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
-    ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+    outputs:
+      url: ${{ steps.url-list.outputs.url }}
+        ## https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
 
     steps:
       
       - name: Checkout
         uses: actions/checkout@v4
-        ## https://github.com/actions/checkout
+          ## https://github.com/actions/checkout
 
       - name: Run Pre-Check Scripts
         working-directory: ./Python/
@@ -42,7 +45,32 @@ jobs:
           bash Bash/test.sh
 
       - name: Get URL List - Simple Version
+        id  : url-list
         working-directory: ./Python/
         run: |
-          bash Bash/get_download_url.sh
-    
+          bash Bash/get_download_url.sh |
+          tee >(
+            head --lines=1 |
+            (read -r line && echo "url=${line}") >> "${GITHUB_OUTPUT}"
+          )
+  
+  Get-Python:
+
+    runs-on: windows-2022
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
+
+    needs: Get-Download-URL
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - name: Download
+        env:
+          URL_DONWLOAD: ${{needs.Get-Download-URL.outputs.url}}
+        run: |
+          echo "${URL_DONWLOAD}"
+
+
