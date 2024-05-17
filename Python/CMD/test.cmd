@@ -20,4 +20,4 @@ ECHO PATH=%PATH%
 
 WHERE /?
 
-ECHO /?
+
