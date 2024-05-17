@@ -74,8 +74,9 @@ jobs:
       - name: Run Pre-Check Scripts
         working-directory: .\Python\
         shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
-          cmd CMD\test.cmd
+          CMD\test.cmd
 
       - name: Download Python
         env:
@@ -83,6 +84,7 @@ jobs:
           FILE_NAME    : ${{needs.Get-Download-URL.outputs.file}}
         working-directory: .\Python\
         shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
           echo %URL_DONWLOAD%
           mkdir Python\

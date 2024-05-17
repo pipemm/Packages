@@ -1,12 +1,16 @@
 
-which -a curl
+WHERE /T curl
 
-which -a python
+WHERE /T python
 
 python --version
 
-which -a python3
+WHERE /T python3
 
 python3 --version
 
+WHERE tar
+
 echo PATH=%PATH%
+
+WHERE /?
