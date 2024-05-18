@@ -104,6 +104,7 @@ jobs:
           :DONE
           ECHO %FILE_ZIP%
           SET "PYTHON_INSTALL=%FILE_NAME%\\"
+          MKDIR "%PYTHON_INSTALL%"
           tar -xf "%FFILE_ZIP%" -C "%PYTHON_INSTALL%"
           DIR "%PYTHON_INSTALL%"
 
