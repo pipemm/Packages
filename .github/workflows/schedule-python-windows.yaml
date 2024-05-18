@@ -110,7 +110,8 @@ jobs:
         run: |
           git status
           SET "PYTHON_CONFIG=Python\PATH.txt"
-          SET /P PATH_PY= < "PYTHON_CONFIG"
+          SET /P PATH_PY= < "%PYTHON_CONFIG%"
+          ECHO PATH_PY=%PATH_PY%
           
 
 
