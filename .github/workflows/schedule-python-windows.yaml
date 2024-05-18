@@ -96,14 +96,14 @@ jobs:
         run: |
           Python\unzip.cmd
 
-      - name: Test
+      - name: Prepare PATH Configuration
         working-directory: .\Python\
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
           DIR /S
-
-          DIR Python\*\
+           
+          git status
 
 
 
