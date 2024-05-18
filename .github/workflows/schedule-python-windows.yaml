@@ -103,7 +103,7 @@ jobs:
           )
           :DONE
           ECHO %FILE_ZIP%
-          SET "PYTHON_INSTALL=%FILE_NAME%\"
+          SET "PYTHON_INSTALL=%FILE_NAME%\\"
           tar -xf "%FFILE_ZIP%" -C "%PYTHON_INSTALL%"
           DIR "%PYTHON_INSTALL%"
 

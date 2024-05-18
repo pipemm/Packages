@@ -20,5 +20,11 @@ ECHO PATH=%PATH%
 
 WHERE /?
 
+DIR /?
+
 DIR /S
+
+REM [%~dpI](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for)
+SET "THISPATH=%~dp0"
+ECHO THISPATH=%THISPATH%
 
