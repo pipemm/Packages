@@ -20,7 +20,7 @@ IF NOT "%FOLDER_PYTHOH%"=="" (
   EXIT 0
 )
 
-ECHO %FOLDER_PYTHOH%/python.exe
+ECHO %FOLDER_PYTHOH%\python.exe
 
 FOR /F "delims=" %%L in ('DIR pythonx* /A:D /B') DO (
   SET "FOLDER_PYTHOH=%%~fL"
@@ -28,10 +28,10 @@ FOR /F "delims=" %%L in ('DIR pythonx* /A:D /B') DO (
 )
 :DONE
 
-IF NOT "%FOLDER_PYTHOH%"=="" (
-  ECHO FOLDER_PYTHOH=%FOLDER_PYTHOH%
+IF NOT "%FOLDER_PYTHOH2%"=="" (
+  ECHO FOLDER_PYTHOH2=%FOLDER_PYTHOH2%
 ) ELSE (
-  ECHO FOLDER_PYTHOH not found
+  ECHO FOLDER_PYTHOH2 not found
   EXIT 0
 )
 ECHO TESTING2
