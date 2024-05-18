@@ -108,6 +108,7 @@ jobs:
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
+          DIR /S
           SET "PYTHON_CONFIG=Python\PATH.txt"
           SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
           ECHO TEST PATH_PYTHON=%PATH_PYTHON%

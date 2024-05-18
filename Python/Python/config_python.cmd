@@ -26,6 +26,3 @@ IF EXIST "%FOLDER_PYTHOH%\python.exe" (
   ECHO python.exe not found
 )
 
-type "%PATH_CONFIG%"
-echo testing
-
