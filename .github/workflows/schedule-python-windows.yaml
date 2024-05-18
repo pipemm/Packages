@@ -111,9 +111,9 @@ jobs:
           DIR /S
           SET "PYTHON_CONFIG=Python\PATH.txt"
           SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
-          ECHO TEST PATH_PYTHON=%PATH_PYTHON%
-          type "%PYTHON_CONFIG%"
-          echo testing
+          SET "PYTHON_TXT=%PATH_PYTHON%\python.exe"
+          ECHO PYTHON_TXT=%PYTHON_TXT%
+          DIR %PYTHON_TXT% /S
           IF EXIST "%PATH_PYTHON%\\python.exe" (
             SET "PATH=%FOLDER_PYTHOH%;%PATH%"
           ) ELSE (
