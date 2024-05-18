@@ -109,6 +109,8 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
           git status
+          SET "PYTHON_CONFIG=Python\PATH.txt"
+          SET /P PATH_PY= < "PYTHON_CONFIG"
           
 
 

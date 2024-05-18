@@ -26,6 +26,7 @@ IF EXIST "%FOLDER_PYTHOH%\python.exe" (
 
 IF EXIST "%FOLDER_PYTHOH%\python.exe" (
   SET "PATH_CONFIG=PATH.txt"
+  echo yes
 ) ELSE (
   ECHO python.exe not found
 )
