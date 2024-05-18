@@ -101,9 +101,8 @@ jobs:
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
-          DIR /S
-           
           git status
+          Python\config_python.cmd
 
 
 

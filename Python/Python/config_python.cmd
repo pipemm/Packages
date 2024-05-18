@@ -5,3 +5,13 @@ SET "THISPATH=%~dp0"
 CD "%THISPATH%"
 
 DIR /A:D /B
+
+REM [Iterating and file parsing](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for)
+FOR /F "delims=" %%L in ('DIR python* /A:D /B') DO (
+  SET "FOLDER_PYTHOH=%%~fL"
+  GOTO :DONE
+)
+:DONE
+
+ECHO FOLDER_PYTHOH=%FOLDER_PYTHOH%
+
