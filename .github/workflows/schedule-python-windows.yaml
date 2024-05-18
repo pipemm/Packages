@@ -111,6 +111,8 @@ jobs:
           SET "PYTHON_CONFIG=Python\PATH.txt"
           SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
           ECHO TEST PATH_PYTHON=%PATH_PYTHON%
+          type "%PYTHON_CONFIG%"
+          echo testing
           IF EXIST "%PATH_PYTHON%\python.exe" (
             SET "PATH=%FOLDER_PYTHOH%;%PATH%"
           ) ELSE (
