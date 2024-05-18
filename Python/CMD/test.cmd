@@ -28,7 +28,7 @@ DIR /S
 
 ECHO errorlevel=%errorlevel%
 
-ECHO %~dpI https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for
+REM [a drive letter and path only](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for)
 SET "THISPATH=%~dp0"
 ECHO THISPATH=%THISPATH%
 
