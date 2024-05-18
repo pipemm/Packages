@@ -94,15 +94,16 @@ jobs:
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
+          Python\unzip.cmd
+
+      - name: Test
+        working-directory: .\Python\
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
+        run: |
           DIR /S
 
-          Python\unzip.cmd
-          
-          ECHO ERRORLEVEL=%ERRORLEVEL%
-          echo testing
-          ECHO %cd%
-          ECHO %CD%
-          DIR /S
+          DIR Python\*\
 
 
 
