@@ -18,11 +18,17 @@ IF NOT "%FOLDER_PYTHOH%"=="" (
   EXIT 0
 )
 
-IF EXIST python.exe (echo yes) else (echo no)
+IF EXIST "%FOLDER_PYTHOH%\python.exe" (
+  echo yes
+) ELSE (
+  ECHO python.exe not found
+)
 
-IF EXIST %FOLDER_PYTHOH%\python.exe (echo yes) else (echo no)
-
-IF EXIST "%FOLDER_PYTHOH%\python.exe" (echo yes) else (echo no)
+IF EXIST "%FOLDER_PYTHOH%\python.exe" (
+  SET "PATH_CONFIG=PATH.txt"
+) ELSE (
+  ECHO python.exe not found
+)
 
 IF EXIST "%FOLDER_PYTHOH%\python.exe" (
   SET "PATH_CONFIG=PATH.txt"
