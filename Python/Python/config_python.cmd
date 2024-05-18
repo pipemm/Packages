@@ -18,18 +18,11 @@ IF NOT "%FOLDER_PYTHOH%"=="" (
   EXIT 0
 )
 
-IF EXIST %FOLDER_PYTHOH%\python.exe (
+IF EXIST "%FOLDER_PYTHOH%\python.exe" (
   SET "PATH_CONFIG=PATH.txt"
   ECHO %FOLDER_PYTHOH% > %PATH_CONFIG%
   ECHO "PATH_PYTHON=%FOLDER_PYTHOH%"
 ) ELSE (
   ECHO python.exe not found
-  EXIT 0
 )
-
-FOR /F "delims=" %%L in ('DIR %FOLDER_PYTHOH%\python.exe /B') DO (
-  SET "EXE_PYTHOH=%%~fL"
-  GOTO :DONE
-)
-:DONE
 
