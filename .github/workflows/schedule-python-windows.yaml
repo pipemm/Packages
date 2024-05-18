@@ -114,7 +114,7 @@ jobs:
           ECHO TEST PATH_PYTHON=%PATH_PYTHON%
           type "%PYTHON_CONFIG%"
           echo testing
-          IF EXIST "%PATH_PYTHON%\python.exe" (
+          IF EXIST "%PATH_PYTHON%\\python.exe" (
             SET "PATH=%FOLDER_PYTHOH%;%PATH%"
           ) ELSE (
             ECHO python.exe not found
@@ -132,7 +132,7 @@ jobs:
           SET "PYTHON_CONFIG=Python\PATH.txt"
           SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
           ECHO PATH_PYTHON=%PATH_PYTHON%
-          IF EXIST "%PATH_PYTHON%\python.exe" (
+          IF EXIST "%PATH_PYTHON%\\python.exe" (
             IF DEFINED GITHUB_ENV (
               ECHO "PATH_PYTHON=%FOLDER_PYTHOH%"
               ECHO "PATH_PYTHON=%FOLDER_PYTHOH%" > "%GITHUB_ENV%"
