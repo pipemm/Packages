@@ -21,19 +21,9 @@ IF NOT "%FOLDER_PYTHOH%"=="" (
 IF EXIST "%FOLDER_PYTHOH%\python.exe" (
   SET "PATH_CONFIG=PATH.txt"
   ECHO %FOLDER_PYTHOH% > "%PATH_CONFIG%"
-  echo yes
 ) ELSE (
   ECHO python.exe not found
 )
 
-IF EXIST "%FOLDER_PYTHOH%\python.exe" (
-  SET "PATH_CONFIG=PATH.txt"
-  ECHO %FOLDER_PYTHOH% > %PATH_CONFIG%
-  IF DEFINED GITHUB_ENV (
-    ECHO "PATH_PYTHON=%FOLDER_PYTHOH%"
-    ECHO "PATH_PYTHON=%FOLDER_PYTHOH%" > "%GITHUB_ENV%"
-  )
-) ELSE (
-  ECHO python.exe not found
-)
+
 

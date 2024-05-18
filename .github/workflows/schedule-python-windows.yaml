@@ -103,15 +103,26 @@ jobs:
         run: |
           Python\config_python.cmd
 
-      - name: Test
+      - name: Configure Python PATH (Persistence )
         working-directory: .\Python\
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
           git status
           SET "PYTHON_CONFIG=Python\PATH.txt"
-          SET /P PATH_PY= < "%PYTHON_CONFIG%"
-          ECHO PATH_PY=%PATH_PY%
+          SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
+          ECHO PATH_PYTHON=%PATH_PYTHON%
+          IF EXIST "%PATH_PYTHON%\python.exe" (
+            IF DEFINED GITHUB_ENV (
+              ECHO "PATH_PYTHON=%FOLDER_PYTHOH%"
+              ECHO "PATH_PYTHON=%FOLDER_PYTHOH%" > "%GITHUB_ENV%"
+              ECHO "PATH=%FOLDER_PYTHOH%;%PATH%"
+              ECHO "PATH=%FOLDER_PYTHOH%;%PATH%" > "%GITHUB_ENV%"
+            )
+          ) ELSE (
+            ECHO python.exe not found
+            exit 1
+          )
           
 
 
