@@ -1,6 +1,9 @@
 
 SET "THISPATH=%~dp0"
+SET "THISDRIVE=%~d0"
+%THISDRIVE%
 CD "%THISPATH%"
+ECHO CD=%CD%
 
 REM [Iterating and file parsing](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for)
 FOR /F "delims=" %%L in ('DIR /B *.zip') DO (
@@ -12,7 +15,8 @@ FOR /F "delims=" %%L in ('DIR /B *.zip') DO (
 
 ECHO %FILE_ZIP%
 SET "PYTHON_INSTALL=%FILE_NAME%\"
+ECHO PYTHON_INSTALL=%PYTHON_INSTALL%
 MKDIR "%PYTHON_INSTALL%"
 
-tar -xf "%FILE_ZIP%" -C %PYTHON_INSTALL%
+tar -xvf "%FILE_ZIP%" -C %PYTHON_INSTALL%
 
