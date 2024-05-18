@@ -20,7 +20,7 @@ ECHO PATH=%PATH%
 
 WHERE /?
 
-REM DIR /?
+DIR /?
 
 ECHO errorlevel=%errorlevel%
 
@@ -28,7 +28,7 @@ DIR /S
 
 ECHO errorlevel=%errorlevel%
 
-REM [%~dpI](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for)
+ECHO %~dpI https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for
 SET "THISPATH=%~dp0"
 ECHO THISPATH=%THISPATH%
 
