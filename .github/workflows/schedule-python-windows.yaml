@@ -114,7 +114,7 @@ jobs:
           SET "PYTHON_TXT=%PATH_PYTHON%\python.exe"
           ECHO PYTHON_TXT=%PYTHON_TXT%
           DIR %PYTHON_TXT% /S
-          IF EXIST "%PATH_PYTHON%\\python.exe" (
+          IF EXIST %PYTHON_TXT% (
             SET "PATH=%FOLDER_PYTHOH%;%PATH%"
           ) ELSE (
             ECHO python.exe not found
