@@ -94,6 +94,8 @@ jobs:
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
+          DIR /S
+
           Python\unzip.cmd
           
           echo testing
