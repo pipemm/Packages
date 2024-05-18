@@ -89,7 +89,7 @@ jobs:
         run: |
           download_python.cmd
 
-      - name: Testing
+      - name: Unzip Python Package
         working-directory: .\Python\
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
@@ -103,20 +103,11 @@ jobs:
           )
           :DONE
           ECHO %FILE_ZIP%
-          ECHO %FILE_NAME%
+          SET "PYTHON_INSTALL=%FILE_NAME%\"
+          tar -xf "%FFILE_ZIP%" -C "%PYTHON_INSTALL%"
+          DIR "%PYTHON_INSTALL%"
 
-      - name: Unzip Python Package
-        env:
-          FILE_NAME    : ${{needs.Get-Download-URL.outputs.file}}
-        working-directory: .\Python\
-        shell: cmd
-          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
-        run: |
-          dir Python\
-          SET "PYTHON_INSTALL=Testing\"
-          mkdir "%PYTHON_INSTALL%"
-          tar -xf "Python\%FILE_NAME%" -C "%PYTHON_INSTALL%"
-          dir "%PYTHON_INSTALL%"
+
           
 
 
