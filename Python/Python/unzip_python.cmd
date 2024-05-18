@@ -5,7 +5,7 @@ SET "THISPATH=%~dp0"
 CD "%THISPATH%"
 
 REM [Iterating and file parsing](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for)
-FOR /F "delims=" %%L in ('DIR /B *.zip') DO (
+FOR /F "delims=" %%L in ('DIR /B python-*.zip') DO (
   SET "FILE_ZIP=%%~fL"
   SET "FILE_NAME=%%~nL"
   GOTO :DONE
