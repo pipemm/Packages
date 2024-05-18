@@ -28,6 +28,8 @@ DIR /?
 
 DIR /S
 
+GOTO /?
+
 REM [a drive letter and path only](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for)
 SET "THISPATH=%~dp0"
 ECHO THISPATH=%THISPATH%
