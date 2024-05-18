@@ -3,7 +3,6 @@ SET "THISPATH=%~dp0"
 SET "THISDRIVE=%~d0"
 %THISDRIVE%
 CD "%THISPATH%"
-ECHO CD=%CD%
 
 REM [Iterating and file parsing](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for)
 FOR /F "delims=" %%L in ('DIR /B *.zip') DO (
