@@ -18,6 +18,10 @@ tar --help
 
 ECHO PATH=%PATH%
 
+WHERE /T cmd
+
+cmd /?
+
 ECHO /?
 
 REM /?
