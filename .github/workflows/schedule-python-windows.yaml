@@ -110,12 +110,11 @@ jobs:
         run: |
           SET "PYTHON_CONFIG=Python\PATH.txt"
           SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
-          IF EXIST "%PATH_PYTHON%\python.exe" (
-            SET "PATH=%PATH_PYTHON%;%PATH%"
-          ) ELSE (
+          IF NOT EXIST "%PATH_PYTHON%\python.exe" (
             ECHO python.exe not found
             EXIT /B 1
           )
+          SET "PATH=%PATH_PYTHON%;%PATH%"
 
           REM Run Test Scripts
           Script\CMD\test.cmd
@@ -125,6 +124,25 @@ jobs:
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
-          Script\CMD\set_path_persistence.cmd
+          SET "PYTHON_CONFIG=Python\PATH.txt"
+          SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
+          IF NOT EXIST "%PATH_PYTHON%\python.exe" (
+            ECHO python.exe not found
+            EXIT /B 1
+          )
+          IF NOT DEFINED GITHUB_ENV (
+            ECHO not in a github action environment
+            EXIT /B 1
+          )
+          ECHO PATH_PYTHON=%PATH_PYTHON%>> "%GITHUB_ENV%"
+          ECHO PATH=%PATH_PYTHON%;%PATH%>> "%GITHUB_ENV%"
+          TYPE %GITHUB_ENV%
+
+      - name: Test
+        working-directory: .\Python\
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
+        run: |
+          echo PATH=%PATH%
           
 
