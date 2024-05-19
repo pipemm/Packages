@@ -18,6 +18,10 @@ tar --help
 
 ECHO PATH=%PATH%
 
+ECHO /?
+
+REM /?
+
 CD /?
 
 WHERE /?
@@ -28,9 +32,13 @@ DIR /?
 
 DIR /S
 
+TYPE /?
+
 IF /?
 
 GOTO /?
+
+EXIT /?
 
 REM [a drive letter and path only](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for)
 SET "THISPATH=%~dp0"
