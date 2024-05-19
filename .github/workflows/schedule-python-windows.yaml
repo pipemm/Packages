@@ -129,7 +129,7 @@ jobs:
           SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
           IF EXIST "%PATH_PYTHON%\python.exe" (
             ECHO PATH_PYTHON=%PATH_PYTHON%
-            ECHO PATH_PYTHON=%PATH_PYTHON%
+            ECHO PATH=%PATH_PYTHON%;%PATH%
           ) ELSE (
             ECHO python.exe not found
             EXIT /B 1
