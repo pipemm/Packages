@@ -122,26 +122,6 @@ jobs:
           REM Run Test Scripts
           Script\CMD\test.cmd
 
-      - name: Configure Python PATH (Persistence )
-        working-directory: .\Python\
-        shell: cmd
-          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
-        run: |
-            git status
-          SET "PYTHON_CONFIG=Python\PATH.txt"
-          SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
-          IF EXIST "%PATH_PYTHON%\python.exe" (
-            IF DEFINED GITHUB_ENV (
-              ECHO PATH_PYTHON=%PATH_PYTHON%
-              ECHO PATH_PYTHON=%PATH_PYTHON%> "%GITHUB_ENV%"
-              ECHO PATH=%PATH_PYTHON%;%PATH%
-              ECHO PATH=%PATH_PYTHON%;%PATH%> "%GITHUB_ENV%"
-            )
-          ) ELSE (
-            ECHO python.exe not found
-            exit 1
-          )
-          
 
 
 
