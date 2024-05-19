@@ -26,9 +26,9 @@ def get_letter(number):
     pn       = 0
     overflow = 0
     while number > 0 and pn<3:
-        number, place0 = divmod(number-1,26)
-        places[pn]     = place0
-        pn            +=1
+        number, place = divmod(number-1,26)
+        places[pn]    = place
+        pn           +=1
     if pn >=3 and number > 0:
         overflow = number
     letter = ''.join([int_to_letter(place) for place in reversed(places)])

@@ -24,4 +24,3 @@ SET "PY_CSV_EXCEL_COL=%FOLDER_PY%excel_column.py"
 
 python.exe "%PY_CSV_EXCEL_COL%" > "%FILE_CSV1%"
 
-TYPE "%FILE_CSV1%"
