@@ -146,11 +146,13 @@ jobs:
           Script\CMD\test.cmd
 
       - name: Upload Artifact
+        working-directory: .\Python\
         uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
           name: PythonTool
           path: |
-            Python/Python/python-*.zip
-            Python/Python/*.cmd
+            Python/python-*.zip
+            Python/*.cmd
+          compression-level: 0
 
