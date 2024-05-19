@@ -171,6 +171,7 @@ jobs:
             Python/*Python/python-*.zip
             Python/*Python/*.cmd
             Python/*run*.cmd
-            Python/*CSV/**.csv
+            Python/*Script/Python/*.py
+            Python/*CSV/*/*.csv
           compression-level: 0
 
