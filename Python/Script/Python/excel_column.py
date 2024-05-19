@@ -1,8 +1,16 @@
 
+def local_path_import():
+    from os.path import realpath, dirname
+    from sys     import path
+    local_path = dirname(realpath(__file__))
+    if local_path not in path:
+        path.insert(0, local_path)
+local_path_import()
+
 from csv import DictWriter
 
 from stdout import stdout
-from os  import write
+from os     import write
 
 def main():
     outfile = stdout
