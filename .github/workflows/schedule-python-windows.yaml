@@ -130,7 +130,6 @@ jobs:
             git status
           SET "PYTHON_CONFIG=Python\PATH.txt"
           SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
-            ECHO PATH_PYTHON=%PATH_PYTHON%
           IF EXIST "%PATH_PYTHON%\python.exe" (
             IF DEFINED GITHUB_ENV (
               ECHO PATH_PYTHON=%PATH_PYTHON%
