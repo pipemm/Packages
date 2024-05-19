@@ -110,7 +110,7 @@ jobs:
         run: |
           DIR /S
           SET "PYTHON_CONFIG=Python\PATH.txt"
-          SET /P PATH_PYTHON=< "%PYTHON_CONFIG%"
+          SET /P PATH_PYTHON=<"%PYTHON_CONFIG%"
             SET "PYTHON_TXT=%PATH_PYTHON%\python.exe"
             ECHO PYTHON_TXT=%PYTHON_TXT%
             DIR %PYTHON_TXT% /S

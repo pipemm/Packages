@@ -20,8 +20,8 @@ IF NOT "%FOLDER_PYTHOH%"=="" (
 
 SET "PATH_CONFIG=PATH.txt"
 IF EXIST "%FOLDER_PYTHOH%\python.exe" (
-  ECHO %FOLDER_PYTHOH% > "%PATH_CONFIG%"
-  ECHO Saved to %PATH_CONFIG%
+  ECHO %FOLDER_PYTHOH%> "%PATH_CONFIG%"
+  ECHO Saved %FOLDER_PYTHOH% to %PATH_CONFIG%
 ) ELSE (
   ECHO python.exe not found
 )
