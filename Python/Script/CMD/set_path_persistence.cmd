@@ -3,7 +3,7 @@ SET "PYTHON_CONFIG=Python\PATH.txt"
 SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
 IF EXIST "%PATH_PYTHON%\python.exe" (
   SET "PATH=%PATH_PYTHON%;%PATH%"
-  ECHO PATH=%PATH%
+  ECHO %PATH%
   TYPE %GITHUB_ENV%
 ) ELSE (
   ECHO python.exe not found
