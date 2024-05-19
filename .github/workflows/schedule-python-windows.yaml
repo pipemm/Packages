@@ -44,13 +44,13 @@ jobs:
       - name: Run Pre-Check Scripts
         working-directory: ./Python/
         run: |
-          bash Bash/test.sh
+          bash Script/Bash/test.sh
 
       - name: Get URL List - Simple Version
         id  : url-list
         working-directory: ./Python/
         run: |
-          bash Bash/get_download_url.sh |
+          bash Script/Bash/get_download_url.sh |
           tee >(
             head --lines=1 |
             (read -r line && echo "url=${line}") >> "${GITHUB_OUTPUT}"
@@ -77,7 +77,7 @@ jobs:
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
-          CMD\test.cmd
+          Script\CMD\test.cmd
 
       - name: Download Python Package
         env:
@@ -110,18 +110,18 @@ jobs:
         run: |
           DIR /S
           SET "PYTHON_CONFIG=Python\PATH.txt"
-          SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
-          SET "PYTHON_TXT=%PATH_PYTHON%\python.exe"
-          ECHO PYTHON_TXT=%PYTHON_TXT%
-          DIR %PYTHON_TXT% /S
-          IF EXIST %PYTHON_TXT% (
+          SET /P PATH_PYTHON=< "%PYTHON_CONFIG%"
+            SET "PYTHON_TXT=%PATH_PYTHON%\python.exe"
+            ECHO PYTHON_TXT=%PYTHON_TXT%
+            DIR %PYTHON_TXT% /S
+          IF EXIST "%PATH_PYTHON%\python.exe" (
             SET "PATH=%FOLDER_PYTHOH%;%PATH%"
           ) ELSE (
             ECHO python.exe not found
             exit 1
           )
           REM Run Test Scripts
-          CMD\test.cmd
+          Script\CMD\test.cmd
 
       - name: Configure Python PATH (Persistence )
         working-directory: .\Python\
@@ -130,9 +130,9 @@ jobs:
         run: |
           git status
           SET "PYTHON_CONFIG=Python\PATH.txt"
-          SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
+          SET /P PATH_PYTHON=< "%PYTHON_CONFIG%"
           ECHO PATH_PYTHON=%PATH_PYTHON%
-          IF EXIST "%PATH_PYTHON%\\python.exe" (
+          IF EXIST "%PATH_PYTHON%\python.exe" (
             IF DEFINED GITHUB_ENV (
               ECHO "PATH_PYTHON=%FOLDER_PYTHOH%"
               ECHO "PATH_PYTHON=%FOLDER_PYTHOH%" > "%GITHUB_ENV%"
