@@ -173,5 +173,4 @@ jobs:
             Python/*run*.cmd
             Python/*Script/Python/*.py
             Python/*CSV/*/*.csv
-          compression-level: 0
 
