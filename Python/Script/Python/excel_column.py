@@ -1,16 +1,11 @@
 
 from csv import DictWriter
 
-from sys import stdout
+from stdout import stdout
 from os  import write
 
-class Stdout:
-    def write(self, text):
-        text_bytes = text.encode()
-        write(1, text_bytes)
-
 def main():
-    outfile = Stdout()
+    outfile = stdout
 
     fieldnames = ['first_name', 'last_name']
     writer = DictWriter(outfile, fieldnames=fieldnames)
