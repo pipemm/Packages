@@ -138,11 +138,11 @@ jobs:
           ECHO PATH=%PATH_PYTHON%;%PATH%>> "%GITHUB_ENV%"
           TYPE %GITHUB_ENV%
 
-      - name: Test
+      - name: Check After Python PATH Persistence
         working-directory: .\Python\
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
         run: |
-          echo PATH=%PATH%
-          
+          Script\CMD\test.cmd
+
 
