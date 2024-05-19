@@ -114,7 +114,7 @@ jobs:
             SET "PATH=%PATH_PYTHON%;%PATH%"
           ) ELSE (
             ECHO python.exe not found
-            exit 1
+            EXIT /B 1
           )
 
           REM Run Test Scripts
@@ -129,9 +129,8 @@ jobs:
           SET /P PATH_PYTHON= < "%PYTHON_CONFIG%"
           IF EXIST "%PATH_PYTHON%\python.exe" (
             ECHO PATH_PYTHON=%PATH_PYTHON%
-            ECHO PATH=%PATH_PYTHON%;%PATH%
           ) ELSE (
             ECHO python.exe not found
-            exit 1
+            EXIT /B 1
           )
 
