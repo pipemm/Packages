@@ -119,6 +119,13 @@ jobs:
           REM Run Test Scripts
           Script\CMD\test.cmd
 
+      - name: Run Task
+        working-directory: .\Python\
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrunshell
+        run: |
+          run.cmd
+
       - name: Configure Python PATH (Persistence)
         working-directory: .\Python\
         shell: cmd
