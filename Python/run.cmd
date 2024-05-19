@@ -14,4 +14,7 @@ SET "PATH=%PATH_PYTHON%;%PATH%"
 
 SET "FOLDER_CSV=CSV\"
 
-python.exe --version
+SET "FOLDER_PY=Script\Python\"
+SET "PY_CSV_EXCEL_COL=%FOLDER_PY%excel_column.py"
+
+python.exe "%PY_CSV_EXCEL_COL%"
