@@ -1,11 +1,12 @@
 
 from sys import stdout
+from csv import DictWriter
 
 def main():
     outfile = stdout
 
     fieldnames = ['first_name', 'last_name']
-    writer = csv.DictWriter(outfile, fieldnames=fieldnames)
+    writer = DictWriter(outfile, fieldnames=fieldnames)
 
     writer.writeheader()
     writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
