@@ -20,7 +20,13 @@ SET "FILE_CSV1=%FOLDER_CSV1%test_column.csv"
 
 SET "FOLDER_PY=Script\Python\"
 
-SET "PY_CSV_EXCEL_COL=%FOLDER_PY%excel_column.py"
+SET "PY_CSV_EXCEL_COL=%FOLDER_PY%g_excel_column.py"
 
 python.exe "%PY_CSV_EXCEL_COL%" > "%FILE_CSV1%"
 
+SET "PY_DB_TOOL_BASE=%FOLDER_PY%db_csv_import.py"
+
+SET "TOOL_DATABASE_FOLDER=Database"
+SET "TOOL_DATABASE_FILE=data.db"
+
+python.exe "%PY_DB_TOOL_BASE%"
