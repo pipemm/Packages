@@ -17,3 +17,7 @@ MKDIR "%PYTHON_INSTALL%"
 
 tar -xvf "%FILE_ZIP%" -C %PYTHON_INSTALL%
 
+IF ERRORLEVEL 1 (
+  PowerShell.exe -Command "Expand-Archive -LiteralPath \"${env:FILE_ZIP}\" -Force;"
+)
+
