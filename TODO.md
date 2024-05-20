@@ -35,6 +35,12 @@ An assumption in the design phase is a fact that should be largely held. A desig
   - [TensorFlow](https://www.tensorflow.org/)
   - [scikit-learn](https://scikit-learn.org/stable/) (NumPy, SciPy)
   - Scrapy
+- Perl
+  - [Strawberry](https://strawberryperl.com/releases.html)
+- golang
+  - [go1.22.3.windows-amd64.zip](https://go.dev/dl/)
+- Node.js
+  - [Prebuilt](https://nodejs.org/en/download/prebuilt-binaries/current)
 - Others
   - Chrome
   - Edge
