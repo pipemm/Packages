@@ -27,11 +27,15 @@ curl --help
 
 which -a head
 
-head --help
+man head | col -b
 
 which -a sed
 
 man sed | col -b
+
+which -a mkdir
+
+man mkdir | col -b
 
 which 7z
 

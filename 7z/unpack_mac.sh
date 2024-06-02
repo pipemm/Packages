@@ -5,9 +5,6 @@ cd "${thispath}"
 
 folder_dl='package7z/'
 
-folder_7z='bin7z/'
-mkdir --parent "${folder_7z%/}/"
-
 file_package=$(ls "${folder_dl%/}"/*.tar.xz)
 
 if [[ -z "${file_package}" ]]
@@ -16,4 +13,10 @@ then
   echo 1
 fi
 
-tar --extract --xz --file="${file_package}" --directory="${folder_7z%/}/"
+subfolder="${file_package##*/}"
+subfolder="${subfolder%.tar.xz}"
+
+folder_7z='bin7z/'
+mkdir --parent "${folder_7z%/}/${subfolder}/"
+
+tar --extract --xz --file="${file_package}" --directory="${folder_7z%/}/${subfolder}/"

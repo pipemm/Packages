@@ -42,7 +42,7 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash test_init.sh
+          bash test_init_mac.sh
 
       - name: Installation
         working-directory: 7z/
