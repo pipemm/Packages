@@ -51,5 +51,6 @@ jobs:
         run: |
           bash download_mac.sh
           bash unpack_mac.sh
-          ls -r bin7z/*
+          bash test_utility.sh
+
   

@@ -1,3 +1,4 @@
+#!/bin/bash
 
 thisscript=$(readlink -f "$0")
 thispath="${thisscript%/*}/"
@@ -21,13 +22,4 @@ mkdir -p "${folder_7z%/}/${subfolder}/"
 
 tar --extract --xz --file="${file_package}" --directory="${folder_7z%/}/${subfolder}/"
 
-utility7z=$(ls ${folder_7z%/}/*/7z*)
-
-if [[ -z "${utility7z}" ]]
-then
-  echo 'utility not found'
-  echo 1
-fi
-
-"${utility7z}" --help
 
