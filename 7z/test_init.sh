@@ -3,9 +3,14 @@ echo "${SHELL}"
 
 which -a which
 
+echo "${TERM}"
 TERM=xterm
 
 man which
+
+which -a readlink
+
+readlink --help
 
 which -a bash
 

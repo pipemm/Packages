@@ -1,6 +1,6 @@
 
 
-thisscript=$(realpath "${0}")
+thisscript=$(readlink -f "$0")
 thispath="${thisscript%/*}/"
 cd "${thispath}"
 
