@@ -3,7 +3,7 @@ echo "${SHELL}"
 
 which -a which
 
-man which
+TERM=xterm man which
 
 which -a bash
 
