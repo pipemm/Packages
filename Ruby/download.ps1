@@ -4,6 +4,6 @@
 
 [Microsoft.PowerShell.Commands.BasicHtmlWebResponseObject]$Response = Invoke-WebRequest -Uri "${url_page}";
 
-$Response.GetType().FullName;
+$Response.Content.GetType().FullName;
 
-$Response;
+$Response.Content;
