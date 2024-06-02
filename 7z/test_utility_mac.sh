@@ -21,6 +21,4 @@ PATH="${PATH_7Z}:${PATH}"
 which -a "${utility7zz}"
 "${utility7zz}" --help
 
-echo "${PATH_7Z}"
-echo "${PATH_7Z##*/}"
 

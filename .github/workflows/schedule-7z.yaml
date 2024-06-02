@@ -51,6 +51,38 @@ jobs:
         run: |
           bash download_mac.sh
           bash unpack_mac.sh
-          bash test_utility.sh
+
+      - name: Check and Prepare Artifact
+        working-directory: 7z/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash test_utility_mac.sh
+          bash set_env_github_mac.sh
+
+      - name: Check Variables
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          echo "${ARTIFACT_NAME}"
+          echo "${ARTIFACT_PATH}"
+          if [[ -z "${ARTIFACT_NAME}" ]]
+          then
+            echo ARTIFACT_NAME not found
+            exit 1
+          fi
+          if [[ -z "${ARTIFACT_PATH}" ]]
+          then
+            echo ARTIFACT_PATH not found
+            exit 1
+          fi
+
+      - name: Upload Artifact - 7z from Page
+        uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ${{ env.ARTIFACT_PATH }}
+
 
   
