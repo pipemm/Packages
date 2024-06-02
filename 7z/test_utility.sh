@@ -13,10 +13,14 @@ then
   echo 1
 fi
 
-"${utility7z}" --help
+utility7zz="${utility7z##*/}"
 
-PATH_7Z="${utility7z%/*}"
+PATH_7Z="${PWD}/${utility7z%/*}"
+PATH="${PATH_7Z}:${PATH}"
 
-PATH="${PWD}/${PATH_7Z}:${PATH}"
+which -a "${utility7zz}"
+"${utility7zz}" --help
 
-which -a 7zz
+echo "${PATH_7Z}"
+echo "${PATH_7Z##*/}"
+
