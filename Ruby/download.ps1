@@ -1,9 +1,10 @@
 
 
-[System.String]$url_page='https://rubyinstaller.org/downloads/';
+[System.String]$URLPage = 'https://rubyinstaller.org/downloads/';
 
-[Microsoft.PowerShell.Commands.BasicHtmlWebResponseObject]$Response = Invoke-WebRequest -Uri "${url_page}";
+[Microsoft.PowerShell.Commands.BasicHtmlWebResponseObject]$Response = Invoke-WebRequest -Uri "${URLPage}";
 
-$Response.Content.GetType().FullName;
+[System.String]$Content = ${Response}.Content;
 
-$Response.Content;
+$Content |
+  Select-String -Pattern 'download-recommended';
