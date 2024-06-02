@@ -4,5 +4,5 @@
 
 $Response = Invoke-WebRequest -Uri "${url_page}"
 
-$Response.GetType()
+$Response.GetType().FullName
 
