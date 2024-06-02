@@ -1,11 +1,13 @@
 
 echo "${SHELL}"
 
-man man| col -b
+which -a man
+
+man man | col -b
 
 which -a col
 
-col --help
+man col | col -b
 
 which -a which
 
@@ -13,7 +15,7 @@ man which | col -b
 
 which -a readlink
 
-man readlink
+man readlink | col -b
 
 which -a bash
 
@@ -25,7 +27,7 @@ curl --help
 
 which -a sed
 
-man sed
+man sed | col -b
 
 which 7z
 
