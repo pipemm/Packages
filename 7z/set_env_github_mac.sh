@@ -5,7 +5,7 @@ thispath="${thisscript%/*}/"
 cd "${thispath}"
 
 folder_7z='bin7z/'
-utility7z=$(ls ${folder_7z%/}/*/7z*)
+utility7z=$(ls ${folder_7z%/}/*/7z* | head --lines=1)
 
 if [[ -z "${utility7z}" ]]
 then

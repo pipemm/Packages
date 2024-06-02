@@ -25,7 +25,7 @@ on:
 
 jobs:
   
-  MacOS-from-Page:
+  MacOS-Download:
     
     runs-on: macos-12
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
@@ -77,7 +77,7 @@ jobs:
             exit 1
           fi
 
-      - name: Upload Artifact - 7z from Page
+      - name: Upload Artifact - 7z
         uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
