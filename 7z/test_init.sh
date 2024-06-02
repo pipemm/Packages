@@ -1,7 +1,11 @@
 
 echo "${SHELL}"
 
-man man
+man man| col -b
+
+which -a col
+
+col --help
 
 which -a which
 
