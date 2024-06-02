@@ -6,7 +6,7 @@ cd "${thispath}"
 
 folder_dl='package7z/'
 
-file_package=$(ls "${folder_dl%/}"/*.tar.xz)
+file_package=$(ls "${folder_dl%/}"/*.tar.xz | head --lines=1)
 
 if [[ -z "${file_package}" ]]
 then

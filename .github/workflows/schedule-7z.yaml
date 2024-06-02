@@ -84,5 +84,10 @@ jobs:
           name: ${{ env.ARTIFACT_NAME }}
           path: ${{ env.ARTIFACT_PATH }}
 
+      - name: Output
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          echo "artifact=${ARTIFACT_NAME}" >> "${GITHUB_OUTPUT}"
 
   
