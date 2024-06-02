@@ -6,6 +6,6 @@
 
 [System.String]$Content = ${Response}.Content;
 
-$Content -split "`n" |
-  Select-String -Pattern 'download-recommended';
+($Content -split "`n" |
+  Select-String -Pattern 'download-recommended').ToString();
 
