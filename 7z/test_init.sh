@@ -3,15 +3,11 @@ echo "${SHELL}"
 
 which -a which
 
-echo "${TERM}"
-TERM=xterm
-echo "${TERM}"
-
 man which
 
 which -a readlink
 
-readlink -h
+man readlink
 
 which -a bash
 
@@ -23,7 +19,7 @@ curl --help
 
 which -a sed
 
-sed --help
+man sed
 
 which 7z
 
