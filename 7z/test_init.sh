@@ -25,6 +25,10 @@ curl --version
 
 curl --help
 
+which -a head
+
+head --help
+
 which -a sed
 
 man sed | col -b

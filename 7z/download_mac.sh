@@ -9,7 +9,7 @@ url_page="${url_domain%/}/download.html"
 
 url_package=$(
   curl "${url_page}" |
-  sed --silent 's!^.*"\(.*7z.*-mac\.tar\.xz\)".*$!\1!p' |
+  sed -n 's!^.*"\(.*7z.*-mac\.tar\.xz\)".*$!\1!p' |
   head --lines=1 |
   while read -r line
   do
