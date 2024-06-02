@@ -7,4 +7,5 @@
 [System.String]$Content = ${Response}.Content;
 
 $Content |
+  Out-String -Stream |
   Select-String -Pattern 'download-recommended';
