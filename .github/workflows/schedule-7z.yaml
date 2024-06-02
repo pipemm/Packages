@@ -1,0 +1,48 @@
+
+name: 7z Utility
+run-name: 7z Package Processing
+
+on:
+  
+  schedule:
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+    - cron:  '34 2  *  *  TUE'
+          #   │  │  │  │  │
+          #   │  │  │  │  └─── day of the week  (0–6, SUN-SAT)
+          #   │  │  │  └────── month            (1–12)
+          #   │  │  └───────── day of the month (1–31)
+          #   │  └──────────── hour             (0–23)
+          #   └─────────────── minute           (0–59)
+
+  push:
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push
+    branches:
+      - 'main'
+    paths:
+      - '7z/**.*'
+
+  workflow_dispatch:
+
+jobs:
+  
+  MacOS-from-Page:
+    
+    runs-on: macos-12
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md
+
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - name: Run Pre-Check Scripts
+        working-directory: 7z/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash test_init.sh
+
+
+  

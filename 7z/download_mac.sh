@@ -1,4 +1,9 @@
 
+
+thisscript=$(realpath "${0}")
+thispath="${thisscript%/*}/"
+cd "${thispath}"
+
 url_domain='https://www.7-zip.org/'
 url_page="${url_domain%/}/download.html"
 
@@ -27,7 +32,5 @@ echo "${url_package##*/}"
 
 curl --output "${folder_dl%/}/${url_package##*/}" "${url_package}"
 
-folder_7z='bin7z/'
-mkdir --parent "${folder_7z%/}/"
 
 
