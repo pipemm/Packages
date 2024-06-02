@@ -48,3 +48,9 @@ which 7z
 
 echo "${PATH}"
 
+which -a pwd
+
+man pwd | col -b
+
+echo "${PWD}"
+pwd

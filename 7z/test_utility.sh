@@ -17,6 +17,6 @@ fi
 
 PATH_7Z="${utility7z%/*}"
 
-PATH="${utility7z%/*}:${PATH}"
+PATH="${PWD}/${PATH_7Z}:${PATH}"
 
 which -a 7zz
