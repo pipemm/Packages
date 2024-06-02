@@ -1,9 +1,11 @@
 
 echo "${SHELL}"
 
+man man
+
 which -a which
 
-man which
+man which | col -b
 
 which -a readlink
 
