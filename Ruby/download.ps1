@@ -1,8 +1,9 @@
 
 
-[System.String]$url_page='https://rubyinstaller.org/downloads/'
+[System.String]$url_page='https://rubyinstaller.org/downloads/';
 
-$Response = Invoke-WebRequest -Uri "${url_page}"
+[Microsoft.PowerShell.Commands.BasicHtmlWebResponseObject]$Response = Invoke-WebRequest -Uri "${url_page}";
 
-$Response.GetType().FullName
+$Response.GetType().FullName;
 
+$Response;

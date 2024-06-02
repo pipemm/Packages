@@ -39,6 +39,13 @@ jobs:
 
       - name: Run Pre-Check Scripts
         working-directory: Ruby/
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          test_init.cmd
+
+      - name: Get Download URL
+        working-directory: Ruby/
         shell: pwsh
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
