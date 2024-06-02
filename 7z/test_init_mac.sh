@@ -19,6 +19,10 @@ man readlink | col -b
 
 which -a bash
 
+which -a echo
+
+man echo | col -b
+
 which -a curl
 
 curl --version

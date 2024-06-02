@@ -24,7 +24,7 @@ then
 fi
 
 folder_dl='package7z/'
-mkdir --parent "${folder_dl%/}/"
+mkdir -p "${folder_dl%/}/"
 
 echo "downloading ${url_package}"
 
