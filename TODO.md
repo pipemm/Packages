@@ -47,4 +47,5 @@ An assumption in the design phase is a fact that should be largely held. A desig
   - PotPlayer
   - FFmpeg
   - ImageMagick
+  - [Pandoc](https://www.pandoc.org/)
   - [RAR](https://www.rarlab.com/rar_add.htm)
