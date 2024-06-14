@@ -10,8 +10,12 @@ fi
 folder_download=${folder_download:-local_download/}
 folder_log=${folder_log:-local_log/}
 
-
-url_artifact="${url_mvn}?filepath=${path_artifact}"
+if [[ ${path_artifact,,} =~ ^https:// ]]
+then
+    url_artifact="${path_artifact}"
+else
+    url_artifact="${url_mvn}?filepath=${path_artifact}"
+fi
 file_artifact="${path_artifact##*/}"
 
 if [[ -z "${file_artifact}" ]]
