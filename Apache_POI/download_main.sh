@@ -60,15 +60,17 @@ echo $(curl --silent "${url_jar}.sha512")
 cat "${folder_log%/}/${file_jar}.sha512"
 sha512sum "${folder_jar%/}/${file_jar}" | sed 's/ .*//'
 
-folder_python='python_script/'
+folder_python='script_python/'
 py_pom="${folder_python%/}/read_pom_dependencies.py"
-sh_dla='download_artifact.sh'
+folder_shell='script_shell/'
+sh_dla="${folder_shell%/}/download_artifact.sh"
 
 url_pom="${url_artifacts%/}/${target_artifact}/${verion}/${target_artifact}-${verion}.pom"
 curl "${url_pom}" |
   python3 "${py_pom}" |
   while read -r artifact_path
   do
+    echo
     echo "check ${artifact_path}"
     export folder_download="${folder_jar}"
     export folder_log="${folder_log}"
