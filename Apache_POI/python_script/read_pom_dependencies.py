@@ -28,7 +28,7 @@ class POMHandler(ContentHandler):
             return
         if self.optional is not None and self.optional.lower() == 'true':
             return
-        print( '/'.join([self.groupId, self.artifactId, self.version]) )
+        print( '/'.join([self.groupId.replace('.','/'), self.artifactId, self.version, self.artifactId+'-'+self.version+'.jar']) )
 
     def startElement(self, name, attrs):
         self.currentTag = name

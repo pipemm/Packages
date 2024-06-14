@@ -62,14 +62,15 @@ sha512sum "${folder_jar%/}/${file_jar}" | sed 's/ .*//'
 
 folder_python='python_script/'
 py_pom="${folder_python%/}/read_pom_dependencies.py"
+sh_dla='download_artifact.sh'
 
-url_mvn='https://mvnrepository.com/artifact/'
 url_pom="${url_artifacts%/}/${target_artifact}/${verion}/${target_artifact}-${verion}.pom"
 curl "${url_pom}" |
   python3 "${py_pom}" |
   while read -r artifact_path
   do
-    url_artifact="${url_mvn%/}/${artifact_path}"
-    echo "check ${url_artifact}"
-    
+    echo "check ${artifact_path}"
+    export folder_download="${folder_jar}"
+    export folder_log="${folder_log}"
+    bash "${sh_dla}" "${artifact_path}"
   done
