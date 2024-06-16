@@ -9,6 +9,7 @@ import org.apache.poi.poifs.crypt.HashAlgorithm;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+// [Encryption](https://poi.apache.org/encryption.html)
 public class EncryptionInformation {
 
     public static void main(String[] args) {
@@ -27,8 +28,8 @@ public class EncryptionInformation {
 
             // Print encryption details
             EncryptionMode encryptionMode = info.getEncryptionMode();
-            HashAlgorithm hashAlgorithm = info.getVerifier().getHashAlgorithm();
-            int keySize = info.getHeader().getKeySize();
+            HashAlgorithm  hashAlgorithm  = info.getVerifier().getHashAlgorithm();
+            int            keySize        = info.getHeader().getKeySize();
             
             System.out.println("Encryption Mode: " + encryptionMode);
             System.out.println("Hash Algorithm: " + hashAlgorithm);
@@ -37,7 +38,7 @@ public class EncryptionInformation {
         } catch (IOException e) {
             System.out.println("Error reading the file: " + e.getMessage());
         } catch (OfficeXmlFileException e) {
-            System.out.println("The file may not be encrypted: " + e.getMessage());
+            System.out.println("The file may not be encrypted since it is not stored in an OLE package. ");
         }
     }
 }

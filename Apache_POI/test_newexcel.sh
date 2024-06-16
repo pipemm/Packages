@@ -19,5 +19,6 @@ zipinfo -vh "${folder_xlsx%/}/*.xlsx"
 ls ${folder_xlsx%/}/*.{xlsx,xlsm} |
   while read -r xlsxfile
   do
-    java  --class-path "${CLASSPATH}"  EncryptionInformation "${xlsxfile}"
+    echo "checking ${xlsxfile}"
+    java --class-path "${CLASSPATH}"  EncryptionInformation "${xlsxfile}"
   done
