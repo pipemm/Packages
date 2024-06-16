@@ -14,3 +14,4 @@ CLASSPATH="${CLASSPATH}:${folder_class%/}/"
 
 java  --class-path "${CLASSPATH}"  NewWorkbook "${folder_xlsx%/}/New Microsoft Excel Worksheet.xlsx"
 
+zipinfo -vh "${folder_xlsx%/}/*.xlsx"
