@@ -1,6 +1,9 @@
 
 - download testing files
 - [Encryption](https://poi.apache.org/encryption.html)
+  - Encryption Mode: agile
+  - Hash Algorithm: sha512
+  - Key Size: 256 bits
 
 Seek a elegant way to fix this error, if the official POM file is not going to contain `log4j-core`.
 

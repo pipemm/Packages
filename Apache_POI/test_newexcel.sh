@@ -16,5 +16,8 @@ java  --class-path "${CLASSPATH}"  NewWorkbook "${folder_xlsx%/}/New Microsoft E
 
 zipinfo -vh "${folder_xlsx%/}/*.xlsx"
 
-java  --class-path "${CLASSPATH}"  EncryptionInformation "${folder_xlsx%/}/New Microsoft Excel Worksheet.xlsx"
-
+ls ${folder_xlsx%/}/*.{xlsx,xlsm} |
+  while read -r xlsxfile
+  do
+    java  --class-path "${CLASSPATH}"  EncryptionInformation "${xlsxfile}"
+  done
