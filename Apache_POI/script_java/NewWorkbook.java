@@ -15,7 +15,8 @@ public class NewWorkbook {
 
         String filePath = args[0];
         
-        Workbook wb = new XSSFWorkbook();
+        Workbook wb  = new XSSFWorkbook();
+        Sheet sheet1 = wb.createSheet("Sheet1");
         try (OutputStream fileOut = new FileOutputStream(filePath)) {
             wb.write(fileOut);
             System.out.println("Workbook created successfully at: " + filePath);
