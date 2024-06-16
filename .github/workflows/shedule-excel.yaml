@@ -50,3 +50,11 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           bash compile.sh
+
+      - name: Test
+        working-directory: Apache_POI/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash test_newexcel.sh
+
