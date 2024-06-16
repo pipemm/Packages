@@ -31,14 +31,14 @@ public class EncryptionInformation {
             HashAlgorithm  hashAlgorithm  = info.getVerifier().getHashAlgorithm();
             int            keySize        = info.getHeader().getKeySize();
             
-            System.out.println("Encryption Mode: " + encryptionMode);
-            System.out.println("Hash Algorithm: " + hashAlgorithm);
-            System.out.println("Key Size: " + keySize + " bits");
+            System.out.println("Encryption Mode : " + encryptionMode);
+            System.out.println("Hash Algorithm  : " + hashAlgorithm);
+            System.out.println("Key Size        : " + keySize + " bits");
 
         } catch (IOException e) {
             System.out.println("Error reading the file: " + e.getMessage());
         } catch (OfficeXmlFileException e) {
-            System.out.println("The file may not be encrypted since it is not stored in an OLE package. ");
+            System.out.println("The file may not be encrypted because it is not stored in an OLE format. ");
         }
     }
 }
