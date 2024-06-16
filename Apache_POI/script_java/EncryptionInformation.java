@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.IOException;
 
-public class DetermineEncryptionMethod {
+public class EncryptionInformation {
 
     public static void main(String[] args) {
         if (args.length != 1) {
@@ -19,8 +19,10 @@ public class DetermineEncryptionMethod {
 
         String filename = args[0];
 
-        try (FileInputStream fis = new FileInputStream(filename);
-             POIFSFileSystem fs = new POIFSFileSystem(fis)) {
+        try (
+            FileInputStream fis = new FileInputStream(filename);
+            POIFSFileSystem fs  = new POIFSFileSystem(fis)
+            ) {
 
             EncryptionInfo info = new EncryptionInfo(fs);
             Decryptor decryptor = Decryptor.getInstance(info);
@@ -31,18 +33,18 @@ public class DetermineEncryptionMethod {
             System.out.println("Key Size: " + info.getHeader().getKeySize() + " bits");
 
             // Attempt to decrypt the document (you will need the correct password for this step)
-            if (!decryptor.verifyPassword(Decryptor.DEFAULT_PASSWORD)) {
-                System.out.println("Unable to process: document is encrypted with a non-default password.");
-                return;
-            }
+            //if (!decryptor.verifyPassword(Decryptor.DEFAULT_PASSWORD)) {
+            //    System.out.println("Unable to process: document is encrypted with a non-default password.");
+            //    return;
+            //}
 
             // Open the decrypted package
-            try (InputStream dataStream = decryptor.getDataStream(fs);
-                 OPCPackage opc = OPCPackage.open(dataStream)) {
-                Workbook workbook = new XSSFWorkbook(opc);
+            //try (InputStream dataStream = decryptor.getDataStream(fs);
+            //     OPCPackage opc = OPCPackage.open(dataStream)) {
+            //    Workbook workbook = new XSSFWorkbook(opc);
                 // You can now work with the workbook (if needed)
-                System.out.println("Workbook has " + workbook.getNumberOfSheets() + " sheets.");
-            }
+            //    System.out.println("Workbook has " + workbook.getNumberOfSheets() + " sheets.");
+            //}
 
         } catch (IOException | org.apache.poi.EncryptedDocumentException e) {
             System.out.println("Error processing the file: " + e.getMessage());
