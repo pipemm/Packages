@@ -10,7 +10,7 @@ do
     CLASSPATH="${CLASSPATH}:${jar}"
 done
 
-javac --class-path "${CLASSPATH}" -d "${folder_class%/}/" 'script_java/NewWorkbook.java'
+javac --class-path "${CLASSPATH}" -d "${folder_class%/}/" 'script_java/*.java'
 
 CLASSPATH="${CLASSPATH}:${folder_class%/}/"
 
