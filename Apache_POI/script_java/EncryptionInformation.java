@@ -6,9 +6,10 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.IOException;
 
-public class EncryptionInformation {
+public class DetermineEncryptionMethod {
 
     public static void main(String[] args) {
         if (args.length != 1) {
@@ -18,8 +19,9 @@ public class EncryptionInformation {
 
         String filename = args[0];
 
-        try (FileInputStream fis = new FileInputStream(filename)) {
-            POIFSFileSystem fs = new POIFSFileSystem(fis);
+        try (FileInputStream fis = new FileInputStream(filename);
+             POIFSFileSystem fs = new POIFSFileSystem(fis)) {
+
             EncryptionInfo info = new EncryptionInfo(fs);
             Decryptor decryptor = Decryptor.getInstance(info);
 
@@ -35,7 +37,8 @@ public class EncryptionInformation {
             }
 
             // Open the decrypted package
-            try (OPCPackage opc = decryptor.getDataStream(fs)) {
+            try (InputStream dataStream = decryptor.getDataStream(fs);
+                 OPCPackage opc = OPCPackage.open(dataStream)) {
                 Workbook workbook = new XSSFWorkbook(opc);
                 // You can now work with the workbook (if needed)
                 System.out.println("Workbook has " + workbook.getNumberOfSheets() + " sheets.");
