@@ -66,3 +66,11 @@ jobs:
           path: |
             Apache_POI/local_xlsx/*.xlsx
 
+      - name: Upload Apache POI
+        uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: Apache_POI
+          path: |
+            Apache_POI/local_jar/*.jar
+

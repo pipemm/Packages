@@ -1,8 +1,6 @@
 
-- download dependencies
-  - [page](https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml/5.2.5)
-  - [pom](https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml/5.2.5/poi-ooxml-5.2.5.pom) - compile
 - download testing files
+- [Encryption](https://poi.apache.org/encryption.html)
 
 Seek a elegant way to fix this error, if the official POM file is not going to contain `log4j-core`.
 
