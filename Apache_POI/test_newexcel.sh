@@ -22,3 +22,4 @@ ls ${folder_xlsx%/}/*.{xlsx,xlsm} |
     echo "checking ${xlsxfile}"
     java --class-path "${CLASSPATH}"  EncryptionInformation "${xlsxfile}"
   done
+

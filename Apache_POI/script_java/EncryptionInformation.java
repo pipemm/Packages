@@ -14,17 +14,18 @@ public class EncryptionInformation {
 
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("Usage: java DetermineEncryptionMethod <filename>");
+            System.out.println("Usage: java EncryptionInformation <filename>");
             return;
         }
 
         String filename = args[0];
 
         try (
+            // [The try-with-resources Statement](https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html)
             POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(filename))
         ) {
             EncryptionInfo info = new EncryptionInfo(fs);
-            Decryptor decryptor = Decryptor.getInstance(info);
+            //Decryptor decryptor = Decryptor.getInstance(info);
 
             // Print encryption details
             EncryptionMode encryptionMode = info.getEncryptionMode();
