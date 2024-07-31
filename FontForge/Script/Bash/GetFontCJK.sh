@@ -27,7 +27,13 @@ curl --location \
       --header 'X-GitHub-Api-Version: 2022-11-28' \
       "${url}"
     )
-    echo "${response}" |
+    total_count=$(
+      echo "${response}" |
       jq '.total_count'
+    )
+    if [[ ${total_count} -gt 0 ]] 
+    then
+      echo "${response}"
+    fi
   done
 
