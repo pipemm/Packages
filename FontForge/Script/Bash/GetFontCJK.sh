@@ -37,7 +37,7 @@ curl --location \
       echo "${response}"
       if [[ -n "${GITHUB_ENV}" ]]
       then
-        echo "${url}"
+        echo "${url%/artifacts}"
       fi
       break
     fi
