@@ -1,7 +1,7 @@
 
 
 ## https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-repository
-DATE_CUT=$(TZ=UTC date --date='1 month ago' +'%Y-%m-%d')
+DATE_CUT=$(TZ=UTC date --date='2 month ago' +'%Y-%m-%d')
 API_RUNS="https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs?status=success&created=>2024-06-30"
 #if [[ -z "${GITHUB_REPOSITORY_OWNER}" ]]
 #then
