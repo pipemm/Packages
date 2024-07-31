@@ -16,5 +16,6 @@ curl --location \
   jq '.workflow_runs' |
   jq 'sort_by(.updated_at) | reverse' |
   jq '[.[] | {path, updated_at, artifacts_url}]' |
-  jq '[.[]|select(.path|endswith(".yaml"))]'
+  jq '[.[]|select(.path|endswith(".yaml"))]' |
+  jq '.[] | .artifacts_url'
 
