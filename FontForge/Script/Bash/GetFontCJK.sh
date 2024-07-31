@@ -39,7 +39,8 @@ curl --location \
       then
         ARTIFACT_RUN_ID="${url%/artifacts}"
         ARTIFACT_RUN_ID="${ARTIFACT_RUN_ID##*/}"
-        echo "${ARTIFACT_RUN_ID}"
+        echo "ARTIFACT_RUN_ID=${ARTIFACT_RUN_ID}"
+        echo "ARTIFACT_RUN_ID=${ARTIFACT_RUN_ID}" >> "${GITHUB_ENV}"
       fi
       break
     fi
