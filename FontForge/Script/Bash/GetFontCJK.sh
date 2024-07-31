@@ -33,7 +33,12 @@ curl --location \
     )
     if [[ ${total_count} -gt 0 ]] 
     then
+      echo "${url}"
       echo "${response}"
+      if [[ -n "${GITHUB_ENV}"]]
+      then
+        echo "${url}"
+      fi
       break
     fi
   done
