@@ -15,5 +15,5 @@ curl --location \
   "${API_RUNS}" |
   jq '.workflow_runs' |
   jq 'sort_by(.updated_at) | reverse' |
-  jq '.artifacts_url'
+  jq '[.[] | {path, artifacts_url}]'
 
