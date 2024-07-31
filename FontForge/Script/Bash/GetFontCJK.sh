@@ -14,5 +14,6 @@ curl --location \
   --header "X-GitHub-Api-Version: 2022-11-28" \
   "${API_RUNS}" |
   jq '.workflow_runs' |
-  jq 'sort_by(.updated_at) | reverse'
+  jq 'sort_by(.updated_at) | reverse' |
+  jq '.artifacts_url'
 
