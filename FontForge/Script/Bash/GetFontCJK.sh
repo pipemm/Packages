@@ -21,10 +21,13 @@ curl --location \
   while read -r url
   do
     ## https://docs.github.com/en/rest/actions/artifacts?apiVersion=2022-11-28#list-artifacts-for-a-repository
-    echo "${url}"
-    curl --location \
+    response=$(
+      curl --location \
       --header 'Accept: application/vnd.github+json' \
       --header 'X-GitHub-Api-Version: 2022-11-28' \
       "${url}"
+    )
+    echo "${response}" |
+      jq '.total_count'
   done
 
