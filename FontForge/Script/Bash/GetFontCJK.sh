@@ -10,8 +10,8 @@ API_RUNS="https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs?status=
 API_RUNS="https://api.github.com/repos/${GITHUB_REPOSITORY_OWNER}/${GITHUB_REPOSITORY##*/}/actions/runs?status=success&created=>2024-06-30"
 
 curl --location \
-  --header "Accept: application/vnd.github+json" \
-  --header "X-GitHub-Api-Version: 2022-11-28" \
+  --header 'Accept: application/vnd.github+json' \
+  --header 'X-GitHub-Api-Version: 2022-11-28' \
   "${API_RUNS}" |
   jq '.workflow_runs' |
   jq 'sort_by(.updated_at) | reverse' |
@@ -20,6 +20,11 @@ curl --location \
   jq --raw-output '.[] | .artifacts_url' |
   while read -r url
   do
+    ## https://docs.github.com/en/rest/actions/artifacts?apiVersion=2022-11-28#list-artifacts-for-a-repository
     echo "${url}"
+    curl --location \
+      --header 'Accept: application/vnd.github+json' \
+      --header 'X-GitHub-Api-Version: 2022-11-28' \
+      "${url}"
   done
 
