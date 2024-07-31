@@ -35,7 +35,7 @@ curl --location \
     then
       echo "${url}"
       echo "${response}"
-      if [[ -n "${GITHUB_ENV}"]]
+      if [[ -n "${GITHUB_ENV}" ]]
       then
         echo "${url}"
       fi
