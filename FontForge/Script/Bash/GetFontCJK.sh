@@ -34,6 +34,7 @@ curl --location \
     if [[ ${total_count} -gt 0 ]] 
     then
       echo "${response}"
+      break
     fi
   done
 
