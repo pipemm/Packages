@@ -44,3 +44,9 @@ jobs:
         run: |
           bash Script/Bash/GetFontCJK.sh
 
+      - uses: actions/download-artifact@v4
+        ## https://github.com/actions/download-artifact
+        with:
+          path: FontForge/Artifact/
+          pattern: *
+          run-id: ${{ env.ARTIFACT_RUN_ID }}
