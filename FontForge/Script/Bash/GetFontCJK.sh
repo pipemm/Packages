@@ -17,5 +17,9 @@ curl --location \
   jq 'sort_by(.updated_at) | reverse' |
   jq '[.[] | {path, updated_at, artifacts_url}]' |
   jq '[.[]|select(.path|endswith(".yaml"))]' |
-  jq '.[] | .artifacts_url'
+  jq --raw-output '.[] | .artifacts_url' |
+  while read -r url
+  do
+    echo "${url}"
+  done
 
