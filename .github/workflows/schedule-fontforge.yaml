@@ -62,6 +62,13 @@ jobs:
         ## https://github.com/actions/upload-artifact
         with:
           name: font
-          path: FontForge/Artifact/*/*
+          path: FontForge/Artifact/font-*/*
+
+      - name: List Fonts
+        working-directory: FontForge/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash Script/Bash/Execution.sh
 
 
