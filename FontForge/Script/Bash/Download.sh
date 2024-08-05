@@ -8,4 +8,14 @@ curl --location \
   "${URL_API}" |
   jq '.artifacts' |
   jq '[ .[] | select(.name | startswith("font-")) ]' |
-  jq '[ .[] | {name,archive_download_url} ]'
+  jq '[ .[] | {name,archive_download_url} ]' |
+  jq --compact-output '.[]' |
+  while read -r record
+  do
+    download_url=$( echo "${record}" | jq --raw-output '.archive_download_url' )
+    base_name=$( echo "${record}" | jq --raw-output '.name' )
+    file_type="${download_url##*/}"
+    file_name="${base_name}.${file_type}"
+    echo "${file_name}"
+  done
+
