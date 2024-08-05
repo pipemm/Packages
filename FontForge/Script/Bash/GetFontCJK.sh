@@ -9,7 +9,7 @@ fi
 API_RUNS="https://api.github.com/repos/${REPOSITORY_FROM}/actions/runs?status=success&created=>${DATE_CUT}"
 
 JQ_FILTER='[ .[] | select(.path | endswith("/__WORKFLOW_NAME__")) ]'
-JQ_FILTER="${JQ_FILTER//__WORKFLOW_NAME__/${WORKFLOW_NAME_FONT}}"
+JQ_FILTER="${JQ_FILTER//__WORKFLOW_NAME__/${WORKFLOW_NAME}}"
 curl --location \
   --header 'Accept: application/vnd.github+json' \
   --header 'X-GitHub-Api-Version: 2022-11-28' \
