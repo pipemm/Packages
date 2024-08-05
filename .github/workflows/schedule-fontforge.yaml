@@ -52,7 +52,7 @@ jobs:
         ## https://github.com/actions/download-artifact
         with:
           path           : FontForge/Artifact/
-          pattern        : "font-*"
+          pattern        : font-*
           merge-multiple : false
           github-token   : "${{ github.token }}"
           repository     : "${{ secrets.REPOSITORY_FONT_FROM }}"
