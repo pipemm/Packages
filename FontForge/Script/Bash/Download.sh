@@ -20,6 +20,7 @@ curl --location \
     echo "${file_name}"
     curl --location --verbose --verbose \
       --header "Accept: application/vnd.github+json" \
+      --header  "Authorization: Bearer ${GH_TOKEN}" \
       --header "X-GitHub-Api-Version: 2022-11-28" \
       --output "${file_name}" \
       "${download_url}"
