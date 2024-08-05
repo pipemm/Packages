@@ -18,12 +18,12 @@ curl --location \
     file_type="${download_url##*/}"
     file_name="${base_name}.${file_type}"
     echo "${file_name}"
-    curl --location \
+    curl --location --verbose --verbose \
       --header "Accept: application/vnd.github+json" \
       --header "X-GitHub-Api-Version: 2022-11-28" \
       --output "${file_name}" \
       "${download_url}"
   done
 
-ls
+ls -la
 
