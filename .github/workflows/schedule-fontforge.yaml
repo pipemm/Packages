@@ -50,6 +50,7 @@ jobs:
       - name: Get Artifacts
         env:
           REPOSITORY_FROM : "${{ secrets.REPOSITORY_FONT_FROM }}"
+          GH_TOKEN        : ${{ secrets.GITHUB_TOKEN }}
         working-directory: FontForge/
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell

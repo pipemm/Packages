@@ -3,6 +3,7 @@
 RUN_ID="${ARTIFACT_RUN_ID}"
 URL_API="https://api.github.com/repos/${REPOSITORY_FROM}/actions/runs/${RUN_ID}/artifacts"
 curl --location \
-  --header "Accept: application/vnd.github+json" \
-  --header "X-GitHub-Api-Version: 2022-11-28" \
+  --header 'Accept: application/vnd.github+json' \
+  --header "Authorization: Bearer ${GH_TOKEN}" \
+  --header 'X-GitHub-Api-Version: 2022-11-28' \
   "${URL_API}"
