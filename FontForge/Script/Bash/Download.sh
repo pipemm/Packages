@@ -26,5 +26,4 @@ curl --location \
       "${download_url}"
   done
 
-ls -la
 
