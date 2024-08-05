@@ -18,7 +18,7 @@ curl --location \
     file_type="${download_url##*/}"
     file_name="${base_name}.${file_type}"
     echo "${file_name}"
-    curl --location --verbose --verbose \
+    curl --location \
       --header "Accept: application/vnd.github+json" \
       --header  "Authorization: Bearer ${GH_TOKEN}" \
       --header "X-GitHub-Api-Version: 2022-11-28" \
