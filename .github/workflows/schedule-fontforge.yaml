@@ -54,6 +54,7 @@ jobs:
           ##pattern: *
           merge-multiple: false
           run-id: ${{ env.ARTIFACT_RUN_ID }}
+          github-token: ${{ github.token }}
           repository: "${{ secrets.REPOSITORY_FONT_FROM }}"
 
 
