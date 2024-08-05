@@ -8,11 +8,14 @@ then
 fi
 API_RUNS="https://api.github.com/repos/${REPOSITORY_FROM}/actions/runs?status=success&created=>${DATE_CUT}"
 
+JQ_FILTER='[ .[] | select(.path | endswith("/__WORKFLOW_NAME__")) ]'
+JQ_FILTER="${JQ_FILTER//__WORKFLOW_NAME__/${WORKFLOW_NAME_FONT}}"
 curl --location \
   --header 'Accept: application/vnd.github+json' \
   --header 'X-GitHub-Api-Version: 2022-11-28' \
   "${API_RUNS}" |
   jq '.workflow_runs' |
+  jq "${JQ_FILTER}" |
   jq 'sort_by(.updated_at) | reverse' |
   jq '[.[] | {path, updated_at, artifacts_url}]' |
   jq '[.[]|select(.path|endswith(".yaml"))]' |
