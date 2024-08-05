@@ -64,11 +64,29 @@ jobs:
           name: font
           path: FontForge/Artifact/font-*/*
 
-      - name: List Fonts
+  Analyse-Font:
+    
+    runs-on: ubuntu-22.04
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+    needs: Download-Font
+
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - uses: actions/download-artifact@v4
+        ## https://github.com/actions/download-artifact
+        with:
+          name: font
+          path: FontForge/Artifact/
+
+      - name: List Artifacts
         working-directory: FontForge/
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           bash Script/Bash/Execution.sh
-
 
