@@ -16,5 +16,8 @@ URL_DOWNLOAD=$(
   jq --raw-output '.[0] | .browser_download_url'
 )
 
-echo "${URL_DOWNLOAD}"
-
+if [[ -n "${GITHUB_ENV}" ]]
+then
+  echo "URL_DOWNLOAD=${URL_DOWNLOAD}"
+  echo "URL_DOWNLOAD=${URL_DOWNLOAD}" >> "${GITHUB_ENV}"
+fi
