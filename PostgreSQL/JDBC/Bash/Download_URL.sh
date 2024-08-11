@@ -6,9 +6,9 @@ API_RELEASE_LATEST="https://api.github.com/repos/${REPOSITORY_PGJDBC}/releases/l
 
 URL_DOWNLOAD=$(
   curl --location \
-  -H "Accept: application/vnd.github+json" \
-  -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-  -H "X-GitHub-Api-Version: 2022-11-28" \
+  --header 'Accept: application/vnd.github+json' \
+  --header "Authorization: Bearer ${GITHUB_TOKEN}" \
+  --header 'X-GitHub-Api-Version: 2022-11-28' \
   "${API_RELEASE_LATEST}" |
   jq '.assets' |
   jq '[.[]|select(.name|endswith(".jar"))]' |
