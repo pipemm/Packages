@@ -41,6 +41,8 @@ jobs:
         working-directory: PostgreSQL/JDBC/
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           bash Bash/Download_URL.sh
 
