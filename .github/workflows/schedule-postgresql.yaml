@@ -56,5 +56,10 @@ jobs:
           mkdir --parent "${FOLDER_ART}"
           FILE_NAME="${URL_DOWNLOAD##*/}"
           FILE_SAVE="${FOLDER_ART%/}/${FILE_NAME}"
-          curl --output "${FILE_SAVE}" "${URL_DOWNLOAD}"
-          
+          curl --output "${FILE_SAVE}" --location "${URL_DOWNLOAD}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: postgresql-jdbc-latest
+          path: PostgreSQL/JDBC/Artifact/
+
