@@ -18,8 +18,8 @@ URL_DOWNLOAD=$(
 
 echo "${URL_DOWNLOAD}"
 
+echo ${GITHUB_TOKEN}"
 curl --location \
   --header 'Accept: application/vnd.github+json' \
-  --header "Authorization: Bearer ${GITHUB_TOKEN}" \
   --header 'X-GitHub-Api-Version: 2022-11-28' \
   "${API_RELEASE_LATEST}" 
