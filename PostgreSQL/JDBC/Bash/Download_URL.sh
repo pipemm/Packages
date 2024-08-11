@@ -21,3 +21,6 @@ then
   echo "URL_DOWNLOAD=${URL_DOWNLOAD}"
   echo "URL_DOWNLOAD=${URL_DOWNLOAD}" >> "${GITHUB_ENV}"
 fi
+
+## https://github.com/pgjdbc/pgjdbc/releases/latest
+## https://jdbc.postgresql.org/download/
