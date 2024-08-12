@@ -15,7 +15,7 @@ def main():
     print("PostScript Font Full Name   : ", font.fullname)
     print("PostScript Font Weight      : ", font.weight)
     print("PostScript Font Version     : ", font.version)
-    print("Number of Subfonts          : ", font.cidsubfontcnt)
+    print("OS/2 Codepages              : ", font.os2_codepages)
 
 
 
