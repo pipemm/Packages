@@ -62,12 +62,13 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           FOLDER_ART='Artifact/'
+          ls ${FOLDER_ART%/}/FontForge-*.AppImage
           FontForgeApp=$(
             ls ${FOLDER_ART%/}/FontForge-*.AppImage |
             head --lines=1
           )
-          chmod u+x "${FOLDER_ART}"
-          "${FOLDER_ART}" --version
+          chmod u+x "${FontForgeApp}"
+          "${FontForgeApp}" --version
 
       - uses: actions/upload-artifact@v4
         with:
