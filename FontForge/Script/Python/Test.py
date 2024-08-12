@@ -4,6 +4,7 @@ from sys import argv
 import fontforge
 
 def main():
+    print(len(argv))
     if len(argv)>1:
         print(argv[0])
         print(argv[1])
