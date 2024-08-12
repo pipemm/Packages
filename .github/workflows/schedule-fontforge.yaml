@@ -51,7 +51,7 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           FOLDER_ART='Artifact/'
-          mkdir --parent "${FOLDER_ART}"
+          mkdir -p "${FOLDER_ART}"
           FILE_NAME="${URL_DOWNLOAD##*/}"
           FILE_SAVE="${FOLDER_ART%/}/${FILE_NAME}"
           curl --output "${FILE_SAVE}" --location "${URL_DOWNLOAD}"
