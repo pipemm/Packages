@@ -9,5 +9,9 @@ chmod u+x ${FontForgeApp}
 
 ${FontForgeApp} --appimage-extract-and-run --version 
 
-ls --indicator-style=slash --recursive Font/
+ls Font/*/*.* |
+  while read -r file
+  do
+    echo "${file}"
+  done
 
