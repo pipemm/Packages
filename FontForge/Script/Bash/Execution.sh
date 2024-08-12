@@ -9,6 +9,5 @@ chmod u+x ${FontForgeApp}
 
 ${FontForgeApp} --appimage-extract-and-run --version 
 
-ls --recursive Font/
-
+ls --indicator-style=slash --recursive Font/
 

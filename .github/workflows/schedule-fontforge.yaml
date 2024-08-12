@@ -68,6 +68,7 @@ jobs:
             head --lines=1
           )
           chmod u+x "${FontForgeApp}"
+            ## https://github.com/AppImage/AppImageKit/wiki/FUSE
           "${FontForgeApp}" --appimage-extract-and-run --version
           "${FontForgeApp}" --appimage-extract-and-run --help
 
