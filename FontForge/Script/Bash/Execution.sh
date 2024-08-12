@@ -8,7 +8,7 @@ chmod u+x ${FontForgeApp}
 
 ${FontForgeApp} --appimage-extract-and-run --version 
 
-folderpy='Python/'
+folderpy='Script/Python/'
 pytest="${PWD%/}/${folderpy%/}/Test.py"
 
 ls Font/*/*.* |
