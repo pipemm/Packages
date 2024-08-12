@@ -68,7 +68,7 @@ jobs:
             head --lines=1
           )
           chmod u+x "${FontForgeApp}"
-          "${FontForgeApp}" --appimage-extract
+          "${FontForgeApp}" --appimage-extract-and-run --version
 
       - uses: actions/upload-artifact@v4
         with:
