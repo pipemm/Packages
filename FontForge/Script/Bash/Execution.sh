@@ -15,6 +15,6 @@ ls Font/*/*.* |
   while read -r file
   do
     echo ${file}
-    ${FontForgeApp} --appimage-extract-and-run -lang=py -script "${PWD%/}/${file}"
+    ${FontForgeApp} --appimage-extract-and-run -lang=py -script "${pytest}" "${file}"
   done
 
