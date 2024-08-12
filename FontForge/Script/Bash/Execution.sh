@@ -10,4 +10,3 @@ ${FontForgeApp} --version
 ls --recursive Font/
 
 
-

@@ -26,7 +26,7 @@ on:
 jobs:
 
   Download-FontForge-AppImage:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
 
@@ -51,7 +51,7 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           FOLDER_ART='Artifact/'
-          mkdir -p "${FOLDER_ART}"
+          mkdir --parent "${FOLDER_ART}"
           FILE_NAME="${URL_DOWNLOAD##*/}"
           FILE_SAVE="${FOLDER_ART%/}/${FILE_NAME}"
           curl --output "${FILE_SAVE}" --location "${URL_DOWNLOAD}"
@@ -68,7 +68,7 @@ jobs:
             head --lines=1
           )
           chmod u+x "${FontForgeApp}"
-          "${FontForgeApp}" --version
+          "${FontForgeApp}" --appimage-extract
 
       - uses: actions/upload-artifact@v4
         with:
