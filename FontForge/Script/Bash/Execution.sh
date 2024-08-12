@@ -5,7 +5,7 @@ FontForgeApp=$(
   head --lines=1
 )
 
-${FontForgeApp} --version
+${FontForgeApp} --version 
 
 ls --recursive Font/
 
