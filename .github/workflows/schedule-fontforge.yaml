@@ -26,7 +26,7 @@ on:
 jobs:
 
   Download-FontForge-AppImage:
-    runs-on: ubuntu-22.04
+    runs-on: macos-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
 
