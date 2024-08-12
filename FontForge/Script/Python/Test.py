@@ -1,6 +1,6 @@
 #!/usr/bin/env fontforge
 
-from sys import argv
+from sys       import argv
 from fontforge import open
 
 def main():
@@ -14,7 +14,7 @@ def main():
     print("PostScript Font Name        : ", font.fontname)
     print("PostScript Font Full Name   : ", font.fullname)
     print("Mac Fond Name               : ", font.fondname)
-    
+    print("PostScript Font Weight      : ", font.weight)
 
 
 
