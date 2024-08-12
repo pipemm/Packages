@@ -14,6 +14,7 @@ pytest="${folderpy%/}/Test.py"
 ls Font/*/*.* |
   while read -r file
   do
-    ${FontForgeApp} --appimage-extract-and-run -lang=py -script "${file}"
+    echo ${file}
+    ${FontForgeApp} --appimage-extract-and-run -lang=py -script "${PWD%/}/${file}"
   done
 
