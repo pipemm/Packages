@@ -2,4 +2,9 @@
 
 ls --recursive Font/
 
-ls App/*.*
+FontForgeApp=$(
+  ls App/FontForge-*.AppImage |
+  head --lines=1
+)
+
+${FontForgeApp}
