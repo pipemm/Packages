@@ -7,4 +7,4 @@ FontForgeApp=$(
   head --lines=1
 )
 
-${FontForgeApp}
+${FontForgeApp} --version
