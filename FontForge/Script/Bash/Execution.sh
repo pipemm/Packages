@@ -1,4 +1,5 @@
 #!/usr/bin/bash
 
-ls -R Artifact/
+ls --recursive Font/
 
+ls App/*.*
