@@ -13,9 +13,10 @@ def main():
     print("PostScript Font Family Name : ", font.familyname)
     print("PostScript Font Name        : ", font.fontname)
     print("PostScript Font Full Name   : ", font.fullname)
-    print("Mac Fond Name               : ", font.fondname)
+    #print("Mac Fond Name               : ", font.fondname)
     print("PostScript Font Weight      : ", font.weight)
-
+    print("PostScript Font Version     : ", font.version)
+    print("Comment                     : ", font.comment)
 
 
 
