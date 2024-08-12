@@ -5,9 +5,9 @@ FontForgeApp=$(
   head --lines=1
 )
 
-chmod a+x ${FontForgeApp}
+chmod u+x ${FontForgeApp}
 
-${FontForgeApp} --version 
+${FontForgeApp} --appimage-extract-and-run --version 
 
 ls --recursive Font/
 
