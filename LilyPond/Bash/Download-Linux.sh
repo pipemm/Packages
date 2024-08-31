@@ -13,6 +13,11 @@ NAME_PACKAGE="${FILE_PACKAGE%.zip}"
 FOLDER_PACK="Package/"
 FOLDER_DL="${FOLDER_PACK%/}/Download/"
 mkdir --parent "${FOLDER_DL%/}/"
+if [[ $? ]]
+then
+  mkdir -p "${FOLDER_DL%/}/"
+fi
+
 
 FILE_PACKAGE="${FOLDER_DL%/}/${FILE_PACKAGE}"
 curl --output "${FILE_PACKAGE}" --location "${URL_PACKAGE}"
