@@ -29,6 +29,11 @@ jobs:
     runs-on: ubuntu-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+    # Map a step output to a job output
+    outputs:
+      dowload-linux: ${{ steps.step-output.outputs.URL_DOWNLOAD_LINUX }}
+      dowload-windows: ${{ steps.step-output.outputs.URL_DOWNLOAD_WINDOWS }}
+      dowload-mac: ${{ steps.step-output.outputs.URL_DOWNLOAD_MAC }}
 
     steps:
       - name: Checkout
@@ -42,7 +47,8 @@ jobs:
         run: |
           bash Bash/Test.sh
 
-      - name: Get Download URL
+      - id: step-output
+        name: Get Download URL
         working-directory: LilyPond/
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
@@ -65,5 +71,5 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          echo  ${{ needs.Get-Download-URL.outputs.URL_DOWNLOAD_LINUX }}"
+          echo  "${{ needs.Get-Download-URL.outputs.dowload-linux }}"
 
