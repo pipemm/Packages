@@ -55,7 +55,7 @@ jobs:
         run: |
           bash Bash/GetURL.sh
 
-  Download-URL-Linux:
+  Download-Package-Linux:
     runs-on: ubuntu-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
@@ -66,10 +66,12 @@ jobs:
         uses: actions/checkout@v4
           ## https://github.com/actions/checkout
 
-      - name: Test
+      - name: Download-Package
         working-directory: LilyPond/
+        env:
+          URL_PACKAGE: "${{ needs.Get-Download-URL.outputs.dowload-linux }}"
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          echo  "${{ needs.Get-Download-URL.outputs.dowload-linux }}"
+          echo "${URL_PACKAGE}"
 
