@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 which -a lilypond
-if [[ $? ]]
+if [[ $? -ne 0 ]]
 then
   echo exit 1
 fi

@@ -5,7 +5,6 @@
 %%% Nicolas Sceaux <nicolas.sceaux@free.fr>
 
 \version "2.21.0"
-\include "sesto.ily"
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
