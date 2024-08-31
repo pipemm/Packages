@@ -9,5 +9,9 @@ fi
 FOLDER_CODE='Code/'
 if [[ -d "${FOLDER_CODE}" ]]
 then
-  ls "${FOLDER_CODE}"
+  ls "${FOLDER_CODE}" |
+  while read -r filec
+  do
+    lilypond "${filec}"
+  done
 fi
