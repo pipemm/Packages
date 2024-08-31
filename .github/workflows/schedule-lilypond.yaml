@@ -172,4 +172,10 @@ jobs:
             echo "PATH=${PATH}"                   >> "${GITHUB_ENV}"
           fi
 
-
+      - name: Generate-File
+        working-directory: LilyPond/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          FOLDER_CODE='Code/'
+          ls "${FOLDER_CODE}"
