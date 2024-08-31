@@ -132,3 +132,28 @@ jobs:
         with:
           name: "${{ env.NAME_PACKAGE }}"
           path: "${{ env.FOLDER_ARTIFACT }}"
+
+  Generate-File-Linux:
+    runs-on: ubuntu-latest
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+    needs: [Download-Package-Linux]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - uses: actions/download-artifact@v4
+          ## https://github.com/actions/download-artifact
+        with:
+          name: lilypond-*-linux-x86_64
+          path: LilyPond/Package/
+
+      - name: Test
+        working-directory: LilyPond/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          ls Package/
+
