@@ -14,6 +14,7 @@ then
   ls ${FOLDER_CODE%/}/*.ly |
   while read -r filec
   do
+    echo lilypond "${filec}"
     lilypond "${filec}"
   done
 fi
