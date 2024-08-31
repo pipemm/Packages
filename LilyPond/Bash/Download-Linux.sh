@@ -5,19 +5,16 @@ then
   exit 1
 fi
 
-echo "${URL_PACKAGE##*/}"
-
 FILE_PACKAGE="${URL_PACKAGE##*/}"
-NAME_PACKAGE="${FILE_PACKAGE%.zip}"
+NAME_PACKAGE="${FILE_PACKAGE%.tar.gz}"
 
 FOLDER_PACK="Package/"
 FOLDER_DL="${FOLDER_PACK%/}/Download/"
-mkdir --parent "${FOLDER_DL%/}/"
+mkdir --parent "${FOLDER_DL%/}/" 2> /dev/null
 if [[ $? ]]
 then
   mkdir -p "${FOLDER_DL%/}/"
 fi
-
 
 FILE_PACKAGE="${FOLDER_DL%/}/${FILE_PACKAGE}"
 curl --output "${FILE_PACKAGE}" --location "${URL_PACKAGE}"

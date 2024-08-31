@@ -13,3 +13,7 @@ which -a tar
 tar --version
 tar --help
 
+which -a unzip
+unzip -v
+unzip --help
+unzip -hh
