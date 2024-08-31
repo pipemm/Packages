@@ -3,7 +3,7 @@
 which -a lilypond
 if [[ $? ]]
 then
-  exit 1
+  echo exit 1
 fi
 
 FOLDER_OUT='Output/'
