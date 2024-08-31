@@ -73,5 +73,5 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          echo "${URL_PACKAGE}"
+          bash Bash/Download-Linux.sh
 

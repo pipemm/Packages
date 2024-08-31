@@ -9,9 +9,9 @@ curl "${URL_DOWNLOAD_PAGE}" |
     while read -r url
     do
       URL_DOWNLOAD_LINUX="${url}"
-      echo "URL_DOWNLOAD_LINUX=${URL_DOWNLOAD_LINUX}"
       if [[ -n "${GITHUB_OUTPUT}" ]]
       then
+      echo "URL_DOWNLOAD_LINUX=${URL_DOWNLOAD_LINUX}"
       echo "URL_DOWNLOAD_LINUX=${URL_DOWNLOAD_LINUX}" >> "${GITHUB_OUTPUT}"
       fi
     done
@@ -21,9 +21,9 @@ curl "${URL_DOWNLOAD_PAGE}" |
     while read -r url
     do
       URL_DOWNLOAD_WINDOWS="${url}"
-      echo "URL_DOWNLOAD_WINDOWS=${URL_DOWNLOAD_WINDOWS}"
       if [[ -n "${GITHUB_OUTPUT}" ]]
       then
+      echo "URL_DOWNLOAD_WINDOWS=${URL_DOWNLOAD_WINDOWS}"
       echo "URL_DOWNLOAD_WINDOWS=${URL_DOWNLOAD_WINDOWS}" >> "${GITHUB_OUTPUT}"
       fi
     done
@@ -33,9 +33,9 @@ curl "${URL_DOWNLOAD_PAGE}" |
     while read -r url
     do
       URL_DOWNLOAD_MAC="${url}"
-      echo "URL_DOWNLOAD_MAC=${URL_DOWNLOAD_MAC}"
       if [[ -n "${GITHUB_OUTPUT}" ]]
       then
+      echo "URL_DOWNLOAD_MAC=${URL_DOWNLOAD_MAC}"
       echo "URL_DOWNLOAD_MAC=${URL_DOWNLOAD_MAC}" >> "${GITHUB_OUTPUT}"
       fi
     done
