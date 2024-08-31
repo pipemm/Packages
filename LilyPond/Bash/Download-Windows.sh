@@ -24,7 +24,7 @@ ZIP_FOLDER=$(
   tail --lines=1
 )
 
-unzip -v "${FILE_PACKAGE}" -d "${FOLDER_PACK}"
+unzip "${FILE_PACKAGE}" -d "${FOLDER_PACK}"
 
 FOLDER_ARTIFACT="${FOLDER_PACK%/}/${ZIP_FOLDER%/}/"
 if [[ -d "${FOLDER_ARTIFACT}" ]]
