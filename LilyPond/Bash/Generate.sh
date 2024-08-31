@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
 which -a lilypond
-echo $?
 if [[ $? ]]
 then
   exit 1
@@ -12,7 +11,7 @@ mkdir --parent "${FOLDER_OUT}"
 FOLDER_CODE='Code/'
 if [[ -d "${FOLDER_CODE}" ]]
 then
-  ls "${FOLDER_CODE}" |
+  ls ${FOLDER_CODE%/}/*.ly |
   while read -r filec
   do
     lilypond "${filec}"
