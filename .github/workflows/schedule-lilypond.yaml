@@ -156,9 +156,12 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           subfolder=$(
-            ls --directory Package/lilypond-*/ |
+            ls --directory Package/lilypond-*/bin/ |
             head --lines=1
           )
           PATH_LILYPOND="${PWD%/}/Package/${subfolder%/}/"
-          echo "${PATH_LILYPOND}"
+          PATH="${PATH}:${PATH_LILYPOND%/}"
+          lilypond --version
+          lilypond --help
+
 
