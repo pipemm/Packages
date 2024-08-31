@@ -9,7 +9,6 @@ fi
 FOLDER_OUT='Output/'
 mkdir --parent "${FOLDER_OUT}"
 FOLDER_CODE='Code/'
-echo testing
 if [[ -d "${FOLDER_CODE}" ]]
 then
   ls ${FOLDER_CODE%/}/*.ly |

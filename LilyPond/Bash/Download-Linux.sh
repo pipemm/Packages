@@ -11,7 +11,7 @@ NAME_PACKAGE="${FILE_PACKAGE%.tar.gz}"
 FOLDER_PACK="Package/"
 FOLDER_DL="${FOLDER_PACK%/}/Download/"
 mkdir --parent "${FOLDER_DL%/}/" 2> /dev/null
-if [[ $? ]]
+if [[ $? -ne 0 ]]
 then
   mkdir -p "${FOLDER_DL%/}/"
 fi
