@@ -75,3 +75,9 @@ jobs:
         run: |
           bash Bash/Download-Linux.sh
 
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: "${{ env.NAME_PACKAGE }}"
+          path: "${{ env.FOLDER_ARTIFACT }}"
+
