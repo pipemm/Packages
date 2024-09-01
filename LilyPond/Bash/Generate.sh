@@ -1,11 +1,12 @@
 #!/usr/bin/bash
 
-sudo echo "${PATH}"
-sudo which -a lilypond
+
+which -a lilypond
 if [[ $? -ne 0 ]]
 then
-  echo exit 1
+  exit 1
 fi
+lilypond=$(which lilypond)
 
 FOLDER_OUT='Output/'
 mkdir --parent "${FOLDER_OUT}"
@@ -16,6 +17,6 @@ then
   while read -r filec
   do
     echo Compiling "${filec}"
-    sudo lilypond --output="${FOLDER_OUT}" --pdf --png "${filec}"
+    sudo "${lilypond}" --output="${FOLDER_OUT}" --pdf --png "${filec}"
   done
 fi
