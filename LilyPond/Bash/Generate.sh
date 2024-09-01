@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-which -a lilypond
+sudo which -a lilypond
 if [[ $? -ne 0 ]]
 then
   echo exit 1
