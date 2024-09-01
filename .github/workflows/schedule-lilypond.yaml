@@ -210,4 +210,11 @@ jobs:
           ## https://github.com/actions/download-artifact
         with:
           pattern: lilypond-*-mingw-x86_64
-          path: LilyPond/Package/
+          path: LilyPond\Package\
+
+      - name: SetUp
+        working-directory: LilyPond\
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          CMD\SetUp.cmd
