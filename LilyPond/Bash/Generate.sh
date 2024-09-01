@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+sudo echo "${PATH}"
 sudo which -a lilypond
 if [[ $? -ne 0 ]]
 then
