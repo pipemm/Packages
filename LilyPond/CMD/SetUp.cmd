@@ -18,6 +18,7 @@ if %ERRORLEVEL% neq 0 (
 )
 
 lilypond.exe --version
+lilypond.exe --help
 
 IF "%GITHUB_ENV%"=="" (
   EXIT 0
