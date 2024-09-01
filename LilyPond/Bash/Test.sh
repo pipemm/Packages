@@ -17,3 +17,7 @@ which -a unzip
 unzip -v
 unzip --help
 unzip -hh
+
+which -a touch
+touch --version
+touch --help
