@@ -1,5 +1,5 @@
 
-FORd %%F in (Code\*.ly) do (
+FOR %%F in (Code\*.ly) do (
   SET "CODEFILE=%%F"
   ECHO "%CODEFILE%"
 )
