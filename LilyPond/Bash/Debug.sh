@@ -11,7 +11,6 @@ stat /home/runner/work/Packages/Packages/LilyPond/Package/lilypond-*/lib/guile/2
 ) |
   while read -r gofile
   do
-    echo touch "${gofile}"
     touch "${gofile}"
   done
 
