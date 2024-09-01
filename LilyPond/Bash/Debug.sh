@@ -8,8 +8,10 @@ stat /home/runner/work/Packages/Packages/LilyPond/Package/lilypond-*/lib/guile/2
 ls Package/lilypond-*/lib/*/*/ccache/*/*.go |
   while read -r gofile
   do
-    touch gofile
+    echo touch "${gofile}"
+    touch "${gofile}"
   done
 
 ls -l --time-style=full-iso /home/runner/work/Packages/Packages/LilyPond/Package/lilypond-*/share/guile/2.2/ice-9/eval.scm
 ls -l --time-style=full-iso /home/runner/work/Packages/Packages/LilyPond/Package/lilypond-*/lib/guile/2.2/ccache/ice-9/eval.go
+
