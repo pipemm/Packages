@@ -218,3 +218,10 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           CMD\SetUp.cmd
+
+      - name: Generate-File
+        working-directory: LilyPond\
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash CMD/Generate.cmd

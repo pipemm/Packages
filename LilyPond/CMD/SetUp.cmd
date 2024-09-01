@@ -6,12 +6,15 @@ FOR /D %%F in (Package\lilypond-*) DO (
 )
 :found
 
-ECHO %subfolder%
-ECHO %PATH%
-
-IF "%subfolder%"=="" (
+SET "PATH_LILYPOND=%CD%\%subfolder%\bin"
+IF "%PATH_LILYPOND%"=="" (
   EXIT 1
 )
-
-SET "PATH_LILYPOND=%CD%\%subfolder%\bin"
 SET "PATH=%PATH%;%PATH_LILYPOND%"
+
+IF NOT "%GITHUB_ENV%"=="" (
+  echo PATH_LILYPOND=%PATH_LILYPOND%
+  echo PATH_LILYPOND=%PATH_LILYPOND% >> %GITHUB_ENV%
+  echo PATH=%PATH%
+  echo PATH=%PATH%                   >> %GITHUB_ENV%
+)
