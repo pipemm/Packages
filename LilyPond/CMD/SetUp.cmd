@@ -1,18 +1,23 @@
 
 REM [Directories Only](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/for#remarks)
-FOR /D %%F in (Package\lilypond-*) DO (
-  SET "subfolder=%%F"
-  GOTO :found
+for /D %%F in (Package\lilypond-*) do (
+  set "subfolder=%%F"
+  goto :found
 )
 :found
 
-SET "PATH_LILYPOND=%CD%\%subfolder%\bin"
-IF "%PATH_LILYPOND%"=="" (
-  EXIT 1
+set "PATH_LILYPOND=%CD%\%subfolder%\bin"
+if "%PATH_LILYPOND%"=="" (
+  exit 1
 )
-SET "PATH=%PATH%;%PATH_LILYPOND%"
+set "PATH=%PATH%;%PATH_LILYPOND%"
 
-ECHO %PATH%
+where lilypond.exe
+if %ERRORLEVEL% neq 0 (
+  exit 1
+)
+
+lilypond.exe --version
 
 IF "%GITHUB_ENV%"=="" (
   EXIT 0
