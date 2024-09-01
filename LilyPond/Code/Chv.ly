@@ -2,7 +2,7 @@
 \version "2.24.4"
 
 \header {
-  title = "Untitled"
+  title = "Waltz (ワルツ)"
   composer = "Composer"
 }
 
