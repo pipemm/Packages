@@ -10,7 +10,7 @@
   \new PianoStaff <<
     \set PianoStaff.instrumentName = "Piano"
     \new Staff {\tempo 4 = 100 \clef treble \key g \major \time 6/8
-      b' b' b' a' g'
+      b' b'8 b' a' g'
     }
   >>
 
