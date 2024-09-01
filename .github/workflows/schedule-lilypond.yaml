@@ -193,5 +193,21 @@ jobs:
           ## https://github.com/actions/upload-artifact
         with:
           name: output-linux
-          path: Output/
+          path: LilyPond/Output/
 
+  Generate-File-Windows:
+    runs-on: windows-latest
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
+    needs: [Download-Package-Windows]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - uses: actions/download-artifact@v4
+          ## https://github.com/actions/download-artifact
+        with:
+          pattern: lilypond-*-mingw-x86_64
+          path: LilyPond/Package/

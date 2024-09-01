@@ -8,6 +8,8 @@ curl --version
 curl --help
 
 which -a sed
+sed --version
+sed --help
 
 which -a tar
 tar --version
