@@ -15,6 +15,6 @@ then
   while read -r filec
   do
     echo Compiling "${filec}"
-    lilypond "${filec}"
+    lilypond --output="${FOLDER_OUT}" --pdf --png "${filec}"
   done
 fi
