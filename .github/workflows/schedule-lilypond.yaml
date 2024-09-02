@@ -157,13 +157,6 @@ jobs:
         run: |
           bash Bash/SetUp.sh
 
-      - name: Work Around
-        working-directory: LilyPond/
-        shell: bash
-          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
-        run: |
-          bash Bash/Workaround.sh
-
       - name: Generate-File
         working-directory: LilyPond/
         shell: bash
@@ -207,3 +200,4 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           CMD/Generate.cmd
+
