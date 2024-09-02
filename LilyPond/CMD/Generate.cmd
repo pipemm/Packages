@@ -1,6 +1,7 @@
 
 where lilypond.exe
 lilypond.exe --version
+echo "%PATH%"
 
 set "FOLDER_OUT=Output\"
 mkdir %FOLDER_OUT%
