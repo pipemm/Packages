@@ -1,6 +1,6 @@
 
 where lilypond.exe
-
+lilypond.exe --version
 
 set "FOLDER_OUT=Output\"
 mkdir %FOLDER_OUT%
@@ -18,4 +18,4 @@ endlocal
 where lilypond.exe
 set "PATH=%PATH%"
 where lilypond.exe
-lilypond.exe --version
+echo lilypond.exe --version
