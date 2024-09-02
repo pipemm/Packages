@@ -15,5 +15,6 @@ for %%F in (%FOLDER_CODE%*.ly) do (
   where lilypond.exe
 )
 endlocal
-echo lilypond.exe --output="%FOLDER_OUT%" --pdf --png "!CODEFILE!"
+echo lilypond.exe --output="%FOLDER_OUT%" --pdf --png "%CODEFILE%"
+set "PATH=%PATH%"
 lilypond.exe --version
