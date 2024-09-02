@@ -28,7 +28,8 @@ REM [enabledelayedexpansion](https://learn.microsoft.com/en-gb/windows-server/ad
 setlocal enabledelayedexpansion
 for /f %%F in ('DIR /S /B %subfolder%\lib\*.go') do (
   set "gofile=%%F"
-  COPY /B "!gofile!" +,,
+  ECHO !gofile!
+  COPY /B !gofile! +,,
 )
 endlocal
 
