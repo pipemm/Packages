@@ -15,6 +15,6 @@ for %%F in (%FOLDER_CODE%*.ly) do (
   where lilypond.exe
   where cmd
 )
+echo lilypond.exe --output="%FOLDER_OUT%" --pdf --png "!CODEFILE!"
 endlocal
 
-echo %COMSPEC%
