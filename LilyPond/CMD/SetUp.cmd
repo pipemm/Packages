@@ -25,6 +25,13 @@ REM [assign the current time and date to a file without modifying the file](http
 DIR %subfolder%\
 
 DIR /S /B %subfolder%\lib\*.go
+REM [enabledelayedexpansion](https://learn.microsoft.com/en-gb/windows-server/administration/windows-commands/setlocal#parameters)
+setlocal enabledelayedexpansion
+for /f %%F in ('DIR /S /B %subfolder%\lib\*.go') do (
+  set "gofile=%%F"
+  echo "!gofile!"
+)
+endlocal
 
 DIR %subfolder%\
 
