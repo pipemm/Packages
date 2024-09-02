@@ -206,4 +206,3 @@ jobs:
         with:
           name: output-windows
           path: LilyPond/Output/
-          
