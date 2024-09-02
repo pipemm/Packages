@@ -24,7 +24,7 @@ REM The program might then attempt to recompile the source code, which is likely
 REM [assign the current time and date to a file without modifying the file](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/copy)
 DIR %subfolder%\
 
-DIR /S /B %subfolder%\lib\*\*\ccache\*.go
+DIR /S /B %subfolder%\lib\*.go
 
 DIR %subfolder%\
 
