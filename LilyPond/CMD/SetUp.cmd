@@ -17,7 +17,7 @@ if %ERRORLEVEL% neq 0 (
   exit 1
 )
 
-TIMEOUT /T 1
+ping -n 2 127.0.0.1
 REM The program inspects Scheme source code files (.scm) and their corresponding compiled files (.go). 
 REM If a source code file has a more recent timestamp than its compiled counterpart, a warning message is shown. 
 REM This issue appears to be linked to the GUILE_AUTO_COMPILE=1 setting.
