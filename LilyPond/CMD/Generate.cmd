@@ -13,8 +13,7 @@ for %%F in (%FOLDER_CODE%*.ly) do (
   echo Compiling !CODEFILE!
   lilypond.exe --output="%FOLDER_OUT%" --pdf --png "!CODEFILE!"
   where lilypond.exe
-  where cmd
 )
-echo lilypond.exe --output="%FOLDER_OUT%" --pdf --png "!CODEFILE!"
+lilypond.exe --output="%FOLDER_OUT%" --pdf --png "!CODEFILE!"
 endlocal
 
