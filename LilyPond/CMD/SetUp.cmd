@@ -17,6 +17,14 @@ if %ERRORLEVEL% neq 0 (
   exit 1
 )
 
+
+REM [assign the current time and date to a file without modifying the file](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/copy)
+DIR %subfolder%\
+
+DIR /S /B %subfolder%\lib\*\*\ccache\*.go
+
+DIR %subfolder%\
+
 lilypond.exe --version
 lilypond.exe --help
 
@@ -27,5 +35,3 @@ ECHO PATH_LILYPOND=%PATH_LILYPOND%
 ECHO PATH_LILYPOND=%PATH_LILYPOND%>> %GITHUB_ENV%
 ECHO PATH=%PATH%
 ECHO PATH=%PATH%>> %GITHUB_ENV%
-
-type %GITHUB_ENV%

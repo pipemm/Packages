@@ -1,7 +1,5 @@
 
 where lilypond.exe
-lilypond.exe --version
-echo "%PATH%"
 
 set "FOLDER_OUT=Output\"
 mkdir %FOLDER_OUT%
@@ -13,10 +11,6 @@ for %%F in (%FOLDER_CODE%*.ly) do (
   set "CODEFILE=%%F"
   echo Compiling !CODEFILE!
   lilypond.exe --output="%FOLDER_OUT%" --pdf --png "!CODEFILE!"
-  where lilypond.exe
 )
 endlocal
-where lilypond.exe
-set "PATH=%PATH%"
-where lilypond.exe
-echo lilypond.exe --version
+
