@@ -16,8 +16,8 @@
 
   \new PianoStaff <<
     \set PianoStaff.instrumentName = "Piano 2"
-    \new Staff \relative {\clef treble \key g \major
-      c''4 e 
+    \new Staff {\clef treble \key g \major
+      R2. | R2.
     }
     \new Staff \relative { \clef bass \key g \major
       c4 c' 

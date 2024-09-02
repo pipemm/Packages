@@ -1,6 +1,7 @@
 
 where lilypond.exe
 
+
 set "FOLDER_OUT=Output\"
 mkdir %FOLDER_OUT%
 set "FOLDER_CODE=Code\"
@@ -14,3 +15,4 @@ for %%F in (%FOLDER_CODE%*.ly) do (
 )
 endlocal
 
+echo %COMSPEC%
