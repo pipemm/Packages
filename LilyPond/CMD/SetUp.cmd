@@ -17,10 +17,8 @@ if %ERRORLEVEL% neq 0 (
   exit 1
 )
 
-wmic os get localdatetime
 REM [TIMEOUT alternative](https://www.ibm.com/support/pages/timeout-command-run-batch-job-exits-immediately-and-returns-error-input-redirection-not-supported-exiting-process-immediately)
 ping -n 2 127.0.0.1 >NUL
-wmic os get localdatetime
 REM The program inspects Scheme source code files (.scm) and their corresponding compiled files (.go). 
 REM If a source code file has a more recent timestamp than its compiled counterpart, a warning message is shown. 
 REM This issue appears to be linked to the GUILE_AUTO_COMPILE=1 setting.
