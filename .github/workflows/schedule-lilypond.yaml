@@ -119,7 +119,7 @@ jobs:
         shell: cmd
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          echo Hi
+          Download.cmd
 
   Download-Package-Windows:
     runs-on: ubuntu-latest
