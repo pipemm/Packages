@@ -23,3 +23,7 @@ unzip -hh
 which -a touch
 touch --version
 touch --help
+
+which -a find
+find --version
+find --help
