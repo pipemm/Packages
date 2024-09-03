@@ -75,11 +75,31 @@ jobs:
         run: |
           bash Bash/Download-Linux.sh
 
+      - name: SetUp
+        working-directory: LilyPond/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash Bash/SetUp-Linux.sh
+
+      - name: Generate-File
+        working-directory: LilyPond/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash Bash/Generate-Linux.sh
+
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
           name: "${{ env.NAME_PACKAGE }}"
           path: "${{ env.FOLDER_ARTIFACT }}"
+
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: output-linux
+          path: LilyPond/Output/
 
   Download-Package-Windows:
     runs-on: ubuntu-latest
@@ -140,7 +160,7 @@ jobs:
           name: "${{ env.NAME_PACKAGE }}"
           path: "${{ env.FOLDER_ARTIFACT }}"
 
-  Generate-File-Linux:
+  Check-Package-Linux:
     runs-on: ubuntu-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
@@ -177,7 +197,7 @@ jobs:
           name: test-linux
           path: LilyPond/Output/
 
-  Generate-File-Windows:
+  Check-Package-Windows:
     runs-on: windows-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
@@ -214,7 +234,7 @@ jobs:
           name: test-windows
           path: LilyPond/Output/
 
-  Generate-File-MacOS:
+  Check-Package-MacOS:
     runs-on: macos-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md
