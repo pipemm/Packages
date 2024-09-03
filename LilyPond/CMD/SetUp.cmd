@@ -8,13 +8,13 @@ for /D %%F in (Package\lilypond-*) do (
 
 set "PATH_LILYPOND=%CD%\%subfolder%\bin"
 if "%PATH_LILYPOND%"=="" (
-  exit 1
+  EXIT /B 1
 )
 set "PATH=%PATH%;%PATH_LILYPOND%"
 
 where lilypond.exe
 if %ERRORLEVEL% neq 0 (
-  exit 1
+  EXIT /B 1
 )
 
 REM [TIMEOUT alternative](https://www.ibm.com/support/pages/timeout-command-run-batch-job-exits-immediately-and-returns-error-input-redirection-not-supported-exiting-process-immediately)
@@ -37,7 +37,7 @@ lilypond.exe --version
 lilypond.exe --help
 
 IF "%GITHUB_ENV%"=="" (
-  EXIT 0
+  EXIT /B 0
 )
 ECHO PATH_LILYPOND=%PATH_LILYPOND%
 ECHO PATH_LILYPOND=%PATH_LILYPOND%>> %GITHUB_ENV%

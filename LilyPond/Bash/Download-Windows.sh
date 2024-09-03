@@ -5,8 +5,6 @@ then
   exit 1
 fi
 
-echo "${URL_PACKAGE##*/}"
-
 FILE_PACKAGE="${URL_PACKAGE##*/}"
 NAME_PACKAGE="${FILE_PACKAGE%.zip}"
 
