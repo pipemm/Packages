@@ -23,17 +23,27 @@ on:
 
   workflow_dispatch:
     inputs:
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       system-linux:
         description: 'Linux Version'
-        ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+        
         required: true
-        default: 'ubuntu-latest'
+        default: 'windows-latest'
         type: choice
         options:
         - ubuntu-latest
         - ubuntu-24.04
         - ubuntu-22.04
         - ubuntu-20.04
+      system-windows:
+        description: 'Windows Version'
+        required: true
+        default: 'ubuntu-latest'
+        type: choice
+        options:
+        - windows-latest
+        - windows-2022
+        - windows-2019
 
 jobs:
 
@@ -220,7 +230,7 @@ jobs:
           path: LilyPond/Output/
 
   Check-Package-Linux:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
     needs: [Download-Package-Linux]
