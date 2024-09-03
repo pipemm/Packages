@@ -44,6 +44,16 @@ on:
         - windows-latest
         - windows-2022
         - windows-2019
+      system-macos:
+        description: 'MacOS Version'
+        required: true
+        default: 'macos-latest'
+        type: choice
+        options:
+        - macos-latest
+        - macos-14
+        - macos-13
+        - macos-12
 
 jobs:
 
@@ -55,7 +65,7 @@ jobs:
     outputs:
       dowload-linux: ${{ steps.step-output.outputs.URL_DOWNLOAD_LINUX }}
       dowload-windows: ${{ steps.step-output.outputs.URL_DOWNLOAD_WINDOWS }}
-      dowload-mac: ${{ steps.step-output.outputs.URL_DOWNLOAD_MAC }}
+      dowload-macos: ${{ steps.step-output.outputs.URL_DOWNLOAD_MAC }}
 
     steps:
       - name: Checkout
@@ -177,7 +187,7 @@ jobs:
           path: LilyPond/Output/
 
   Download-Package-MacOS:
-    runs-on: macos-latest
+    runs-on: ${{ inputs.system-macos || 'macos-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md
     needs: [Get-Download-URL]
@@ -197,7 +207,7 @@ jobs:
       - name: Download-Package
         working-directory: LilyPond/
         env:
-          URL_PACKAGE: "${{ needs.Get-Download-URL.outputs.dowload-mac }}"
+          URL_PACKAGE: "${{ needs.Get-Download-URL.outputs.dowload-macos }}"
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
@@ -226,7 +236,7 @@ jobs:
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
-          name: output-mac
+          name: output-macos
           path: LilyPond/Output/
 
   Check-Package-Linux:
@@ -304,7 +314,7 @@ jobs:
           path: LilyPond/Output/
 
   Check-Package-MacOS:
-    runs-on: macos-latest
+    runs-on: ${{ inputs.system-macos || 'macos-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md
     needs: [Download-Package-MacOS]
@@ -337,5 +347,5 @@ jobs:
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
-          name: test-mac
+          name: test-macos
           path: LilyPond/Output/
