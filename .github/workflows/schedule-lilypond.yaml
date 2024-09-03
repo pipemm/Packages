@@ -112,6 +112,13 @@ jobs:
         uses: actions/checkout@v4
           ## https://github.com/actions/checkout
 
+      - name: Test
+        working-directory: LilyPond/
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          CMD\Test.cmd
+
       - name: Download-Package
         working-directory: LilyPond/
         env:
