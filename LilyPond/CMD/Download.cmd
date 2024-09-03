@@ -24,8 +24,6 @@ for /f "tokens=5" %%A in ('unzip -l "%FILE_PACKAGE%" ^| findstr /n /r "^" ^| fin
 
 unzip "%FILE_PACKAGE%" -d %FOLDER_PACK%
 
-set "FOLDER_ARTIFACT=%FOLDER_PACK%%ZIP_FOLDER:\=/%"
-
-DIR %FOLDER_PACK%
+set "FOLDER_ARTIFACT=%FOLDER_PACK%%ZIP_FOLDER:/=\%"
 
 echo %FOLDER_ARTIFACT%
