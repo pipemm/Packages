@@ -22,8 +22,23 @@ for /f "tokens=5" %%A in ('unzip -l "%FILE_PACKAGE%" ^| findstr /n /r "^" ^| fin
   set "ZIP_FOLDER=%%A"
 )
 
+for %%I in ("%FOLDER_PACK%") do (
+  echo %%~pI
+)
+
 unzip "%FILE_PACKAGE%" -d %FOLDER_PACK%
 
 set "FOLDER_ARTIFACT=%FOLDER_PACK%%ZIP_FOLDER:/=\%"
+if  exist "%FOLDER_ARTIFACT%" (
+  set "FOLDER_ARTIFACT=%CD%/%FOLDER_ARTIFACT%"
+) else (
+  EXIT /B 1
+)
 
-echo %FOLDER_ARTIFACT%
+IF "%GITHUB_ENV%"=="" (
+  EXIT /B 0
+)
+ECHO FOLDER_ARTIFACT=%FOLDER_ARTIFACT%
+ECHO FOLDER_ARTIFACT=%FOLDER_ARTIFACT%>> %GITHUB_ENV%
+ECHO NAME_PACKAGE=%NAME_PACKAGE%
+ECHO NAME_PACKAGE=%NAME_PACKAGE%>> %GITHUB_ENV%
