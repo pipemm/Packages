@@ -155,7 +155,7 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/SetUp.sh
+          bash Bash/SetUpFix-Linux.sh
 
       - name: Generate-File
         working-directory: LilyPond/
@@ -229,9 +229,6 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          subfolder=$(
-            ls -d Package/lilypond-*/bin/ |
-            head -n 1
           bash Bash/SetUpFix-MacOS.sh
 
       - name: Generate-File
