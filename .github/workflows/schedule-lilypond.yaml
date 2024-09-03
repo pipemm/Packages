@@ -128,11 +128,31 @@ jobs:
         run: |
           CMD\Download.cmd
 
+      - name: SetUp
+        working-directory: LilyPond\
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          CMD\SetUp.cmd
+
+      - name: Generate-File
+        working-directory: LilyPond\
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          CMD/Generate.cmd
+
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
           name: "${{ env.NAME_PACKAGE }}"
           path: "${{ env.FOLDER_ARTIFACT }}"
+
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: test-windows
+          path: LilyPond/Output/
 
   Download-Package-MacOS:
     runs-on: macos-latest
