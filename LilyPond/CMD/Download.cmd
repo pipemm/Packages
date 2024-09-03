@@ -11,3 +11,17 @@ for %%I in ("%URL_PACKAGE%") do (
 echo %FILE_PACKAGE%
 echo %NAME_PACKAGE%
 
+set "FOLDER_PACK=Package\"
+set "FOLDER_DL=%FOLDER_PACK%\Download\"
+if not exist "%FOLDER_DL%" (
+    mkdir "%FOLDER_DL%"
+)
+
+DIR
+
+set FILE_PACKAGE=%FOLDER_DL%%FILE_PACKAGE%
+curl --output "%FILE_PACKAGE%" --location "%URL_PACKAGE%"
+
+unzip /?
+unzip -h
+
