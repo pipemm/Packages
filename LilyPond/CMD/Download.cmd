@@ -25,3 +25,8 @@ curl --output "%FILE_PACKAGE%" --location "%URL_PACKAGE%"
 unzip /?
 unzip -h
 
+unzip -l "%FILE_PACKAGE%"
+unzip -l "%FILE_PACKAGE%" | findstr /n /r "^"
+unzip -l "%FILE_PACKAGE%" | findstr /n /r "^" | findstr "^2:"
+
+
