@@ -235,6 +235,11 @@ jobs:
           )
           PATH_LILYPOND="${PWD%/}/${subfolder%/}/"
           PATH="${PATH}:${PATH_LILYPOND%/}"
+          
+            ## bin/
+          chmod u+x ${PATH_LILYPOND%/}/*
+            ## libexec/
+          chmod u+x ${PATH_LILYPOND%/bin/}/libexec/*
 
           lilypond --version
           lilypond --help
