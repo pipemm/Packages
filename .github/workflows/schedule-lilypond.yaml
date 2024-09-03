@@ -38,7 +38,7 @@ on:
 jobs:
 
   Get-Download-URL:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
     # Map a step output to a job output
@@ -68,7 +68,7 @@ jobs:
           bash Bash/GetURL.sh
 
   Download-Package-Linux:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
     needs: [Get-Download-URL]
