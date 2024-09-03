@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 which -a lilypond
 if [[ $? -ne 0 ]]

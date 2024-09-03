@@ -45,7 +45,7 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/Test.sh
+          bash Bash/Test-Linux.sh
 
       - id: step-output
         name: Get Download URL
@@ -117,6 +117,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
           ## https://github.com/actions/checkout
+
+      - name: Test
+        working-directory: LilyPond/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash Bash/Test-MacOS.sh
 
       - name: Download-Package
         working-directory: LilyPond/
@@ -223,13 +230,6 @@ jobs:
         with:
           pattern: lilypond-*-darwin-x86_64
           path: LilyPond/Package/
-
-      - name: Test
-        working-directory: LilyPond/
-        shell: bash
-          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
-        run: |
-          bash Bash/Test-MacOS.sh
 
       - name: SetUp
         working-directory: LilyPond/

@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 subfolder=$(
   ls -d Package/lilypond-*/bin/ |
