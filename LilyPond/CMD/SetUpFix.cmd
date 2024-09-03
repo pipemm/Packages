@@ -17,6 +17,13 @@ if %ERRORLEVEL% neq 0 (
   EXIT /B 1
 )
 
+for /f %%F in ('DIR /S /B %subfolder%\share\*.scm') do (
+  ECHO %%~tF %%~nF
+)
+for /f %%F in ('DIR /S /B %subfolder%\lib\*.go') do (
+  ECHO %%~tF %%~nF
+)
+
 REM [TIMEOUT alternative](https://www.ibm.com/support/pages/timeout-command-run-batch-job-exits-immediately-and-returns-error-input-redirection-not-supported-exiting-process-immediately)
 ping -n 3 127.0.0.1 >NUL
 REM The program inspects Scheme source code files (.scm) and their corresponding compiled files (.go). 
@@ -32,6 +39,13 @@ for /f %%F in ('DIR /S /B %subfolder%\lib\*.go') do (
   COPY /B !gofile! +,,
 )
 endlocal
+
+for /f %%F in ('DIR /S /B %subfolder%\share\*.scm') do (
+  ECHO %%~tF %%~nF
+)
+for /f %%F in ('DIR /S /B %subfolder%\lib\*.go') do (
+  ECHO %%~tF %%~nF
+)
 
 lilypond.exe --version
 lilypond.exe --help
