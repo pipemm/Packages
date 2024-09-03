@@ -162,12 +162,12 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/Generate.sh
+          bash Bash/Generate-Linux.sh
 
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
-          name: output-linux
+          name: test-linux
           path: LilyPond/Output/
 
   Generate-File-Windows:
@@ -204,7 +204,7 @@ jobs:
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
-          name: output-windows
+          name: test-windows
           path: LilyPond/Output/
 
   Generate-File-MacOS:
@@ -224,6 +224,13 @@ jobs:
           pattern: lilypond-*-darwin-x86_64
           path: LilyPond/Package/
 
+      - name: Test
+        working-directory: LilyPond/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash Bash/Test-MacOS.sh
+
       - name: SetUp
         working-directory: LilyPond/
         shell: bash
@@ -236,4 +243,10 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/Generate.sh
+          bash Bash/Generate-MacOS.sh
+
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: test-mac
+          path: LilyPond/Output/

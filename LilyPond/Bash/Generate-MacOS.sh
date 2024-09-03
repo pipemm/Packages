@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+
 
 which -a lilypond
 if [[ $? -ne 0 ]]
@@ -7,11 +7,7 @@ then
 fi
 
 FOLDER_OUT='Output/'
-mkdir --parent "${FOLDER_OUT}" 2> /dev/null
-if [[ $? -ne 0 ]]
-then
-  mkdir -p "${FOLDER_OUT%/}/"
-fi
+mkdir -p "${FOLDER_OUT%/}/"
 FOLDER_CODE='Code/'
 if [[ -d "${FOLDER_CODE}" ]]
 then
