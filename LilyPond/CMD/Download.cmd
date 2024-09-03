@@ -14,19 +14,18 @@ echo %NAME_PACKAGE%
 set "FOLDER_PACK=Package\"
 set "FOLDER_DL=%FOLDER_PACK%\Download\"
 if not exist "%FOLDER_DL%" (
-    mkdir "%FOLDER_DL%"
+  MKDIR "%FOLDER_DL%"
 )
-
-DIR
 
 set FILE_PACKAGE=%FOLDER_DL%%FILE_PACKAGE%
 curl --output "%FILE_PACKAGE%" --location "%URL_PACKAGE%"
 
-unzip /?
-unzip -h
+unzip -l "%FILE_PACKAGE%" | findstr /n /r "^" | findstr "^4:"
 
-unzip -l "%FILE_PACKAGE%"
-unzip -l "%FILE_PACKAGE%" | findstr /n /r "^"
-unzip -l "%FILE_PACKAGE%" | findstr /n /r "^" | findstr "^2:"
+for /f "tokens=4" %%A in ('unzip -l "%FILE_PACKAGE%" ^| findstr /n /r "^" ^| findstr "^4:"') do (
+  set "ZIP_FOLDER=%%A"
+)
+
+echo %ZIP_FOLDER%
 
 
