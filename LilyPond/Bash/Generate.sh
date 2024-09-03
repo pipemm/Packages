@@ -7,7 +7,11 @@ then
 fi
 
 FOLDER_OUT='Output/'
-mkdir --parent "${FOLDER_OUT}"
+mkdir --parent "${FOLDER_OUT}" 2> /dev/null
+if [[ $? -ne 0 ]]
+then
+  mkdir -p "${FOLDER_OUT%/}/"
+fi
 FOLDER_CODE='Code/'
 if [[ -d "${FOLDER_CODE}" ]]
 then
