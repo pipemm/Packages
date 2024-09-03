@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 if [[ -z "${URL_PACKAGE}" ]]
 then
@@ -6,25 +6,25 @@ then
 fi
 
 FILE_PACKAGE="${URL_PACKAGE##*/}"
-NAME_PACKAGE="${FILE_PACKAGE%.zip}"
+NAME_PACKAGE="${FILE_PACKAGE%.tar.gz}"
 
 FOLDER_PACK="Package/"
 FOLDER_DL="${FOLDER_PACK%/}/Download/"
-mkdir --parent "${FOLDER_DL%/}/"
+mkdir -p "${FOLDER_DL%/}/"
 
 FILE_PACKAGE="${FOLDER_DL%/}/${FILE_PACKAGE}"
 curl --output "${FILE_PACKAGE}" --location "${URL_PACKAGE}"
 
-ZIP_FOLDER=$(
-  unzip -l "${FILE_PACKAGE}" |
-  head --lines=4 |
-  cut --characters=31- |
-  tail --lines=1
+TAR_FOLDER=$(
+  tar --list --gunzip --file="${FILE_PACKAGE}" |
+  head --lines=1
 )
 
-unzip "${FILE_PACKAGE}" -d "${FOLDER_PACK}"
+tar --extract --gunzip --verbose \
+  --file="${FILE_PACKAGE}" \
+  --directory="${FOLDER_PACK}"
 
-FOLDER_ARTIFACT="${FOLDER_PACK%/}/${ZIP_FOLDER%/}/"
+FOLDER_ARTIFACT="${FOLDER_PACK%/}/${TAR_FOLDER%/}/"
 if [[ -d "${FOLDER_ARTIFACT}" ]]
 then
   FOLDER_ARTIFACT="${PWD%/}/${FOLDER_ARTIFACT%/}/"

@@ -151,7 +151,7 @@ jobs:
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
-          name: test-windows
+          name: output-windows
           path: LilyPond/Output/
 
   Download-Package-MacOS:
@@ -179,7 +179,7 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/Download-Linux.sh
+          bash Bash/Download-MacOS.sh
 
       - name: SetUp
         working-directory: LilyPond/
