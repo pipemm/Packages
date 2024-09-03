@@ -124,7 +124,7 @@ jobs:
           path: LilyPond/Output/
 
   Download-Package-Windows:
-    runs-on: windows-latest
+    runs-on: ${{ inputs.system-windows || 'windows-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
     needs: [Get-Download-URL]
@@ -267,7 +267,7 @@ jobs:
           path: LilyPond/Output/
 
   Check-Package-Windows:
-    runs-on: windows-latest
+    runs-on: ${{ inputs.system-windows || 'windows-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
     needs: [Download-Package-Windows]
