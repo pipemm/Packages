@@ -127,32 +127,6 @@ jobs:
           name: "${{ env.NAME_PACKAGE }}"
           path: "${{ env.FOLDER_ARTIFACT }}"
 
-  Download-Package-Windows-0:
-    runs-on: ubuntu-latest
-      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
-      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
-    needs: [Get-Download-URL]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-          ## https://github.com/actions/checkout
-
-      - name: Download-Package
-        working-directory: LilyPond/
-        env:
-          URL_PACKAGE: "${{ needs.Get-Download-URL.outputs.dowload-windows }}"
-        shell: bash
-          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
-        run: |
-          bash Bash/Download-Windows.sh
-
-      - uses: actions/upload-artifact@v4
-          ## https://github.com/actions/upload-artifact
-        with:
-          name: "${{ env.NAME_PACKAGE }}"
-          path: "${{ env.FOLDER_ARTIFACT }}"
-
   Download-Package-MacOS:
     runs-on: macos-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
