@@ -7,6 +7,7 @@
 
 ## Staff / Stave
 
-A tie is a curved line connecting the heads of two notes of the same pitch, indicating that they are to be played as a single note with a duration equal to the sum of the individual notes' values.
+[tie](https://www.oxfordlearnersdictionaries.com/definition/english/tie_2): a curved line written over two notes of the same pitch (= how high or low a note is) to show that they are to be played or sung as one note
+
 
 
