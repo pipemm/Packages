@@ -229,8 +229,6 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          man ls 
-          head -h
           subfolder=$(
             ls -d Package/lilypond-*/bin/ |
             head -n 1

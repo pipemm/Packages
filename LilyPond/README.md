@@ -5,7 +5,7 @@
 
 [Online](https://www.hacklily.org/)
 
-## Staff / Stave
+## Stave
 
 [stave](https://www.ldoceonline.com/dictionary/stave): the set of five lines on which music is written
 
