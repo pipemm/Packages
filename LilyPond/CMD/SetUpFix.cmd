@@ -18,10 +18,10 @@ if %ERRORLEVEL% neq 0 (
 )
 
 for /f %%F in ('DIR /S /B %subfolder%\share\*.scm') do (
-  ECHO %%~tF %%~nF
+  ECHO %%~tF %%~nxF
 )
 for /f %%F in ('DIR /S /B %subfolder%\lib\*.go') do (
-  ECHO %%~tF %%~nF
+  ECHO %%~tF %%~nxF
 )
 
 REM [TIMEOUT alternative](https://www.ibm.com/support/pages/timeout-command-run-batch-job-exits-immediately-and-returns-error-input-redirection-not-supported-exiting-process-immediately)
@@ -41,10 +41,10 @@ for /f %%F in ('DIR /S /B %subfolder%\lib\*.go') do (
 endlocal
 
 for /f %%F in ('DIR /S /B %subfolder%\share\*.scm') do (
-  ECHO %%~tF %%~nF
+  ECHO %%~tF %%~nxF
 )
 for /f %%F in ('DIR /S /B %subfolder%\lib\*.go') do (
-  ECHO %%~tF %%~nF
+  ECHO %%~tF %%~nxF
 )
 
 lilypond.exe --version
