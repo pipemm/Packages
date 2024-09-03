@@ -9,8 +9,8 @@ for %%I in ("%URL_PACKAGE%") do (
   set "NAME_PACKAGE=%%~nI"
 )
 
-set "FOLDER_PACK=Package\"
-set "FOLDER_DL=%FOLDER_PACK%Download\"
+set "FOLDER_PACK_0=Package"
+set "FOLDER_DL=%FOLDER_PACK_0%\Download\"
 if not exist "%FOLDER_DL%" (
   MKDIR "%FOLDER_DL%"
 )
@@ -22,15 +22,11 @@ for /f "tokens=5" %%A in ('unzip -l "%FILE_PACKAGE%" ^| findstr /n /r "^" ^| fin
   set "ZIP_FOLDER=%%A"
 )
 
-for %%I in ("%FOLDER_PACK%") do (
-  echo %%~pI
-)
+unzip "%FILE_PACKAGE%" -d %FOLDER_PACK_0%
 
-unzip "%FILE_PACKAGE%" -d %FOLDER_PACK%
-
-set "FOLDER_ARTIFACT=%FOLDER_PACK%%ZIP_FOLDER:/=\%"
+set "FOLDER_ARTIFACT=%FOLDER_PACK_0%\%ZIP_FOLDER:/=\%"
 if  exist "%FOLDER_ARTIFACT%" (
-  set "FOLDER_ARTIFACT=%CD%/%FOLDER_ARTIFACT%"
+  set "FOLDER_ARTIFACT=%CD%\%FOLDER_ARTIFACT%"
 ) else (
   EXIT /B 1
 )

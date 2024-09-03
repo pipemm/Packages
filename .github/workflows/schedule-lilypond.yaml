@@ -101,7 +101,7 @@ jobs:
           name: output-linux
           path: LilyPond/Output/
 
-  Download-Package-Windows-test:
+  Download-Package-Windows:
     runs-on: windows-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
@@ -121,7 +121,13 @@ jobs:
         run: |
           CMD\Download.cmd
 
-  Download-Package-Windows:
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: "${{ env.NAME_PACKAGE }}"
+          path: "${{ env.FOLDER_ARTIFACT }}"
+
+  Download-Package-Windows-0:
     runs-on: ubuntu-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
