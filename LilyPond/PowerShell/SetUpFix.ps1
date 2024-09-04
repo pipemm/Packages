@@ -9,12 +9,13 @@
     Select-Object -First 1
 );
 
-if ( ${FolderLilyPond} -eq '' )
+[System.String]$PathLilyPond = (Join-Path -Path "${FolderLilyPond}" -ChildPath 'bin');
+if ( Test-Path -LiteralPath "${PathLilyPond}" -PathType Container )
 {
     Exit 1;
 }
 
-Exit 1;
+[System.String]$Path = "$Env:Path;${PathLilyPond}";
+$Env:Path            = "${Path}";
 
-Join-Path -Path "${FolderLilyPond}" -ChildPath 'bin';
-
+Get-Command -Type Application -Name lilypond;
