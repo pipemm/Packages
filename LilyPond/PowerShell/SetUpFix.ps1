@@ -13,3 +13,8 @@ if ( ${FolderLilyPond} -eq '' )
 {
     Exit 1;
 }
+
+Exit 1;
+
+Join-Path -Path "${FolderLilyPond}" -ChildPath 'bin';
+
