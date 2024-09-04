@@ -316,7 +316,7 @@ jobs:
               Get-ChildItem -LiteralPath "${PathSCM}" -Filter '*.scm' -Recurse -File;
             } |
             Select-Object -Property BaseName, Name, LastWriteTime |
-            Sort-Object   -Property BaseName, Name -Descending |
+            Sort-Object   -Property BaseName, LastWriteTime |
             Select-Object -Property @{label='LastWriteTime';expression={$_.LastWriteTime.ToString("yyyy-MM-dd hh:mm:ss.fffffff")}}, Name;
 
       - name: SetUp
@@ -342,7 +342,7 @@ jobs:
               Get-ChildItem -LiteralPath "${PathSCM}" -Filter '*.scm' -Recurse -File;
             } |
             Select-Object -Property BaseName, Name, LastWriteTime |
-            Sort-Object   -Property BaseName, Name -Descending |
+            Sort-Object   -Property BaseName, LastWriteTime |
             Select-Object -Property @{label='LastWriteTime';expression={$_.LastWriteTime.ToString("yyyy-MM-dd hh:mm:ss.fffffff")}}, Name;
 
       - name: Generate-File
