@@ -317,7 +317,7 @@ jobs:
             } |
             Select-Object -Property BaseName, Name, LastWriteTime |
             Sort-Object   -Property BaseName, Name -Descending |
-            Select-Object -Property Name, LastWriteTime;
+            Select-Object -Property @{label='LastWriteTime';expression={$_.LastWriteTime.ToString("yyyy-MM-dd hh:mm:ss.fffffff")}}, Name;
 
       - name: SetUp
         working-directory: LilyPond\
@@ -343,7 +343,7 @@ jobs:
             } |
             Select-Object -Property BaseName, Name, LastWriteTime |
             Sort-Object   -Property BaseName, Name -Descending |
-            Select-Object -Property Name, LastWriteTime;
+            Select-Object -Property @{label='LastWriteTime';expression={$_.LastWriteTime.ToString("yyyy-MM-dd hh:mm:ss.fffffff")}}, Name;
 
       - name: Generate-File
         working-directory: LilyPond\
