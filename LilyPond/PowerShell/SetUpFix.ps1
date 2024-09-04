@@ -26,6 +26,13 @@ catch {
     Exit 1;
 }
 
+[System.String]$PathGO = (Join-Path -Path "${FolderLilyPond}" -ChildPath 'lib\');
+Get-ChildItem -LiteralPath "${PathGO}"  -Filter '*.go'  -Recurse -File |
+    ForEach-Object -Process {
+        [System.IO.FileInfo]$GOFile = $_;
+        $GOFile.LastWriteTimeUtc    = [System.DateTime]::UtcNow;
+    };
+
 lilypond.exe --version
 lilypond.exe --help
 
