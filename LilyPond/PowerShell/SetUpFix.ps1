@@ -15,8 +15,8 @@ if ( ! (Test-Path -LiteralPath "${PathLilyPond}" -PathType Container) )
     Exit 1;
 }
 
-[System.String]$Path = "$Env:Path;${PathLilyPond}";
-$Env:Path            = "${Path}";
+[System.String]$Path = "$Env:PATH;${PathLilyPond}";
+$Env:PATH            = "${Path}";
 
 try { 
     Get-Command -Type Application -Name lilypond;
@@ -33,4 +33,7 @@ if ( $Env:GITHUB_ENV -eq $null ) {
     Exit 0;
 }
 
-Exit 0;
+"PATH_LILYPOND=${PathLilyPond}" 
+"PATH_LILYPOND=${PathLilyPond}" >>"$Env:GITHUB_ENV"
+"PATH=$Env:PATH" 
+"PATH=$Env:PATH"                >>"$Env:GITHUB_ENV"
