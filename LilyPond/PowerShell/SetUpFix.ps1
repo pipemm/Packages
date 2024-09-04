@@ -10,7 +10,7 @@
 );
 
 [System.String]$PathLilyPond = (Join-Path -Path "${FolderLilyPond}" -ChildPath 'bin');
-if ( -Not Test-Path -LiteralPath "${PathLilyPond}" -PathType Container )
+if ( ! (Test-Path -LiteralPath "${PathLilyPond}" -PathType Container) )
 {
     Exit 1;
 }
@@ -18,4 +18,10 @@ if ( -Not Test-Path -LiteralPath "${PathLilyPond}" -PathType Container )
 [System.String]$Path = "$Env:Path;${PathLilyPond}";
 $Env:Path            = "${Path}";
 
-Get-Command -Type Application -Name lilypond;
+try { 
+    Get-Command -Type Application -Name lilypond;
+}
+catch { 
+    Write-Error -Message 'LilyPond not found.';
+    Exit 1;
+}
