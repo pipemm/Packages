@@ -25,3 +25,7 @@ catch {
     Write-Error -Message 'LilyPond not found.';
     Exit 1;
 }
+
+lilypond.exe --version
+lilypond.exe --help
+
