@@ -29,3 +29,8 @@ catch {
 lilypond.exe --version
 lilypond.exe --help
 
+if ( $Env:GITHUB_ENV -eq $null ) {
+    Exit 0;
+}
+
+Exit 0;
