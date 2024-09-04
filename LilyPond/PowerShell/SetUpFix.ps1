@@ -10,7 +10,7 @@
 );
 
 [System.String]$PathLilyPond = (Join-Path -Path "${FolderLilyPond}" -ChildPath 'bin');
-if ( Test-Path -LiteralPath "${PathLilyPond}" -PathType Container )
+if ( -Not Test-Path -LiteralPath "${PathLilyPond}" -PathType Container )
 {
     Exit 1;
 }
