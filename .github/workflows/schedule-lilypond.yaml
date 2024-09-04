@@ -330,6 +330,13 @@ jobs:
               $GOFile.LastWriteTimeUtc = [System.DateTime]::UtcNow;
             };
 
+      - name: SetUp-Test
+        working-directory: LilyPond\
+        shell: pwsh
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          PowerShell\SetUpFix.ps1
+
       - name: SetUp
         working-directory: LilyPond\
         shell: cmd
