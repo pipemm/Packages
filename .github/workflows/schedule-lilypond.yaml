@@ -270,6 +270,13 @@ jobs:
         run: |
           bash Bash/Generate-Linux.sh
 
+      - name: Time Check
+        working-directory: LilyPond\
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          WMIC OS GET LocalDateTime
+
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
@@ -292,6 +299,13 @@ jobs:
         with:
           pattern: lilypond-*-mingw-x86_64
           path: LilyPond\Package\
+
+      - name: Time Check
+        working-directory: LilyPond\
+        shell: cmd
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          WMIC OS GET LocalDateTime
 
       - name: SetUp
         working-directory: LilyPond\
