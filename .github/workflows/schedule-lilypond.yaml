@@ -307,25 +307,6 @@ jobs:
         run: |
           PowerShell\SetUpFix.ps1
 
-      - name: Time Check
-        working-directory: LilyPond\
-        shell: pwsh
-          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
-        run: |
-          WMIC OS GET LocalDateTime
-          [System.String]$PathInstall = 'Package\';
-          Get-ChildItem -Path "${PathInstall}lilypond-*\" -Directory |
-            ForEach-Object -Process {
-              [System.String]$PathFound = $_.FullName;
-              [System.String]$PathGO    = (Join-Path -Path "${PathFound}" -ChildPath 'lib\');
-              [System.String]$PathSCM   = (Join-Path -Path "${PathFound}" -ChildPath 'share\');
-              Get-ChildItem -LiteralPath "${PathGO}"  -Filter '*.go'  -Recurse -File;
-              Get-ChildItem -LiteralPath "${PathSCM}" -Filter '*.scm' -Recurse -File;
-            } |
-            Select-Object -Property BaseName, Name, LastWriteTime |
-            Sort-Object   -Property BaseName, LastWriteTime |
-            Select-Object -Property @{label='LastWriteTime';expression={$_.LastWriteTime.ToString("yyyy-MM-dd hh:mm:ss.fffffff")}}, Name;
-
       - name: Generate-File
         working-directory: LilyPond\
         shell: cmd
