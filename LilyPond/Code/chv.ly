@@ -37,10 +37,10 @@
       d,8 <d fis a> <d fis a> r  <d fis a> <d fis a> |
       g,8 <d g b> <d g b> g, <d g b>4                |
     }
-    \new Lyrics \lyricmode { % harmonic analysis : Tonic, Subdominant, Dominant
+    \new Lyrics \lyricmode { %% harmonic analysis : Functional Harmony (Tonic, Subdominant, Dominant)
       T2.  S  D  T 
     }
-    \new Lyrics \lyricmode { % harmonic analysis : Roman Numeral Analysis
+    \new Lyrics \lyricmode { %% harmonic analysis : Roman Numeral Analysis
       VI2. IV V  I 
     }
   >>
