@@ -6,7 +6,6 @@
   composer = "Composer"
 }
 
-
 <<
   \new PianoStaff <<
     \set PianoStaff.instrumentName = "Piano"
@@ -35,5 +34,15 @@
       g,8 <d g b> <d g b> g, <d g b>4 |
     }
   >>
+  \new Staff \with {
+    instrumentName = "Violin"
+    shortInstrumentName = "Vln."
+  }{ \clef treble \key g \major \time 6/8
+    e'4.~ e'4 fis'8   |
+    g'4.~ g'8 b' a'~  |
+    a'4.~ a'          |
+    b'4.~ b'8 d'' c'' |
+  }
 >>
+
 
