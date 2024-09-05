@@ -6,12 +6,6 @@
   composer = "Composer"
 }
 
-\header {
-  title = "Waltz (ワルツ)"
-  composer = "Composer"
-}
-
-
 <<
   \new PianoStaff \with {
     instrumentName = "Piano"
@@ -38,6 +32,9 @@
       e,8 <c e g> <c e g> e, <c e g>4           |
       d,8 <d fis a> <d fis a> r  <d fis a> <d fis a> |
       g,8 <d g b> <d g b> g, <d g b>4 |
+    }
+    \new Lyrics \lyricmode { % harmonic analysis : Tonic, Subdominant, Dominant
+      T2. S D  T 
     }
   >>
   
@@ -81,3 +78,4 @@
     }
   }
 >>
+
