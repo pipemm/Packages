@@ -38,10 +38,10 @@
       g,8 <d g b> <d g b> g, <d g b>4                |
     }
     \new Lyrics \lyricmode { % harmonic analysis : Tonic, Subdominant, Dominant
-      T2. S D  T 
+      T2.  S  D  T 
     }
-    \new Lyrics \lyricmode { % harmonic analysis : Tonic, Subdominant, Dominant
-      VI2. IV V I 
+    \new Lyrics \lyricmode { % harmonic analysis : Roman Numeral Analysis
+      VI2. IV V  I 
     }
   >>
   
