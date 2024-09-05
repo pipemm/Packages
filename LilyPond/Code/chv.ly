@@ -6,16 +6,22 @@
   composer = "Composer"
 }
 
+\header {
+  title = "Waltz (ワルツ)"
+  composer = "Composer"
+}
+
+
 <<
-  \new PianoStaff <<
-    \set PianoStaff.instrumentName = "Piano"
-    \new Staff {\tempo 4 = 100 \clef treble \key g \major \time 6/8
-      b' b'8 b' a' g' | 
-      c''4.~ c'' |
-      fis'4 fis'8 fis' e' d' |
-      b'4.~ b' |
-    }
-  >>
+  \new PianoStaff \with {
+    instrumentName = "Piano"
+    shortInstrumentName = "Pno."
+  }{\tempo 4 = 100 \clef treble \key g \major \time 6/8
+    b' b'8 b' a' g'        | 
+    c''4.~ c''             |
+    fis'4 fis'8 fis' e' d' |
+    b'4.~ b'               |
+  }
 
   \new PianoStaff <<
     \set PianoStaff.instrumentName = "Piano 2"
@@ -57,14 +63,19 @@
 
   \new DrumStaff \with {
     instrumentName = "Acoustic"
-  }{ 
+    shortInstrumentName = "Acoustic"
+  }{ \time 6/8
     \drummode {
       <<
         \new DrumVoice { \voiceOne
-          cymr8 cymr cymr <cymr sn> cymr cymr
+          \repeat unfold 5 {
+            cymr8 cymr cymr <cymr sn> cymr cymr |
+          }
         }
         \new DrumVoice { \voiceTwo
-          bd8 r16 bd16 bd8 r4 bd8
+          \repeat unfold 7 {
+            bd8 r16 bd16 bd8 r4 bd8
+          }
         }
       >>
     }
