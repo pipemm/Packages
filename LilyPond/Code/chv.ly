@@ -23,6 +23,11 @@
     \new Staff {\clef treble \key g \major
       R2. | R2. | R2. | R2. |
     }
+    \new ChordNames {
+      \chordmode {
+        e:m | c | d | g 
+      }
+    }
     \new Staff { \clef bass \key g \major
       e,8 <b, e g> <b, e g> r <b, e g> <b, e g> | 
       e,8 <c e g> <c e g> e, <c e g>4           |
