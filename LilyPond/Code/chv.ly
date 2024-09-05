@@ -1,6 +1,4 @@
 
-\version "2.24.4"
-
 \header {
   title = "Waltz (ワルツ)"
   composer = "Composer"
@@ -11,10 +9,16 @@
     instrumentName = "Piano"
     shortInstrumentName = "Pno."
   }{\tempo 4 = 100 \clef treble \key g \major \time 6/8
-    b' b'8 b' a' g'        | 
+    b'4 b'8 b' a' g'       | 
     c''4.~ c''             |
     fis'4 fis'8 fis' e' d' |
     b'4.~ b'               |
+
+    b'4 b'8 b' c'' d''     |
+    e''4. e'4 e'16 g'      |
+    fis'4 e'8 d'4 a'8      |
+    g'4.~ g'4.
+
   }
 
   \new PianoStaff <<
@@ -28,13 +32,16 @@
       }
     }
     \new Staff { \clef bass \key g \major
-      e,8 <b, e g> <b, e g> r <b, e g> <b, e g> | 
-      e,8 <c e g> <c e g> e, <c e g>4           |
+      e,8 <b, e g> <b, e g> r <b, e g> <b, e g>      | 
+      e,8 <c e g> <c e g> e, <c e g>4                |
       d,8 <d fis a> <d fis a> r  <d fis a> <d fis a> |
-      g,8 <d g b> <d g b> g, <d g b>4 |
+      g,8 <d g b> <d g b> g, <d g b>4                |
     }
     \new Lyrics \lyricmode { % harmonic analysis : Tonic, Subdominant, Dominant
       T2. S D  T 
+    }
+    \new Lyrics \lyricmode { % harmonic analysis : Tonic, Subdominant, Dominant
+      VI2. IV V I 
     }
   >>
   
