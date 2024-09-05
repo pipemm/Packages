@@ -34,6 +34,7 @@
       g,8 <d g b> <d g b> g, <d g b>4 |
     }
   >>
+  
   \new Staff \with {
     instrumentName = "Violin"
     shortInstrumentName = "Vln."
@@ -43,6 +44,7 @@
     a'4.~ a'          |
     b'4.~ b'8 d'' c'' |
   }
+
   \new Staff \with {
     instrumentName = "El. Bass"
     shortInstrumentName = "El. B."
@@ -52,11 +54,19 @@
     d,4 fis,8~ fis,4 a,8 |
     g,4.~ g,8 g, fis,
   }
+
   \new DrumStaff \with {
     instrumentName = "Acoustic"
   }{ 
     \drummode {
-      hh8 hh hh hh hh hh
+      <<
+        \new DrumVoice { \voiceOne
+          cymr8 cymr cymr <cymr sn> cymr cymr
+        }
+        \new DrumVoice { \voiceTwo
+          bd8 r16 bd16 bd8 r4 bd8
+        }
+      >>
     }
   }
 >>
