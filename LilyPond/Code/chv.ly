@@ -43,6 +43,13 @@
     a'4.~ a'          |
     b'4.~ b'8 d'' c'' |
   }
+  \new Staff \with {
+    instrumentName = "Electric Bass"
+    shortInstrumentName = "El. B."
+  }{ \clef bass \key g \major \time 6/8
+    e,4 e,8~ e,4 d,8     |
+    c,4 e,8~ e,4 c,8     |
+    d,4 fis,8~ fis,4 a,8 |
+    g,4.~ g,8 g, fis,
+  }
 >>
-
-
