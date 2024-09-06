@@ -1,4 +1,7 @@
 
+\version "2.24.4"
+
+
 \header {
   title = "Waltz (ワルツ)"
   composer = "Composer"
@@ -23,8 +26,9 @@
 
   \new PianoStaff <<
     \set PianoStaff.instrumentName = "Piano 2"
+    \set PianoStaff.shortInstrumentName = "Pno. 2"
     \new Staff {\clef treble \key g \major
-      R2. | R2. | R2. | R2. |
+      \repeat unfold 2 \repeat unfold 4 {R2. | }
     }
     \new ChordNames {
       \chordmode {
@@ -36,6 +40,11 @@
       e,8 <c e g> <c e g> e, <c e g>4                |
       d,8 <d fis a> <d fis a> r  <d fis a> <d fis a> |
       g,8 <d g b> <d g b> g, <d g b>4                |
+
+      e,8 <b, e g> <b, e g> r <b, e g> <b, e g>      |
+      e,8 <c e g> <c e g> e, <c e g>4                |
+      d,8 <d fis a> <d fis a> r  <d fis a> <d fis a> |
+      g,8 <d g b> <d g b> <g, b, d>4.                |
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Functional Harmony (Tonic, Subdominant, Dominant)
       T2.  S  D  T 
