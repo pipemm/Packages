@@ -1,16 +1,16 @@
 
 \version "2.24.4"
 
-\layout {
-  short-indent = 3\cm
-  indent = 3\cm
-}
-
 \header {
   title = "Waltz (ワルツ)"
   composer = "Composer"
 }
 
+\score {
+  \layout {
+    indent       = 1.5\cm
+    short-indent = 1.5\cm
+  }
 <<
   \new PianoStaff \with {
     instrumentName = "Piano"
@@ -113,4 +113,4 @@
     }
   }
 >>
-
+}
