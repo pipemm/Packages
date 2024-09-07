@@ -52,15 +52,24 @@
       }
     }
     \new Staff { \clef bass \key g \major
-      e,8 <b, e g> <b, e g> r <b, e g> <b, e g>      | 
-      e,8 <c e g> <c e g> e, <c e g>4                |
-      d,8 <d fis a> <d fis a> r  <d fis a> <d fis a> |
-      g,8 <d g b> <d g b> g, <d g b>4                |
+      e,8 <b, e g> <b, e g> r <b, e g> <b, e g>        | 
+      e,8 <c e g> <c e g> e, <c e g>4                  |
+      d,8 <d fis a> <d fis a> r  <d fis a> <d fis a>   |
+      g,8 <d g b> <d g b> g, <d g b>4                  |
 
-      e,8 <b, e g> <b, e g> r <b, e g> <b, e g>      |
-      e,8 <c e g> <c e g> e, <c e g>4                |
-      d,8 <d fis a> <d fis a> r  <d fis a> <d fis a> |
-      g,8 <d g b> <d g b> <g, b, d>4.                |
+      e,8 <b, e g> <b, e g> r <b, e g> <b, e g>        |
+      e,8 <c e g> <c e g> e, <c e g>4                  |
+      d,8 <d fis a> <d fis a> r  <d fis a> <d fis a>   |
+      g,8 <d g b> <d g b> <g, b, d>4.                  |
+
+      d,8 <d fis a> <d fis a> fis, <d fis a> <d fis a> |
+      b,,8 <d fis b> <d fis b> d, <d fis b> <d fis b>  |
+      a,,8 <c e a> <c e a> c, <c e a> <c e a>          |
+      g,,8 <b, e g> <b, e g> b,, <b, e g> <b, e g>   |
+
+      a,,8 <c e a> <c e a> c, <c e a> <c e a>          |
+      fis,,8 <b, e g> <b, e g> a,, <b, e g> <b, e g>   |
+
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Functional Harmony (Tonic, Subdominant, Dominant)
       T2.  S  D  T 
