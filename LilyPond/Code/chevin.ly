@@ -26,15 +26,15 @@
     fis'4 e'8 d'4 a'8           |
     g'4.~g'4.                   |
     
-    fis'4 fis'8 fis' g' a'      |
+    fis'4\f fis'8 fis' g' a'    | % forte
     fis'4 fis'8 fis' g' a'      |
     c''4 b'8 a'~a'16 fis' g' a' |
-    b'4.~b'                     |
+    b'4.\>~b'                   | % decrescendo, 
 
     c''4 b'8 a'8. fis'16 g' a'  |
     b'4 a'16 g' e'4.            |
     fis'4 a'8 c''4 dis'8        |
-    e'4.~e'4.                   | 
+    e'4.~e'4.     \!            | 
   }
 
   \new PianoStaff \with {
