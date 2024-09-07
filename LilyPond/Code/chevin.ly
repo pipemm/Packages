@@ -65,7 +65,7 @@
       d,8 <d fis a> <d fis a> fis, <d fis a> <d fis a> |
       b,,8 <d fis b> <d fis b> d, <d fis b> <d fis b>  |
       a,,8 <c e a> <c e a> c, <c e a> <c e a>          |
-      g,,8 <b, e g> <b, e g> b,, <b, e g> <b, e g>   |
+      g,,8 <b, e g> <b, e g> b,, <b, e g> <b, e g>   | % working
 
       a,,8 <c e a> <c e a> c, <c e a> <c e a>          |
       fis,,8 <b, e g> <b, e g> a,, <b, e g> <b, e g>   |
