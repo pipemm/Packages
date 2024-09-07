@@ -33,11 +33,14 @@
 
     c''4 b'8 a'8. fis'16 g' a'  |
     b'4 a'16 g' e'4.            |
+    fis'4 a'8 c''4 dis'8        |
+    e'4.~e'4.                   | 
   }
 
-  \new PianoStaff <<
-    \set PianoStaff.instrumentName      = "Piano 2"
-    \set PianoStaff.shortInstrumentName = "Pno. 2"
+  \new PianoStaff \with {
+    instrumentName = "Piano 2"
+    shortInstrumentName = "Pno. 2"
+  }<<
     \new Staff {\clef treble \key g \major
       \repeat unfold 4 \repeat unfold 4 {R2. | }
     }
