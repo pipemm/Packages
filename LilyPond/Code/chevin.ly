@@ -1,6 +1,10 @@
 
 \version "2.24.4"
 
+\layout {
+  short-indent = 3\cm
+  indent = 3\cm
+}
 
 \header {
   title = "Waltz (ワルツ)"
