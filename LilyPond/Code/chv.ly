@@ -85,8 +85,8 @@
   }
 
   \new DrumStaff \with {
-    instrumentName = "Acoustic"
-    shortInstrumentName = "Acoustic"
+    instrumentName = "Drum Set"
+    shortInstrumentName = "Dr. St."
   }{ \time 6/8
     \drummode {
       <<
