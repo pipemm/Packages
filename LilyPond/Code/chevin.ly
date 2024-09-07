@@ -31,14 +31,15 @@
     c''4 b'8 a'~a'16 fis' g' a' |
     b'4.~b'                     |
 
-    
+    c''4 b'8 a'8. fis'16 g' a'  |
+    b'4 a'16 g' e'4.            |
   }
 
   \new PianoStaff <<
     \set PianoStaff.instrumentName      = "Piano 2"
     \set PianoStaff.shortInstrumentName = "Pno. 2"
     \new Staff {\clef treble \key g \major
-      \repeat unfold 3 \repeat unfold 4 {R2. | }
+      \repeat unfold 4 \repeat unfold 4 {R2. | }
     }
     \new ChordNames {
       \chordmode {
