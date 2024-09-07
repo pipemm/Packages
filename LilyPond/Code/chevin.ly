@@ -16,27 +16,35 @@
     instrumentName = "Piano"
     shortInstrumentName = "Pno."
   }{\tempo 4 = 100 \clef treble \key g \major \time 6/8
-    b'4 b'8 b' a' g'       | 
-    c''4.~ c''             |
-    fis'4 fis'8 fis' e' d' |
-    b'4.~ b'               |
+    b'4 b'8 b' a' g'            | 
+    c''4.~c''                   |
+    fis'4 fis'8 fis' e' d'      |
+    b'4.~b'                     |
 
-    b'4 b'8 b' c'' d''     |
-    e''4. e'4 e'16 g'      |
-    fis'4 e'8 d'4 a'8      |
-    g'4.~ g'4.
+    b'4 b'8 b' c'' d''          |
+    e''4. e'4 e'16 g'           |
+    fis'4 e'8 d'4 a'8           |
+    g'4.~g'4.                   |
+    
+    fis'4 fis'8 fis' g' a'      |
+    fis'4 fis'8 fis' g' a'      |
+    c''4 b'8 a'~a'16 fis' g' a' |
+    b'4.~b'                     |
 
+    
   }
 
   \new PianoStaff <<
-    \set PianoStaff.instrumentName = "Piano 2"
+    \set PianoStaff.instrumentName      = "Piano 2"
     \set PianoStaff.shortInstrumentName = "Pno. 2"
     \new Staff {\clef treble \key g \major
-      \repeat unfold 2 \repeat unfold 4 {R2. | }
+      \repeat unfold 3 \repeat unfold 4 {R2. | }
     }
     \new ChordNames {
       \chordmode {
-        e:m | c | d | g 
+        e:m | c | d | g |
+
+        e:m | c | d | g |
       }
     }
     \new Staff { \clef bass \key g \major
@@ -52,8 +60,10 @@
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Functional Harmony (Tonic, Subdominant, Dominant)
       T2.  S  D  T 
+      T2.  S  D  T 
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Roman Numeral Analysis
+      VI2. IV V  I 
       VI2. IV V  I 
     }
   >>
