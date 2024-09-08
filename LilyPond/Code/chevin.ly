@@ -152,17 +152,24 @@
   \new DrumStaff \with {
     instrumentName      = "Drum Set"
     shortInstrumentName = "Dr. St."
+    drumStyleTable      = #weinberg-drums-style
   }{ \time 6/8
     \drummode {
       <<
         \new DrumVoice { \voiceOne
           \repeat unfold 5 {
-            cymr8 cymr cymr <cymr sn> cymr cymr            |
+            hh8 hh hh <hh sn> hh hh        |
           }
           \repeat unfold 2 {
-            cymr8 cymr cymr cymr cymr cymr                 |
+            hh8 hh hh hh hh hh             |
           }
-          cymr8 cymr cymr  <cymr sn> cymr16 cymr cymr cymr |
+          hh8 hh hh  <hh sn> hh16 hh hh hh |
+
+          <hh cymr>8 hh hh <hh sn> hh hh   |
+          \repeat unfold 6 {
+            hh8 hh hh <hh sn> hh hh        |
+          }
+          hh8 hh hh hh4.
         }
         \new DrumVoice { \voiceTwo
           \repeat unfold 7 {
