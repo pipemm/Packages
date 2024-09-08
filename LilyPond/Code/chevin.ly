@@ -4,12 +4,13 @@
 \header {
   title     = "Waltz (ワルツ)"
   subtitle  = \markup {
-    \override #'(font-size . -2)
+    \override #'(font-size . -3)
     \italic \with-color "gray"
-    {"31"\super{"st"} "Auguest 2024"}
+    {\concat { "31"\super{"st"} } "Auguest 2024"}
   }
   composer  = "Chevin"
   copyright = "Copyright © 2024"
+  tagline   = "Copyright © 2024"
 }
 
 \score {
@@ -136,6 +137,14 @@
     c,4 e,8~ e,4 c,8     |
     d,4 fis,8~ fis,4 a,8 |
     g,4.~ g,             |
+
+    d4 a8 c'4 b8   |
+    b4.~b4 b8      |
+    a4 c'8~c'8 c d |
+    d4.~d          |
+
+    a,4. e,4 fis,8 |
+    g,4 d8~d4 c8
   }
 
   \new DrumStaff \with {
