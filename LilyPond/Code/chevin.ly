@@ -2,15 +2,15 @@
 \version "2.24.4"
 
 \header {
-  title     = "Waltz (ワルツ)"
+  title     = "Waltz"
   subtitle  = \markup {
-    \override #'(font-size . -3)
+    \override #'(font-size . -5)
     \italic \with-color "gray"
     {\concat { "31"\super{"st"} } "Auguest 2024"}
   }
   composer  = "Chevin"
-  copyright = "Copyright © 2024"
-  tagline   = "Copyright © 2024"
+  copyright = "© Chevin 2024"
+  tagline   = "© Chevin 2024"
 }
 
 \score {
@@ -41,7 +41,7 @@
     c''4 b'8 a'8. fis'16 g' a'  |
     b'4 a'16 g' e'4.            |
     fis'4 a'8 c''4 dis'8        |
-    e'4.~e'4.     \!            \fine
+    e'4.~e'4.     \!            |
   }
 
   \new PianoStaff \with {
@@ -170,23 +170,24 @@
           \repeat unfold 6 {
             hh8 hh hh <hh sn> hh hh        |
           }
-          hh8 hh hh hh4.
+          hh8 hh hh hh4.                   |
         }
         \new DrumVoice { \voiceTwo
           \repeat unfold 7 {
-            bd8 r16 bd16 bd8 r4 bd8 |
+            bd8 r16 bd16 bd8 r4 bd8        |
           }
           bd4. r4 r16 bd16
 
           \repeat unfold 4 {
-            bd4 r16 bd16 r4 bd8 |
+            bd4 r16 bd16 r4 bd8            |
           }
 
           \repeat unfold 3 {
-            bd4. r4 bd8 |
+            bd4. r4 bd8                    |
           }
-          bd4. r4.
+          bd4. r4.                         |
         }
+        \fine
       >>
     }
   }
