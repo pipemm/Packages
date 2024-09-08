@@ -85,8 +85,10 @@
       SDM2. TM  D   TM
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Roman Numeral Analysis
-      VI2. IV V  I 
-      VI2. IV V  I 
+      VI2.   IV   V   I 
+      VI2.   IV   V   I 
+      ♭VII2. V-   IV- I- 
+      IV-2.  ♭III \markup{V\super{7}} I-
     }
   >>
   
