@@ -2,8 +2,10 @@
 \version "2.24.4"
 
 \header {
-  title = "Waltz (ワルツ)"
-  composer = "Composer"
+  title     = "Waltz (ワルツ)"
+  subtitle  = "31st Auguest 2024"
+  composer  = "Composer"
+  copyright = "Copyright © 2024"
 }
 
 \score {
@@ -13,7 +15,7 @@
   }
 <<
   \new PianoStaff \with {
-    instrumentName = "Piano"
+    instrumentName      = "Piano"
     shortInstrumentName = "Pno."
   }{\tempo 4 = 100 \clef treble \key g \major \time 6/8
     b'4 b'8 b' a' g'            | 
@@ -38,7 +40,7 @@
   }
 
   \new PianoStaff \with {
-    instrumentName = "Piano 2"
+    instrumentName      = "Piano 2"
     shortInstrumentName = "Pno. 2"
   }<<
     \new Staff {\clef treble \key g \major
@@ -93,22 +95,27 @@
   >>
   
   \new Staff \with {
-    instrumentName = "Violin"
+    instrumentName      = "Violin"
     shortInstrumentName = "Vln."
   }{ \clef treble \key g \major \time 6/8
-    e'4.~ e'4 fis'8    |
-    g'4.~ g'8 b' a'~   |
-    a'4.~ a'           |
-    b'4.~ b'8 d'' c''  |
+    e'4.~e'4 fis'8   |
+    g'4.~g'8 b' a'~  |
+    a'4.~a'          |
+    b'4.~b'8 d'' c'' |
 
-    b'4.~ b'4 a'8      |
-    c''4.~ c''4.       |
-    a'4.~ a'4 b'8      |
-    g'4. fis'8 g' a'   |
+    b'4.~b'4 a'8     |
+    c''4.~c''4.      |
+    a'4.~a'4 b'8     |
+    g'4. fis'8 g' a' |
+
+    d'4.~d'4 c'8     |
+    b4.~b8 c' d'     |
+    e'4.~e'4 c''8    |
+    b'4.~b'8 a' b'   |
   }
 
   \new Staff \with {
-    instrumentName = "El. Bass"
+    instrumentName      = "El. Bass"
     shortInstrumentName = "El. B."
   }{ \clef bass \key g \major \time 6/8
     e,4 e,8~ e,4 d,8     |
@@ -123,7 +130,7 @@
   }
 
   \new DrumStaff \with {
-    instrumentName = "Drum Set"
+    instrumentName      = "Drum Set"
     shortInstrumentName = "Dr. St."
   }{ \time 6/8
     \drummode {
