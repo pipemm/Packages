@@ -3,7 +3,10 @@
 
 \header {
   title     = "Waltz (ワルツ)"
-  subtitle  = "31st Auguest 2024"
+  subtitle  = \markup {
+    \override #'(font-size . -2)
+    "31st Auguest 2024"
+  }
   composer  = "Composer"
   copyright = "Copyright © 2024"
 }
@@ -112,6 +115,11 @@
     b4.~b8 c' d'     |
     e'4.~e'4 c''8    |
     b'4.~b'8 a' b'   |
+
+    a'4. fis'4 c''8  |
+    b'4. g'4 g'8     |
+    fis'4. a'4 b'8   |
+    e'4.~e'          |
   }
 
   \new Staff \with {
