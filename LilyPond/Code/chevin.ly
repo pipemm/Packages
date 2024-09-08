@@ -138,13 +138,15 @@
     d,4 fis,8~ fis,4 a,8 |
     g,4.~ g,             |
 
-    d4 a8 c'4 b8   |
-    b4.~b4 b8      |
-    a4 c'8~c'8 c d |
-    d4.~d          |
+    d4 a8 c'4 b8         |
+    b4.~b4 b8            |
+    a4 c'8~c'8 c d       |
+    d4.~d                |
 
-    a,4. e,4 fis,8 |
-    g,4 d8~d4 c8
+    a,4. e,4 fis,8       |
+    g,4 d8~d4 c8         |
+    b,4 dis8~dis!4 fis8  |
+    e4.~e                |
   }
 
   \new DrumStaff \with {
