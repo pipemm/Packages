@@ -5,9 +5,10 @@
   title     = "Waltz (ワルツ)"
   subtitle  = \markup {
     \override #'(font-size . -2)
-    "31st Auguest 2024"
+    \italic \with-color "gray"
+    {"31"\super{"st"} "Auguest 2024"}
   }
-  composer  = "Composer"
+  composer  = "Chevin"
   copyright = "Copyright © 2024"
 }
 
@@ -101,25 +102,25 @@
     instrumentName      = "Violin"
     shortInstrumentName = "Vln."
   }{ \clef treble \key g \major \time 6/8
-    e'4.~e'4 fis'8   |
-    g'4.~g'8 b' a'~  |
-    a'4.~a'          |
-    b'4.~b'8 d'' c'' |
+    e'4.~e'4 fis'8    |
+    g'4.~g'8 b' a'~   |
+    a'4.~a'           |
+    b'4.~b'8 d'' c''  |
 
-    b'4.~b'4 a'8     |
-    c''4.~c''4.      |
-    a'4.~a'4 b'8     |
-    g'4. fis'8 g' a' |
+    b'4.~b'4 a'8      |
+    c''4.~c''4.       |
+    a'4.~a'4 b'8      |
+    g'4. fis'8 g' a'  |
 
-    d'4.~d'4 c'8     |
-    b4.~b8 c' d'     |
-    e'4.~e'4 c''8    |
-    b'4.~b'8 a' b'   |
+    d'4.~d'4 c'8      |
+    b4.~b8 c' d'      |
+    e'4.~e'4 c''8     |
+    b'4.~b'8 a' b'    |
 
-    a'4. fis'4 c''8  |
-    b'4. g'4 g'8     |
-    fis'4. a'4 b'8   |
-    e'4.~e'          |
+    a'4.\> fis'4 c''8 |
+    b'4. g'4 g'8      |
+    fis'4. a'4 b'8    |
+    e'4.~e' \!        |
   }
 
   \new Staff \with {
