@@ -93,10 +93,16 @@
       SDM2. TM  D   TM
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Roman Numeral Analysis
-      VI2.   IV   V   I 
-      VI2.   IV   V   I 
-      ♭VII2. V-   IV- I- 
-      IV-2.  ♭III \markup{V\super{7}} I-
+      VI2. IV V I 
+      VI2. IV V I 
+      \markup{\concat{♭VII}}2. 
+        V- 
+        IV- 
+        I- 
+      IV-2. 
+        \markup{\concat{♭III}} 
+        \markup{V\super{7}} 
+        I-
     }
   >>
   
@@ -166,7 +172,7 @@
           }
           hh8 hh hh  <hh sn> hh16 hh hh hh |
 
-          <hh cymr>8 hh hh <hh sn> hh hh   |
+          <hh cymc>8 hh hh <hh sn> hh hh   |
           \repeat unfold 6 {
             hh8 hh hh <hh sn> hh hh        |
           }
