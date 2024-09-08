@@ -46,9 +46,13 @@
     }
     \new ChordNames {
       \chordmode {
-        e:m | c | d | g |
+        e:m | c   | d   | g   |
 
-        e:m | c | d | g |
+        e:m | c   | d   | g   |
+
+        d   | b:m | a:m | e:m |
+
+        a:m | g   | b:7 | e:m |
       }
     }
     \new Staff { \clef bass \key g \major
@@ -75,8 +79,10 @@
 
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Functional Harmony (Tonic, Subdominant, Dominant)
-      T2.  S  D  T 
-      T2.  S  D  T 
+      T2.   S   D   T 
+      T2.   S   D   T 
+      SD2.  MD  SDM TM
+      SDM2. TM  D   TM
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Roman Numeral Analysis
       VI2. IV V  I 
