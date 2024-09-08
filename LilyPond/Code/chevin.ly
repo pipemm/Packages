@@ -41,7 +41,7 @@
     c''4 b'8 a'8. fis'16 g' a'  |
     b'4 a'16 g' e'4.            |
     fis'4 a'8 c''4 dis'8        |
-    e'4.~e'4.     \!            \bar "|."
+    e'4.~e'4.     \!            \fine
   }
 
   \new PianoStaff \with {
@@ -83,7 +83,7 @@
       g,,8 <b, d g> <b, d g> b,, <b, d g> <b, d g>     |
       b,,8 <b, dis fis a> <b, dis! fis a> 
           dis, <b, dis fis a> <b, dis! fis a>          |
-      e,8 <b, e g> <b, e g> <e, g, b,>4.               \bar "|."
+      e,8 <b, e g> <b, e g> <e, g, b,>4.               |
 
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Functional Harmony (Tonic, Subdominant, Dominant)
