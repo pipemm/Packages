@@ -41,7 +41,7 @@
     c''4 b'8 a'8. fis'16 g' a'  |
     b'4 a'16 g' e'4.            |
     fis'4 a'8 c''4 dis'8        |
-    e'4.~e'4.     \!            | 
+    e'4.~e'4.     \!            \bar "|."
   }
 
   \new PianoStaff \with {
@@ -50,6 +50,7 @@
   }<<
     \new Staff {\clef treble \key g \major
       \repeat unfold 4 \repeat unfold 4 {R2. | }
+      \bar "|."
     }
     \new ChordNames {
       \chordmode {
@@ -82,7 +83,7 @@
       g,,8 <b, d g> <b, d g> b,, <b, d g> <b, d g>     |
       b,,8 <b, dis fis a> <b, dis! fis a> 
           dis, <b, dis fis a> <b, dis! fis a>          |
-      e,8 <b, e g> <b, e g> <e, g, b,>4.               |
+      e,8 <b, e g> <b, e g> <e, g, b,>4.               \bar "|."
 
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Functional Harmony (Tonic, Subdominant, Dominant)
@@ -176,6 +177,15 @@
             bd8 r16 bd16 bd8 r4 bd8 |
           }
           bd4. r4 r16 bd16
+
+          \repeat unfold 4 {
+            bd4 r16 bd16 r4 bd8 |
+          }
+
+          \repeat unfold 3 {
+            bd4. r4 bd8 |
+          }
+          bd4. r4.
         }
       >>
     }
