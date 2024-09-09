@@ -17,6 +17,10 @@
   \layout {
     indent       = 1.5\cm
     short-indent = 1.5\cm
+    \context {
+      \Score
+      proportionalNotationDuration = #(ly:make-moment 1/8)
+    }
   }
 <<
   \new PianoStaff \with {
@@ -46,13 +50,13 @@
     }
     \new ChordNames {
       \chordmode {
-        e:m | c   | d   | g   |
+        e2.:m | c   | d   | g   |
 
-        e:m | c   | d   | g   |
+        e2.:m | c   | d   | g   |
 
-        d   | b:m | a:m | e:m |
+        d2.   | b:m | a:m | e:m |
 
-        a:m | g   | b:7 | e:m |
+        a2.:m | g   | b:7 | e:m |
       }
     }
     \new Staff { \clef bass \key g \major
