@@ -19,7 +19,7 @@
     short-indent = 1.5\cm
     \context {
       \Score
-      proportionalNotationDuration = #(ly:make-moment 1/8)
+      proportionalNotationDuration = #(ly:make-moment 1/10)
     }
   }
 <<
@@ -50,13 +50,13 @@
     }
     \new ChordNames {
       \chordmode {
-        e1.:m | c   | d   | g   |
+        e2:m | c   | d   | g   |
 
-        e1.:m | c   | d   | g   |
+        e:m  | c   | d   | g   |
 
-        d1.   | b:m | a:m | e:m |
+        d    | b:m | a:m | e:m |
 
-        a1.:m | g   | b:7 | e:m |
+        a:m  | g   | b:7 | e:m |
       }
     }
     \new Staff { \clef bass \key g \major
