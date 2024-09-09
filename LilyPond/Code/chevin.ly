@@ -8,7 +8,7 @@
     \italic \with-color "gray"
     {\concat { "31"\super{"st"} } "Auguest 2024"}
   }
-  composer  = "Chevin"
+  composer  = "Composer: Chevin"
   copyright = "© Chevin 2024"
   tagline   = "© Chevin 2024"
 }
@@ -22,7 +22,8 @@
   \new PianoStaff \with {
     instrumentName      = "Piano"
     shortInstrumentName = "Pno."
-  }{\tempo 4 = 100 \clef treble \key g \major \time 6/8
+  }<<
+    \new Staff {\tempo 4 = 100 \clef treble \key g \major \time 6/8
     b'4 b'8 b' a' g'            | 
     c''4.~c''                   |
     fis'4 fis'8 fis' e' d'      |
@@ -43,15 +44,6 @@
     fis'4 a'8 c''4 dis'8        |
     e'4.~e'4.     \!            |
   }
-
-  \new PianoStaff \with {
-    instrumentName      = "Piano 2"
-    shortInstrumentName = "Pno. 2"
-  }<<
-    \new Staff {\clef treble \key g \major
-      \repeat unfold 4 \repeat unfold 4 {R2. | }
-      \bar "|."
-    }
     \new ChordNames {
       \chordmode {
         e:m | c   | d   | g   |
