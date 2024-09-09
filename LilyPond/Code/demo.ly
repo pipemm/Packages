@@ -2,6 +2,13 @@
 \version "2.24.4"
 
 \score {
+  \layout {
+    \context {
+      \Score
+      \override SpacingSpanner
+        #'common-shortest-duration = #(ly:make-moment 1 8)
+    }
+  }
   \new Staff \with {
     instrumentName      = "Violin"
     shortInstrumentName = "Vln."
@@ -13,6 +20,13 @@
 }
 
 \score {
+  \layout {
+    \context {
+      \Score
+      \override SpacingSpanner
+        #'common-shortest-duration = #(ly:make-moment 1 8)
+    }
+  }
   \new Staff \with {
     instrumentName      = "Violin"
     shortInstrumentName = "Vln."
@@ -24,6 +38,13 @@
 }
 
 \score {
+  \layout {
+    \context {
+      \Score
+      \override SpacingSpanner
+        #'common-shortest-duration = #(ly:make-moment 1 8)
+    }
+  }
   \new Staff \with {
     instrumentName      = "El. Bass"
     shortInstrumentName = "El. B."
@@ -35,6 +56,13 @@
 }
 
 \score {
+  \layout {
+    \context {
+      \Score
+      \override SpacingSpanner
+        #'common-shortest-duration = #(ly:make-moment 1 8)
+    }
+  }
   \new Staff \with {
     instrumentName      = "El. Bass"
     shortInstrumentName = "El. B."
