@@ -187,8 +187,9 @@
           \repeat unfold 3 {
             bd4. r4 bd8                    |
           }
-          bd4. r4.                         | \fine
+          bd4. r4.                         |
         }
+        \fine
       >>
     }
   }
