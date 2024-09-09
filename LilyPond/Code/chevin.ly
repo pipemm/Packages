@@ -46,17 +46,17 @@
       c''4 b'8 a'8. fis'16 g' a'  |
       b'4 a'16 g' e'4.            |
       fis'4 a'8 c''4 dis'8        |
-      e'4.~e'4.     \!            |
+      e'4.~e'4.     \!            | \fine
     }
     \new ChordNames {
       \chordmode {
-        e2.:m | c   | d   | g   |
+        e1.:m | c   | d   | g   |
 
-        e2.:m | c   | d   | g   |
+        e1.:m | c   | d   | g   |
 
-        d2.   | b:m | a:m | e:m |
+        d1.   | b:m | a:m | e:m |
 
-        a2.:m | g   | b:7 | e:m |
+        a1.:m | g   | b:7 | e:m |
       }
     }
     \new Staff { \clef bass \key g \major
@@ -187,7 +187,7 @@
           \repeat unfold 3 {
             bd4. r4 bd8                    |
           }
-          bd4. r4.                         | \fine
+          bd4. r4.                         |
         }
       >>
     }
