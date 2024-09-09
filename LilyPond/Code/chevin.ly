@@ -50,13 +50,13 @@
     }
     \new ChordNames {
       \chordmode {
-        e2:m | c   | d   | g   |
+        e2.:m | c   | d   | g   |
 
-        e:m  | c   | d   | g   |
+        e:m   | c   | d   | g   |
 
-        d    | b:m | a:m | e:m |
+        d     | b:m | a:m | e:m |
 
-        a:m  | g   | b:7 | e:m |
+        a:m   | g   | b:7 | e:m |
       }
     }
     \new Staff { \clef bass \key g \major
