@@ -5,8 +5,7 @@
   \layout {
     \context {
       \Score
-      \override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1 8)
-      \override SpacingSpanner.spacing-increment        = #2
+      proportionalNotationDuration = #(ly:make-moment 1/8)
     }
   }
   \new Staff \with {
@@ -23,8 +22,7 @@
   \layout {
     \context {
       \Score
-      \override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1 8)
-      \override SpacingSpanner.spacing-increment        = #2
+      proportionalNotationDuration = #(ly:make-moment 1/8)
     }
   }
   \new Staff \with {
@@ -41,7 +39,7 @@
   \layout {
     \context {
       \Score
-      \override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1 8)
+      proportionalNotationDuration = #(ly:make-moment 1/8)
     }
   }
   \new Staff \with {
@@ -58,7 +56,7 @@
   \layout {
     \context {
       \Score
-      \override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1 8)
+      proportionalNotationDuration = #(ly:make-moment 1/8)
     }
   }
   \new Staff \with {
