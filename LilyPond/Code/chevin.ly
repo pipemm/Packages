@@ -19,7 +19,7 @@
     short-indent = 1.5\cm
     \context {
       \Score
-      proportionalNotationDuration = #(ly:make-moment 1/10)
+      % proportionalNotationDuration = #(ly:make-moment 1/10)
     }
   }
 <<
