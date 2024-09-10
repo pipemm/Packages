@@ -79,7 +79,7 @@
       g,,8 <b, d g> <b, d g> b,, <b, d g> <b, d g>     |
       b,,8 <b, dis! fis a> <b, dis! fis a> 
           dis, <b, dis! fis a> <b, dis! fis a>         |
-      e,8 <b, e g> <b, e g> <e, g, b,>4.               |
+      e,8 <b, e g> <b, e g> <e, g, b,>4.               | \fine
 
     }
     \new Lyrics \lyricmode { %% harmonic analysis : Functional Harmony (Tonic, Subdominant, Dominant)
@@ -124,7 +124,7 @@
     a'4.\> fis'4 c''8 |
     b'4. g'4 g'8      |
     fis'4. a'4 b'8    |
-    e'4.~e' \!        |
+    e'4.~e' \!        | \fine
   }
 
   \new Staff \with {
@@ -149,7 +149,7 @@
     a,4. e,4 fis,8      |
     g,4 d8~d4 c8        |
     b,4 dis8~dis!4 fis8 |
-    e4.~e               |
+    e4.~e               | \fine
   }
 
   \new DrumStaff \with {
