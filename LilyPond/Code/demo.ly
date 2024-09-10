@@ -20,15 +20,6 @@
 }
 
 \score {
-  \new PianoStaff \with {
-      instrumentName      = "Piano"
-      shortInstrumentName = "Pno."
-    }{\tempo 4 = \markup{66.66} \clef bass \time 2/4
-      r8 e, e, e, c,2
-    }
-}
-
-\score {
   \layout {
     \context {
       \Score
