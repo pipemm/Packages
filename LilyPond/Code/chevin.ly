@@ -27,7 +27,7 @@
     instrumentName      = "Piano"
     shortInstrumentName = "Pno."
   }<<
-    \new Staff {\tempo 4. = 100 \clef treble \key g \major \time 6/8
+    \new Staff {\tempo 4. = 70 \clef treble \key g \major \time 6/8
       b'4 b'8 b' a' g'            | 
       c''4.~c''                   |
       fis'4 fis'8 fis' e' d'      |
