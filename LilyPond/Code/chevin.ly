@@ -172,7 +172,7 @@
           \repeat unfold 6 {
             hh8 hh hh <hh sn> hh hh        |
           }
-          hh8 hh hh <hh sn>4.              |
+          hh8 hh hh <hh sn>4.              | \fine
         }
         \new DrumVoice { \voiceTwo
           \repeat unfold 7 {
@@ -189,7 +189,6 @@
           }
           bd4. r4.                         |
         }
-        \fine
       >>
     }
   }
