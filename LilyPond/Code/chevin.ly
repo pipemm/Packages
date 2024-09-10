@@ -46,7 +46,7 @@
       c''4 b'8 a'8. fis'16 g' a'  |
       b'4 a'16 g' e'4.            |
       fis'4 a'8 c''4 dis'8        |
-      e'4.~e'4.     \!            |
+      e'4.~e'4.     \!            | \fine
     }
     \new ChordNames {
       \chordmode {
