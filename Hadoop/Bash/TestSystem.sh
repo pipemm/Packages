@@ -1,4 +1,4 @@
-
+#!/usr/bin/bash
 
 which -a lsb_release
 lsb_release --version

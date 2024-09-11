@@ -1,4 +1,4 @@
-
+#!/usr/bin/bash
 
 which -a which
 man which
@@ -10,6 +10,14 @@ bash --help
 which -a curl
 curl --version
 curl --help
+
+which -a sort
+sort --version
+sort --help
+
+which -a cut
+cut --version
+cut --help
 
 which -a java
 java --version
