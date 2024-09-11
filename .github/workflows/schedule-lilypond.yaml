@@ -6,7 +6,7 @@ on:
   
   schedule:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
-    - cron:  '43 5  *  *  SAT'
+    - cron:  '43 5  *  *  THU'
           #   │  │  │  │  │
           #   │  │  │  │  └─── day of the week  (0–6, SUN-SAT)
           #   │  │  │  └────── month            (1–12)
@@ -26,9 +26,8 @@ on:
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       system-linux:
         description: 'Linux Version'
-        
         required: true
-        default: 'windows-latest'
+        default: 'ubuntu-latest'
         type: choice
         options:
         - ubuntu-latest
@@ -38,7 +37,7 @@ on:
       system-windows:
         description: 'Windows Version'
         required: true
-        default: 'ubuntu-latest'
+        default: 'windows-latest'
         type: choice
         options:
         - windows-latest

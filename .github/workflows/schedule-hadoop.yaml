@@ -1,12 +1,12 @@
 
-name: Ruby
-run-name: Ruby Jobs
+name: FontForge
+run-name: FontForge
 
 on:
   
   schedule:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
-    - cron:  '45 3  *  *  SAT'
+    - cron:  '54 6  *  *  TUE'
           #   │  │  │  │  │
           #   │  │  │  │  └─── day of the week  (0–6, SUN-SAT)
           #   │  │  │  └────── month            (1–12)
@@ -19,51 +19,48 @@ on:
     branches:
       - 'main'
     paths:
-      - 'Ruby/**.*'
+      - 'Hadoop/**.*'
 
   workflow_dispatch:
-
-jobs:
-
-  Recommanded-Version:
-    
-    runs-on: windows-2022
+    inputs:
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
-      ## https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
+      system-linux:
+        description: 'Linux Version'
+        required: true
+        default: 'ubuntu-latest'
+        type: choice
+        options:
+        - ubuntu-latest
+        - ubuntu-24.04
+        - ubuntu-22.04
+        - ubuntu-20.04
 
-    steps:
-      
-      - name: Checkout
-        uses: actions/checkout@v4
-          ## https://github.com/actions/checkout
-
-      - name: Run Pre-Check Scripts
-        working-directory: Ruby/
-        shell: cmd
-          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
-        run: |
-          test_init.cmd
-
-      - name: Get Download URL
-        working-directory: Ruby/
-        shell: pwsh
-          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
-        run: |
-          ./download.ps1
-
-  Ruby-Test:
-    
-    runs-on: ubuntu-22.04
+  Get-Download-URL-Release:
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+    # Map a step output to a job output
+    outputs:
+      dowload-url: ${{ steps.step-output.outputs.URL_DOWNLOAD_LINUX }}
 
     steps:
-      
       - name: Checkout
         uses: actions/checkout@v4
           ## https://github.com/actions/checkout
 
-      - name: Run Pre-Check Scripts
+      - name: Test
+        working-directory: Hadoop/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Ruby/test_init.sh
-          bash Ruby/check_action.sh
+          bash Bash/TestSystem.sh
+          bash Bash/TestEnvironment.sh
+
+      - id: step-output
+        name: Get Download URL
+        working-directory: Hadoop/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          curl https://hadoop.apache.org/releases.html
+
