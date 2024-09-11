@@ -19,6 +19,8 @@ which -a cut
 cut --version
 cut --help
 
+man exit1q
+
 which -a java
 java --version
 java --help

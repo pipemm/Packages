@@ -43,7 +43,9 @@ jobs:
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
     # Map a step output to a job output
     outputs:
-      dowload-url: ${{ steps.step-output.outputs.URL_DOWNLOAD_LINUX }}
+      dowload-url: ${{ steps.step-output.outputs.URL_DOWNLOAD }}
+      sha512-url:  ${{ steps.step-output.outputs.URL_SHA512 }}
+      asc-url:     ${{ steps.step-output.outputs.URL_ASC }}
 
     steps:
       - name: Checkout
@@ -64,5 +66,6 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          curl https://hadoop.apache.org/releases.html
+          bash Bash/GetURL-Release.sh
+
 
