@@ -35,6 +35,8 @@ on:
         - ubuntu-22.04
         - ubuntu-20.04
 
+jobs:
+
   Get-URL-Release:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
