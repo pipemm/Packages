@@ -1,6 +1,6 @@
 
-name: FontForge
-run-name: FontForge
+name: Hadoop
+run-name: Hadoop
 
 on:
   
@@ -35,7 +35,7 @@ on:
         - ubuntu-22.04
         - ubuntu-20.04
 
-  Get-Download-URL-Release:
+  Get-URL-Release:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
