@@ -98,13 +98,28 @@ jobs:
         run: |
           bash Bash/GetURL-HIVE-Common.sh
 
+  Get-URL-Hive-Common-Latest:
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+    needs: 
+    - Get-URL-Hive-Common
+    # Map a step output to a job output
+    outputs:
+      dowload-url: ${{ steps.step-output.outputs.URL_DOWNLOAD }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
   Download-Package-Hive:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
     needs: 
     - Get-URL-Hive-Release
-    - Get-URL-Hive-Common
+    - Get-URL-Hive-Common-Latest
 
     steps:
       - name: Checkout
