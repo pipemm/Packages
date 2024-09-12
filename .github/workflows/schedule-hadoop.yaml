@@ -74,7 +74,8 @@ jobs:
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
     # Map a step output to a job output
     outputs:
-      dowload-url: ${{ steps.step-output.outputs.URL_DOWNLOAD }}
+      url-latest: ${{ steps.step-output.outputs.URL_LATEST }}
+      url-stable: ${{ steps.step-output.outputs.URL_STABLE }}
 
     steps:
       - name: Checkout
@@ -101,7 +102,9 @@ jobs:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
-    needs: [Get-URL-Hive-Release,Get-URL-Hive-Common]
+    needs: 
+    - Get-URL-Hive-Release
+    - Get-URL-Hive-Common
 
     steps:
       - name: Checkout
