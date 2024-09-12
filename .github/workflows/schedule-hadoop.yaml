@@ -37,7 +37,7 @@ on:
 
 jobs:
 
-  Get-URL-Hive-Release:
+  Get-URL-Hadoop-Release:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
@@ -66,9 +66,9 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/GetURL-HIVE-Release.sh
+          bash Bash/GetURL-HADOOP-Release.sh
 
-  Get-URL-Hive-Common:
+  Get-URL-Hadoop-Common:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
@@ -96,14 +96,14 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/GetURL-HIVE-Common.sh
+          bash Bash/GetURL-HADOOP-Common.sh
 
-  Get-URL-Hive-Common-Latest:
+  Get-URL-Hadoop-Common-Latest:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
     needs: 
-    - Get-URL-Hive-Common
+    - Get-URL-Hadoop-Common
     # Map a step output to a job output
     outputs:
       dowload-url: ${{ steps.step-output.outputs.URL_DOWNLOAD }}
@@ -119,18 +119,18 @@ jobs:
         name: Get Download URL
         working-directory: Hadoop/
         env:
-          URL_FILES: "${{ needs.Get-URL-Hive-Common.outputs.url-latest }}"
+          URL_FILES: "${{ needs.Get-URL-Hadoop-Common.outputs.url-latest }}"
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/GetURL-HIVE-Common2.sh
+          bash Bash/GetURL-HADOOP-Common2.sh
 
-  Get-URL-Hive-Common-Stable:
+  Get-URL-Hadoop-Common-Stable:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
     needs: 
-    - Get-URL-Hive-Common
+    - Get-URL-Hadoop-Common
     # Map a step output to a job output
     outputs:
       dowload-url: ${{ steps.step-output.outputs.URL_DOWNLOAD }}
@@ -146,20 +146,20 @@ jobs:
         name: Get Download URL
         working-directory: Hadoop/
         env:
-          URL_FILES: "${{ needs.Get-URL-Hive-Common.outputs.url-stable }}"
+          URL_FILES: "${{ needs.Get-URL-Hadoop-Common.outputs.url-stable }}"
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/GetURL-HIVE-Common2.sh
+          bash Bash/GetURL-HADOOP-Common2.sh
 
-  Download-Package-Hive:
+  Download-Package-Hadoop:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
     needs: 
-    - Get-URL-Hive-Release
-    - Get-URL-Hive-Common-Latest
-    - Get-URL-Hive-Common-Stable
+    - Get-URL-Hadoop-Release
+    - Get-URL-Hadoop-Common-Latest
+    - Get-URL-Hadoop-Common-Stable
 
     steps:
       - name: Checkout
@@ -169,7 +169,7 @@ jobs:
       - name: Test
         working-directory: Hadoop/
         env:
-          URL_DOWNLOAD: "${{ needs.Get-URL-Hive-Release.outputs.dowload-url }}"
+          URL_DOWNLOAD: "${{ needs.Get-URL-Hadoop-Release.outputs.dowload-url }}"
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
