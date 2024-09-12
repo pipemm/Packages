@@ -107,6 +107,8 @@ jobs:
     # Map a step output to a job output
     outputs:
       dowload-url: ${{ steps.step-output.outputs.URL_DOWNLOAD }}
+      sha512-url:  ${{ steps.step-output.outputs.URL_SHA512 }}
+      asc-url:     ${{ steps.step-output.outputs.URL_ASC }}
 
     steps:
       - name: Checkout
