@@ -7,7 +7,7 @@ FILE_URLS="${FOLDER_DL%/}/URLs.txt"
 ## https://hadoop.apache.org/releases.html
 URL_RELEASE='https://hadoop.apache.org/releases.html'
 curl "${URL_RELEASE}" |
-  sed --silent 's!^.*"\(http[s]\?[^"]\+\)".*$!\1!p' > "${FILE_URLS}"
+  sed --silent 's!^.* href="\(http[s]\?[^"]\+\)".*$!\1!p' > "${FILE_URLS}"
 
 cat "${FILE_URLS}"
 

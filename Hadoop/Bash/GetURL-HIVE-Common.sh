@@ -10,7 +10,7 @@ URL_COMMON_PAGE='https://www.apache.org/dyn/closer.cgi/hadoop/common/'
 curl "${URL_COMMON_PAGE}" |
   sed '/Alternate download locations are suggested below\./q' |
   sed '0,/We suggest the following location for your download:/d' |
-  sed --silent 's!^.*href="\(http[s]\?[^"]\+\)".*$!\1!p' > "${FILE_URL0}"
+  sed --silent 's!^.* href="\(http[s]\?[^"]\+\)".*$!\1!p' > "${FILE_URL0}"
 
 URL_COMMON=$(
   cat "${FILE_URL0}" |
@@ -25,7 +25,7 @@ fi
 FILE_URL1="${FOLDER_DL%/}/URL1.txt"
 URL_COMMON="${URL_COMMON%/}/"
 curl "${URL_COMMON}" |
-  sed --silent 's!^.*href="\([^"]\+\)".*$!\1!p' |
+  sed --silent 's!^.* href="\([^"]\+\)".*$!\1!p' |
   sed '/^\//d' |
   sed --silent '/\/$/p' |
   while read -r subfolder
