@@ -117,7 +117,7 @@ jobs:
         name: Get Download URL
         working-directory: Hadoop/
         env:
-          URL_FILES: "${{ needs.Get-Download-URL.outputs.url-latest }}"
+          URL_FILES: "${{ needs.Get-URL-Hive-Common.outputs.url-latest }}"
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
