@@ -17,7 +17,8 @@ curl "${URL_FILES}" |
     echo "${URL_FILES%/}/${file}"
   done > "${FILE_URLS}"
 
-cat "${FILE_URLS}" |
+URL_TARBALL=$(
+  cat "${FILE_URLS}" |
   sed --silent '/\/hadoop-[0-9.]\+\.tar\.gz$/p' |
   while read -r url
   do
@@ -26,4 +27,18 @@ cat "${FILE_URLS}" |
   sort --reverse --version-sort --key=1 |
   cut --delimiter=' ' --fields=2 |
   head --lines=1
-  
+)
+
+if [[ -z "${URL_TARBALL}" ]]
+then
+  exit 1
+fi
+URL_DOWNLOAD="${URL_TARBALL}"
+
+if [[ -n "${GITHUB_OUTPUT}" ]]
+then
+  echo "URL_DOWNLOAD=${URL_DOWNLOAD}"
+  echo "URL_DOWNLOAD=${URL_DOWNLOAD}" >> "${GITHUB_OUTPUT}"
+fi
+
+HADOOP_VERSION="${URL_TARBALL##*/}"
