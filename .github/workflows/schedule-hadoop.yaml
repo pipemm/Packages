@@ -37,7 +37,7 @@ on:
 
 jobs:
 
-  Get-URL-Release:
+  Get-URL-Hive-Release:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
@@ -66,6 +66,44 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/GetURL-Release.sh
+          bash Bash/GetURL-HIVE-Release.sh
 
+  Get-URL-Hive-Common:
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+    # Map a step output to a job output
+    outputs:
+      dowload-url: ${{ steps.step-output.outputs.URL_DOWNLOAD }}
 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - name: Test
+        working-directory: Hadoop/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash Bash/TestSystem.sh
+          bash Bash/TestEnvironment.sh
+
+      - id: step-output
+        name: Get Download URL
+        working-directory: Hadoop/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash Bash/GetURL-HIVE-Common.sh
+
+  Download-Package-Hive:
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+    needs: [Get-URL-Hive-Release,Get-URL-Hive-Common]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
