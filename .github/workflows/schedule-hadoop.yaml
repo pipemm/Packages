@@ -113,6 +113,16 @@ jobs:
         uses: actions/checkout@v4
           ## https://github.com/actions/checkout
 
+      - id: step-output
+        name: Get Download URL
+        working-directory: Hadoop/
+        env:
+          URL_FILES: "${{ needs.Get-Download-URL.outputs.url-latest }}"
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash Bash/GetURL-HIVE-Common2.sh
+
   Download-Package-Hive:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories

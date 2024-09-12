@@ -136,7 +136,8 @@ jobs:
     runs-on: ${{ inputs.system-windows || 'windows-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
-    needs: [Get-Download-URL]
+    needs: 
+    - Get-Download-URL
 
     steps:
       - name: Checkout
