@@ -39,13 +39,13 @@ HADOOP_VERSION="${URL_TARBALL##*/}"
 
 URL_SHA512=$(
   cat "${FILE_URLS}" |
-  grep --fixed-strings "${HADOOP_VERSION}.sha512" --ignore-case |
+  grep --fixed-strings "/${HADOOP_VERSION}.sha512" --ignore-case |
   head --lines=1
 )
 
 URL_ASC=$(
   cat "${FILE_URLS}" |
-  grep --fixed-strings "${HADOOP_VERSION}.asc" --ignore-case |
+  grep --fixed-strings "/${HADOOP_VERSION}.asc" --ignore-case |
   head --lines=1
 )
 
