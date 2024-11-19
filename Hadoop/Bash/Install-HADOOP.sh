@@ -32,7 +32,7 @@ tar --extract --gunzip --file="${LOC_HADOOP}" --directory="${FOLDER_HADOOP%/}/"
 
 ls ${FOLDER_INS%/}/*.*
 
-if [[ -z "${GITHUB_OUTPUT}" ]]
+if [[ -z "${GITHUB_ENV}" ]]
 then
   exit 0
 fi
@@ -40,5 +40,5 @@ fi
 if [[ -n "${VERSION_HADOOP}" ]]
 then
   echo "VERSION_HADOOP=${VERSION_HADOOP}"
-  echo "VERSION_HADOOP=${VERSION_HADOOP}" >> "${GITHUB_OUTPUT}"
+  echo "VERSION_HADOOP=${VERSION_HADOOP}" >> "${GITHUB_ENV}"
 fi
