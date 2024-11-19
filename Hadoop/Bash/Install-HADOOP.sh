@@ -10,9 +10,6 @@ LOC_HADOOP=$(
 TAR_HADOOP="${LOC_HADOOP##*/}"
 VERSION_HADOOP="${TAR_HADOOP%.tar.gz}"
 
-echo "${TAR_HADOOP}"
-echo "${VERSION_HADOOP}"
-
 echo 'SHA512Sum Calculation'
 cat "${LOC_HADOOP}" |
   sha512sum
@@ -30,7 +27,6 @@ mkdir --parent "${FOLDER_HADOOP%/}/"
 
 tar --extract --gunzip --file="${LOC_HADOOP}" --directory="${FOLDER_HADOOP%/}/"
 
-ls ${FOLDER_INS%/}/*.*
 
 if [[ -z "${GITHUB_ENV}" ]]
 then

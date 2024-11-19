@@ -196,3 +196,28 @@ jobs:
           name: "${{ env.VERSION_HADOOP }}"
           path: 'Hadoop/Installation/'
 
+  Playground:
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+    needs: 
+    - Get-Package-Hadoop
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - uses: actions/download-artifact@v4
+          ## https://github.com/actions/download-artifact
+        with:
+          name: 'hadoop'
+          path: 'Hadoop/Installation/'
+
+      - name: Test
+        working-directory: Hadoop/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          ls Installation/*.*
+          ls Installation/*/*.*
