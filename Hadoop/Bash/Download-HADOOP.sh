@@ -10,7 +10,8 @@ FOLDER_DL='Download/'
 mkdir --parent "${FOLDER_DL%/}/"
 
 echo "${URL_DOWNLOAD}"
-curl "${URL_DOWNLOAD}" "${FOLDER_DL%/}/${URL_DOWNLOAD##*/}"
+echo curl --output "${FOLDER_DL%/}/${URL_DOWNLOAD##*/}" "${URL_DOWNLOAD}"
+curl --output "${FOLDER_DL%/}/${URL_DOWNLOAD##*/}" "${URL_DOWNLOAD}"
 
 FOLDER_INS='Installation/'
 mkdir --parent "${FOLDER_INS%/}/"
