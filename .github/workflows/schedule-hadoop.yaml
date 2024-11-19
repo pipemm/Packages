@@ -169,8 +169,9 @@ jobs:
       - name: Test
         working-directory: Hadoop/
         env:
-          URL_DOWNLOAD: "${{ needs.Get-URL-Hadoop-Release.outputs.dowload-url }}"
+          URL_DOWNLOAD: "${{ needs.Get-URL-Hadoop-Common-Stable.outputs.dowload-url }}"
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          echo "${URL_DOWNLOAD}"
+          mkdir --parernt Download/
+          curl "${URL_DOWNLOAD}" "Download/${URL_DOWNLOAD##*/}"
