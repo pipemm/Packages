@@ -152,7 +152,7 @@ jobs:
         run: |
           bash Bash/GetURL-HADOOP-Common2.sh
 
-  Download-Package-Hadoop:
+  Get-Package-Hadoop:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
@@ -184,4 +184,8 @@ jobs:
         run: |
           bash Bash/Install-HADOOP.sh
 
-
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: "${{ env.VERSION_HADOOP }}"
+          path: 'Hadoop/Installation/'
