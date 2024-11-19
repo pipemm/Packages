@@ -178,7 +178,7 @@ jobs:
       - name: Install
         working-directory: Hadoop/
         env:
-          CHECK_SHA512: "${{ needs.Get-URL-Hadoop-Common-Stable.outputs.sha512-url }}"
+          URL_SHA512: "${{ needs.Get-URL-Hadoop-Common-Stable.outputs.sha512-url }}"
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
