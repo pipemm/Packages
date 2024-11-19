@@ -27,3 +27,6 @@ fi
 FOLDER_INS='Installation/'
 mkdir --parent "${FOLDER_INS%/}/"
 
+tar -xzf "${LOC_HADOOP}" -C "${FOLDER_INS%/}/"
+
+ls ${FOLDER_INS%/}/*.*
