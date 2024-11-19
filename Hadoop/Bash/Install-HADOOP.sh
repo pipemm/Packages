@@ -25,8 +25,9 @@ then
 fi
 
 FOLDER_INS='Installation/'
-mkdir --parent "${FOLDER_INS%/}/"
+FOLDER_HADOOP="${FOLDER_INS%/}/${VERSION_HADOOP}/"
+mkdir --parent "${FOLDER_HADOOP%/}/"
 
-tar --extract --gunzip --file="${LOC_HADOOP}" --directory="${FOLDER_INS%/}/"
+tar --extract --gunzip --file="${LOC_HADOOP}" --directory="${FOLDER_HADOOP%/}/"
 
 ls ${FOLDER_INS%/}/*.*
