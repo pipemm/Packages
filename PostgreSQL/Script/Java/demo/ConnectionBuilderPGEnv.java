@@ -13,29 +13,19 @@ public class ConnectionBuilderPGEnv {
             String pass
             ) throws SQLException {
 
-        Connection connection = null;
+        Connection conn = null;
         Properties props = new Properties();
         props.setProperty("ssl", "true");
-
-        if ( user != null & pass != null) {
+        if ( user != null) {
             props.setProperty("user",     user);
+        }
+        if ( pass != null ) {
             props.setProperty("password", pass);
-            try {
-                connection = DriverManager.getConnection(url,props);
-            } catch (SQLException e) {
-                props = new Properties();
-                props.setProperty("ssl", "true");
-                try {
-                    connection = DriverManager.getConnection(url,props);
-                } catch (SQLException ne) {
-                    throw e;
-                }
-            }
-        } else {
-            connection = DriverManager.getConnection(url,props);
         }
 
-        return connection;
+        conn = DriverManager.getConnection(url,props);
+
+        return conn;
     }
 
     public static Connection getConnection() throws SQLException {
