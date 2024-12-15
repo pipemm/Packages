@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionBuilderPGEnv {
-    // https://jdbc.postgresql.org/documentation/use/#connection-parameters
+// https://jdbc.postgresql.org/documentation/use/#connection-parameters
 
     public static Connection getConnection() throws SQLException {
 
@@ -35,31 +35,4 @@ public class ConnectionBuilderPGEnv {
         return conn;
     }
 
-    // for testing
-    public static void main(String[] args) {
-
-        Connection connection = null;
-
-        try {
-
-            // Establish the connection
-            connection = getConnection();
-            System.out.println("Connection established successfully.");
-
-        } catch (SQLException | IllegalArgumentException e) {
-
-            e.printStackTrace();
-
-        } finally {
-
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
-
-    }
 }

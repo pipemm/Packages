@@ -32,4 +32,4 @@ cat "${FileList}" |
     javac -d "${FolderClass%/}/" --class-path "${CLASSPATH}" "${JavaPath}"
   done
 
-java --class-path "${CLASSPATH}" demo.ConnectionBuilderPGEnv
+java --class-path "${CLASSPATH}" demo.Tester
