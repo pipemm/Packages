@@ -3,7 +3,7 @@ package demo;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import demo.ConnectionBuilderPGEnv;
+import demo.ConnectionBuilderPostgreSQL;
 
 public class Tester {
     
@@ -15,7 +15,7 @@ public class Tester {
         try {
 
             // Establish the connection
-            conn = ConnectionBuilderPGEnv.getConnection();
+            conn = ConnectionBuilderPostgreSQL.getConnection();
             System.out.println("Connection established successfully.");
 
         } catch (SQLException | IllegalArgumentException e) {

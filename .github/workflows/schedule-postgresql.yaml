@@ -27,7 +27,7 @@ on:
       system-linux:
         description: 'Linux Version'
         required: true
-        default: 'ubuntu-latest'
+        default: 'ubuntu-24.04'
         type: choice
         options:
         - ubuntu-latest
@@ -87,6 +87,7 @@ jobs:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/tree/main/images/ubuntu
+    environment: PostgreSQL1
     needs: [Download-JDBC]
 
     steps:
@@ -110,7 +111,7 @@ jobs:
         run: |
           bash Script/Bash/CheckEnvironment.sh
 
-      - name: Check Environment
+      - name: Compile
         working-directory: PostgreSQL/
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
