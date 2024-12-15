@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionBuilderPGEnv {
+    // https://jdbc.postgresql.org/documentation/use/#connection-parameters
 
     public static Connection getConnection() throws SQLException {
 
@@ -27,7 +28,7 @@ public class ConnectionBuilderPGEnv {
         if ( pass != null ) {
             props.setProperty("password", pass);
         }
-        props.setProperty("ssl", "require");
+        props.setProperty("sslmode", "require");
 
         conn = DriverManager.getConnection(url,props);
 

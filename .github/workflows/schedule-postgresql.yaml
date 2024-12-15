@@ -103,11 +103,18 @@ jobs:
           # Destination path. Supports basic tilde expansion.
           path: PostgreSQL/DevelopmentKit/
 
-      - name: Test
+      - name: Check Environment
         working-directory: PostgreSQL/
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          ls DevelopmentKit/*
+          bash Script/Bash/CheckEnvironment.sh
+
+      - name: Check Environment
+        working-directory: PostgreSQL/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash Script/Bash/Compile.sh
 
 
