@@ -1,1 +1,3 @@
 DevelopmentKit/*.jar
+Class/*.class
+Class/**/*.class

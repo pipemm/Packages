@@ -16,7 +16,10 @@ URL_DOWNLOAD=$(
   jq --raw-output '.[0] | .browser_download_url'
 )
 
-echo "${GITHUB_ENV}"
+JAR_NAME="${URL_DOWNLOAD##*/}"
+JDBC_VER="${JAR_NAME%.jar}"
+JDBC_VER="${JDBC_VER##*-}"
+echo "${JDBC_VER}"
 
 if [[ -n "${GITHUB_ENV}" ]]
 then
