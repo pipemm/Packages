@@ -76,6 +76,12 @@ jobs:
           name: postgresql-jdbc-latest
           path: PostgreSQL/JDBC/Artifact/
 
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: "${{ env.NAME_PACKAGE }}"
+          path: PostgreSQL/JDBC/Artifact/
+
   Normal-Development:
 
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}

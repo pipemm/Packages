@@ -17,14 +17,15 @@ URL_DOWNLOAD=$(
 )
 
 JAR_NAME="${URL_DOWNLOAD##*/}"
-JDBC_VER="${JAR_NAME%.jar}"
-JDBC_VER="${JDBC_VER##*-}"
-echo "${JDBC_VER}"
+NAME_PARKAGE="${JAR_NAME%.jar}"
+echo "${NAME_PARKAGE}"
 
 if [[ -n "${GITHUB_ENV}" ]]
 then
   echo "URL_DOWNLOAD=${URL_DOWNLOAD}"
   echo "URL_DOWNLOAD=${URL_DOWNLOAD}" >> "${GITHUB_ENV}"
+  echo "NAME_PARKAGE=${NAME_PARKAGE}"
+  echo "NAME_PARKAGE=${NAME_PARKAGE}" >> "${GITHUB_ENV}"
 fi
 
 ## https://github.com/pgjdbc/pgjdbc/releases/latest

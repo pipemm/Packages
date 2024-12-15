@@ -17,7 +17,7 @@ for j in ${PWD%/}/${FolderSDK%/}/*.jar
 do
   CLASSPATH="$CLASSPATH:${j}"
 done
-CLASSPATH="$CLASSPATH:${PWD%/}/${FolderClass%/}/demo/"
+CLASSPATH="$CLASSPATH:${PWD%/}/${FolderClass%/}/"
 
 cat "${FileList}" |
   while read -r line
@@ -32,5 +32,4 @@ cat "${FileList}" |
     javac -d "${FolderClass%/}/" --class-path "${CLASSPATH}" "${JavaPath}"
   done
 
-echo "${CLASSPATH}"
-java --class-path "${CLASSPATH}" ConnectionBuilderPGEnv
+java --class-path "${CLASSPATH}" demo.ConnectionBuilderPGEnv
