@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 
 FolderJava='Script/Java/'
 FileList="${FolderJava%/}/CompileList.txt"
@@ -32,4 +33,4 @@ cat "${FileList}" |
     javac -d "${FolderClass%/}/" --class-path "${CLASSPATH}" "${JavaPath}"
   done
 
-java --class-path "${CLASSPATH}" demo.Tester
+
