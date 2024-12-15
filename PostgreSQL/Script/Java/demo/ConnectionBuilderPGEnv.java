@@ -7,44 +7,31 @@ import java.sql.SQLException;
 
 public class ConnectionBuilderPGEnv {
 
-    private static Connection getConnectionTry(
-            String url, 
-            String user, 
-            String pass
-            ) throws SQLException {
-
-        Connection conn = null;
-        Properties props = new Properties();
-        props.setProperty("ssl", "true");
-        if ( user != null) {
-            props.setProperty("user",     user);
-        }
-        if ( pass != null ) {
-            props.setProperty("password", pass);
-        }
-
-        conn = DriverManager.getConnection(url,props);
-
-        return conn;
-    }
-
     public static Connection getConnection() throws SQLException {
 
-        Connection connection = null;
-        String     url        = null;
-        String     user       = null;
-        String     pass       = null;
+        Connection conn  = null;
+        String     url   = null;
+        String     user  = null;
+        String     pass  = null;
+        Properties props = new Properties();
         
         url = System.getenv("PG_SERVER_URL");
         if ( url == null ) {
             throw new IllegalArgumentException("URL is missing.");
         }
         user = System.getenv("PG_ACOUNT_USER");
+        if ( user != null) {
+            props.setProperty("user",     user);
+        }
         pass = System.getenv("PG_ACOUNT_PASSWORD");
+        if ( pass != null ) {
+            props.setProperty("password", pass);
+        }
+        props.setProperty("ssl", "require");
 
-        connection = getConnectionTry(url, user, pass);
+        conn = DriverManager.getConnection(url,props);
 
-        return connection;
+        return conn;
     }
 
     // for testing
