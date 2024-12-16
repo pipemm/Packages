@@ -16,6 +16,6 @@ curl "${url_download}" |
     filename="${filename##*/}"
     if [[ ! -f "${filename}" ]]
     then
-      curl --output "${filename}" "${url}"
+      curl --output "${filename}" --location "${url}"
     fi
   done

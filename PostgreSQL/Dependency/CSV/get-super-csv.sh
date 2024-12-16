@@ -16,6 +16,18 @@ curl --location \
   --header 'X-GitHub-Api-Version: 2022-11-28' \
   "${API_LATEST}" |
   jq '.assets' |
-  jq '[.[] | {name,browser_download_url}]' |
   jq '[.[] | select(.name | startswith("super-csv-distribution-")) ]' |
-  jq '[.[] | select(.name | endswith("-bin.zip")) ]'
+  jq '[.[] | select(.name | endswith("-bin.zip")) ]' |
+  jq '[.[] | .browser_download_url]' |
+  jq  --raw-output '@tsv' |
+  while read -r url
+  do
+    filename="${url##*/}"
+    if [[ ! -f "${filename}" ]]
+    then
+      curl --output "${filename}" --location "${url}"
+    fi
+    unzip -l "${filename}"
+    unzip -Z "${filename}"
+  done
+
