@@ -25,9 +25,25 @@ curl --location \
     filename="${url##*/}"
     if [[ ! -f "${filename}" ]]
     then
+      echo "downloading ${url}"
       curl --output "${filename}" --location "${url}"
     fi
-    unzip -l "${filename}"
-    unzip -Z "${filename}"
+    unzip -l "${filename}" |
+      sed --silent 's!^.* \(super-csv/super-csv-[0-9.]\+\.jar\)$!\1!p' |
+      while read -r inpath
+      do
+        jarfile="${inpath##*/}"
+        if [[ ! -f "${jarfile}" ]]
+        then
+          unzip -j "${filename}" "${inpath}"
+        fi
+        
+        JAR_NAME_SUPERCSV="${jarfile%.jar}"
+        if [[ -n "${GITHUB_ENV}" ]]
+        then
+          echo "JAR_NAME_SUPERCSV=${JAR_NAME_SUPERCSV}"
+          echo "JAR_NAME_SUPERCSV=${JAR_NAME_SUPERCSV}" >> "${GITHUB_ENV}"
+        fi
+      done
   done
 
