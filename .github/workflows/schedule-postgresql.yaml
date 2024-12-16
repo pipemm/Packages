@@ -108,13 +108,25 @@ jobs:
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
-          name: opoencsv-latest
-          path: PostgreSQL/Dependency/CSV/opoencsv-*.jar
+          name: opencsv-latest
+          path: PostgreSQL/Dependency/CSV/opencsv-*.jar
+
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: "${{ env.JAR_NAME_OPENCSV }}"
+          path: PostgreSQL/Dependency/CSV/opencsv-*.jar
 
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
           name: super-csv-latest
+          path: PostgreSQL/Dependency/CSV/super-csv-*.jar
+
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: "${{ env.JAR_NAME_SUPERCSV }}"
           path: PostgreSQL/Dependency/CSV/super-csv-*.jar
 
   Normal-Development:
