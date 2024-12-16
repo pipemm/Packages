@@ -1,7 +1,10 @@
+#!/usr/bin/bash
 
 which -a which
 
 which -a bash
+bash --version
+bash --help
 
 echo "PATH=${PATH}"
 echo "JAVA_HOME=${JAVA_HOME}"

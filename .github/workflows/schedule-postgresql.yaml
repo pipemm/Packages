@@ -27,7 +27,7 @@ on:
       system-linux:
         description: 'Linux Version'
         required: true
-        default: 'ubuntu-24.04'
+        default: 'ubuntu-latest'
         type: choice
         options:
         - ubuntu-latest
