@@ -14,7 +14,11 @@ public class Tester {
 
         try {
             
-            System.out.println(args.length);
+            if ( args.length == null ) {
+                System.out.println(0);
+            } else {
+                System.out.println(args.length);
+            }
 
             // Establish the connection
             conn = ConnectionBuilderPostgreSQL.getConnection();
