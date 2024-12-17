@@ -13,6 +13,8 @@ public class Tester {
         Connection conn = null;
 
         try {
+            
+            System.out.println(args.length);
 
             // Establish the connection
             conn = ConnectionBuilderPostgreSQL.getConnection();
@@ -31,6 +33,7 @@ public class Tester {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+
         }
 
     }

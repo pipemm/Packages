@@ -175,3 +175,4 @@ jobs:
           PG_ACOUNT_PASSWORD : "${{ secrets.PG_ACOUNT_PASSWORD }}"
         run: |
           bash Script/Bash/Tester.sh
+
