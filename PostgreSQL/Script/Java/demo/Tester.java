@@ -30,7 +30,7 @@ public class Tester {
         
         path = path.trim();
 
-        if ( ! path.matches("^.*\\.sql$") ) {
+        if ( ! path.matches("(?i)^.+\\.sql$") ) {
            throw new IllegalArgumentException("SQL file name should end with .sql (" + path + ")");
         }
 
@@ -47,11 +47,17 @@ public class Tester {
         ZonedDateTime utcNow        = Instant.now().atZone(ZoneId.of("UTC"));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
         String formattedDateTime    = utcNow.format(formatter);
-
-        String outPath = outputDefault;
+        
+        if ( path == null ) {
+            path = ".";
+        }
 
         if ( path == null & ( reader == null | reader.getBaseName().length() == 0 ) ) {
-
+            path = outputDefault;
+        } else if ( path == null ) {
+            path = reader.getBaseName() + "_" + formattedDateTime +  ".csv";
+        } else if ( ! path.matches("(?i)^.+\\.csv$") ) {
+            
         }
 
         WriterInterface writer = new GeneralOpenCSVWriter(path);
