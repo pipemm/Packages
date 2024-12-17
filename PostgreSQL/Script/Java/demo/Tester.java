@@ -2,6 +2,11 @@ package demo;
 
 import java.io.IOException;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -9,6 +14,9 @@ import java.sql.SQLException;
 
 import demo.ReaderInterface;
 import demo.GeneralReader;
+
+import demo.WriterInterface;
+import demo.GeneralOpenCSVWriter;
 
 import demo.ConnectionBuilderPostgreSQL;
 
@@ -20,6 +28,8 @@ public class Tester {
     
     private static ReaderInterface getReader(String path) {
         
+        path = path.trim();
+
         if ( ! path.matches("^.*\\.sql$") ) {
            throw new IllegalArgumentException("SQL file name should end with .sql (" + path + ")");
         }
@@ -27,6 +37,26 @@ public class Tester {
         ReaderInterface reader = new GeneralReader(path);
 
         return reader;
+
+    }
+
+    private static WriterInterface getWriter(String path) {
+
+        path = path.trim();
+
+        ZonedDateTime utcNow        = Instant.now().atZone(ZoneId.of("UTC"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String formattedDateTime    = utcNow.format(formatter);
+
+        String outPath = outputDefault;
+
+        if ( path == null & ( reader == null | reader.getBaseName().length() == 0 ) ) {
+
+        }
+
+        WriterInterface writer = new GeneralOpenCSVWriter(path);
+
+        return writer;
 
     }
 
