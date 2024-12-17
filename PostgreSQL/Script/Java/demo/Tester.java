@@ -14,10 +14,11 @@ public class Tester {
 
         try {
             
-            if ( args.length == 0 ) {
-                System.out.println(args.length);
-            } else {
-                System.out.println(args.length);
+            System.out.println(args.length);
+
+            if ( args.length < 1 ) {
+                System.err.println("Connection established successfully.");
+                return;
             }
 
             // Establish the connection
