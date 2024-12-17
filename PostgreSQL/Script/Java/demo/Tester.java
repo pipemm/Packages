@@ -3,17 +3,20 @@ package demo;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import demo.GeneralReader;
 import demo.ConnectionBuilderPostgreSQL;
 
 public class Tester {
     
     private static String getSQL(String path) {
         
-        if ( ! path.endsWith(".sql") ) {
-           throw new IllegalArgumentException("SQL file should end with .sql.");
+        if ( ! path.matches("(?i)\\.sql$") ) {
+           throw new IllegalArgumentException("SQL file name should end with .sql.");
         }
 
-        return path;
+        GeneralReader reader = new GeneralReader(path);
+
+        return reader.getContent();
 
     }
 
@@ -23,8 +26,6 @@ public class Tester {
 
         try {
             
-            System.out.println(args.length);
-
             if ( args.length < 1 ) {
                 System.err.println("needs a script.");
                 return;
