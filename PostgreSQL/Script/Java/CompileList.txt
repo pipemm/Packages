@@ -1,4 +1,5 @@
 demo/ConnectionBuilderPostgreSQL
 demo/ConnectionBuilderRDS
+demo/ReaderInterface
 demo/GeneralReader
 demo/Tester

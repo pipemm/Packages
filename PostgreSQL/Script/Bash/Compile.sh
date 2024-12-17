@@ -27,6 +27,7 @@ cat "${FileList}" |
     JavaPath="${FolderJava%/}/${JavaPath#/}"
     if [[ ! -f "${JavaPath#/}" ]]
     then
+      echo "not found ${line}"
       continue
     fi
     echo "compiling ${line}"

@@ -4,7 +4,9 @@ import java.nio.file.Paths;
 import java.nio.file.Path; 
 import java.io.File;
 
-public class GeneralReader {
+import demo.ReaderInterface;
+
+public class GeneralReader implements ReaderInterface {
 
     private String filePath;
     private File   file;
