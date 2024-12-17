@@ -10,8 +10,8 @@ public class Tester {
     
     private static String getSQL(String path) {
         
-        if ( ! path.matches("(?i)\\.sql$") ) {
-           throw new IllegalArgumentException("SQL file name should end with .sql.");
+        if ( ! path.matches("^.*\\.sql$") ) {
+           throw new IllegalArgumentException("SQL file name should end with .sql: " + path);
         }
 
         GeneralReader reader = new GeneralReader(path);
