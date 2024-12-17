@@ -135,7 +135,9 @@ jobs:
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/tree/main/images/ubuntu
     environment: PostgreSQL1
-    needs: [Download-JDBC]
+    needs: 
+      - Download-JDBC
+      - Download-CSV-JAR
 
     steps:
       
