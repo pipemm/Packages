@@ -8,8 +8,12 @@ import demo.ConnectionBuilderPostgreSQL;
 public class Tester {
     
     private static String getSQL(String path) {
+        
+        if ( path.endsWith('.sql') ) {
+           throw IllegalArgumentException('SQL file should end with .sql.');
+        }
 
-        return path
+        return path;
 
     }
 
