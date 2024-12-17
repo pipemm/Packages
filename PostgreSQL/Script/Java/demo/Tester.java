@@ -15,7 +15,7 @@ public class Tester {
         try {
             
             if ( args.length == 0 ) {
-                System.out.println(0);
+                System.out.println(args.length);
             } else {
                 System.out.println(args.length);
             }
