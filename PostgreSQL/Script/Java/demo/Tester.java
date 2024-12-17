@@ -3,6 +3,8 @@ package demo;
 import java.io.IOException;
 
 import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import demo.ReaderInterface;
@@ -29,6 +31,8 @@ public class Tester {
     public static void main(String[] args) {
 
         Connection conn = null;
+        Statement  st   = null;
+        ResultSet  rs   = null;
 
         try {
             
@@ -39,19 +43,41 @@ public class Tester {
 
             String pathScript = args[0];
             reader            = getReader(pathScript);
-            String sql        = reader.getContent();
 
+            conn = ConnectionBuilderPostgreSQL.getConnection();
+            System.out.println("connection established");
+
+            String sql = reader.getContent();
             System.out.println(sql);
 
-            // Establish the connection
-            conn = ConnectionBuilderPostgreSQL.getConnection();
-            System.out.println("Connection established successfully.");
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                System.out.print("Column 1 returned ");
+                System.out.println(rs.getString(1));
+            }
 
         } catch (SQLException | IllegalArgumentException | IOException e) {
 
             e.printStackTrace();
 
         } finally {
+
+            try {
+                if (st != null) {
+                    st.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
 
             try {
                 if (conn != null) {
