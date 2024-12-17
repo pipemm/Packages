@@ -38,7 +38,7 @@ public class GeneralReader implements ReaderInterface {
     }
 
     public String getContent() {
-        return "";
+        return "test";
     }
 
 }
