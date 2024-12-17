@@ -1,7 +1,9 @@
 package demo;
 
-import com.opencsv.CSVWriter;
+import java.sql.ResultSet;
 import java.lang.SecurityManager;
+
+import com.opencsv.CSVWriter;
 
 public class GeneralOpenCSVWriter implements WriterInterface {
 
@@ -9,8 +11,8 @@ public class GeneralOpenCSVWriter implements WriterInterface {
 
     }
     
-    public int writeAll(ResultSet rs) {
-
+    public int write(ResultSet rs) {
+        return 0;
     }
 
 }

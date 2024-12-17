@@ -4,6 +4,6 @@ import java.sql.ResultSet;
 
 interface WriterInterface {
 
-    public int writeAll(ResultSet rs);
+    public int write(ResultSet rs);
 
 }
