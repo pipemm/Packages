@@ -1,5 +1,7 @@
 package demo;
 
+import java.io.IOException;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -9,11 +11,13 @@ import demo.GeneralReader;
 import demo.ConnectionBuilderPostgreSQL;
 
 public class Tester {
+
+    private static ReaderInterface reader = null;
     
     private static ReaderInterface getReader(String path) {
         
         if ( ! path.matches("^.*\\.sql$") ) {
-           throw new IllegalArgumentException("SQL file name should end with .sql: " + path);
+           throw new IllegalArgumentException("SQL file name should end with .sql (" + path + ")");
         }
 
         ReaderInterface reader = new GeneralReader(path);
@@ -33,9 +37,9 @@ public class Tester {
                 return;
             }
 
-            String pathScript      = args[0];
-            ReaderInterface reader = getReader(pathScript);
-            String sql             = reader.getContent();
+            String pathScript = args[0];
+            reader            = getReader(pathScript);
+            String sql        = reader.getContent();
 
             System.out.println(sql);
 
@@ -43,7 +47,7 @@ public class Tester {
             conn = ConnectionBuilderPostgreSQL.getConnection();
             System.out.println("Connection established successfully.");
 
-        } catch (SQLException | IllegalArgumentException e) {
+        } catch (SQLException | IllegalArgumentException | IOException e) {
 
             e.printStackTrace();
 
