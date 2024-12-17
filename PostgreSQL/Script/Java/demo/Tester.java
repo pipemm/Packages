@@ -1,5 +1,6 @@
 package demo;
 
+import java.nio.file.Paths; 
 import java.io.IOException;
 
 import java.time.Instant;
@@ -22,9 +23,10 @@ import demo.ConnectionBuilderPostgreSQL;
 
 public class Tester {
 
-    private static final String outputDefault = "ResultSet.csv";
+    private static final String outputBaseDefault = "ResultSet";
 
     private static ReaderInterface reader = null;
+    private static WriterInterface writer = null;
     
     private static ReaderInterface getReader(String path) {
         
@@ -42,25 +44,23 @@ public class Tester {
 
     private static WriterInterface getWriter(String path) {
 
+        if ( path == null ) {
+            path = "";
+        }
+
         path = path.trim();
 
         ZonedDateTime utcNow        = Instant.now().atZone(ZoneId.of("UTC"));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
         String formattedDateTime    = utcNow.format(formatter);
-        
-        if ( path == null ) {
-            path = ".";
-        }
 
-        if ( path == null & ( reader == null | reader.getBaseName().length() == 0 ) ) {
-            path = outputDefault;
-        } else if ( path == null ) {
-            path = reader.getBaseName() + "_" + formattedDateTime +  ".csv";
-        } else if ( ! path.matches("(?i)^.+\\.csv$") ) {
-            
+        if ( ! path.matches("(?i)^.+\\.csv$") ) {
+            String baseName = ( reader==null | reader.getBaseName().length()==0 )? outputBaseDefault:reader.getBaseName();
+            path     = Paths.get(path, baseName + "_" + formattedDateTime + ".csv").toString();
         }
 
         WriterInterface writer = new GeneralOpenCSVWriter(path);
+        System.out.println(path);
 
         return writer;
 
@@ -75,6 +75,14 @@ public class Tester {
             }
             String pathScript = args[0];
             reader            = getReader(pathScript);
+            
+
+            String pathOut = null;
+            if ( args.length >= 2 ) {
+                pathOut = args[1];
+            }
+            writer = getWriter(pathOut);
+
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }

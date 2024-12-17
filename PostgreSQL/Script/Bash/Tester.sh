@@ -9,10 +9,8 @@ do
 done
 CLASSPATH="$CLASSPATH:${PWD%/}/${FolderClass%/}/"
 
-java --class-path "${CLASSPATH}" demo.Tester
+FolderOut='OutputCSV/'
+mkdir --parent "${FolderOut%/}/"
 
-java --class-path "${CLASSPATH}" demo.Tester 'Script/SQL/demo'
 
-java --class-path "${CLASSPATH}" demo.Tester 'Script/SQL/notexists.sql'
-
-java --class-path "${CLASSPATH}" demo.Tester 'Script/SQL/demo.sql'
+java --class-path "${CLASSPATH}" demo.Tester 'Script/SQL/demo.sql' "${FolderOut%/}/"
