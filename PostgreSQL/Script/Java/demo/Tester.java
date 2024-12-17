@@ -7,7 +7,12 @@ import demo.ConnectionBuilderPostgreSQL;
 
 public class Tester {
     
-    // for testing
+    private static String getSQL(String path) {
+
+        return path
+
+    }
+
     public static void main(String[] args) {
 
         Connection conn = null;
@@ -17,9 +22,14 @@ public class Tester {
             System.out.println(args.length);
 
             if ( args.length < 1 ) {
-                System.err.println("Connection established successfully.");
+                System.err.println("needs a script.");
                 return;
             }
+
+            String pathScript = args[0];
+            String sql        = getSQL(pathScript);
+
+            System.out.println(sql);
 
             // Establish the connection
             conn = ConnectionBuilderPostgreSQL.getConnection();
