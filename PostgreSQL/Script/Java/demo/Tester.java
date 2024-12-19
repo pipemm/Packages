@@ -94,10 +94,9 @@ public class Tester {
             String sql = reader.getContent();
 
             ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                System.out.print("Column 1 returned ");
-                System.out.println(rs.getString(1));
-            }
+
+            writer.write(rs);
+
         } catch (SQLException e) {
             e.printStackTrace();
         } 
