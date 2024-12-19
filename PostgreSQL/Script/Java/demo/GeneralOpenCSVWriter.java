@@ -4,11 +4,17 @@ import java.nio.file.Paths;
 import java.nio.file.Path; 
 import java.io.File;
 
+import java.io.OutputStreamWriter;
+import java.io.BufferedWriter;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.lang.SecurityManager;
 import java.lang.SecurityException;
+import java.io.IOException;
 
+import com.opencsv.ICSVWriter;
+import com.opencsv.CSVWriterBuilder;
 import com.opencsv.CSVWriter;
 
 import demo.IWriter;
@@ -36,12 +42,17 @@ public class GeneralOpenCSVWriter implements IWriter {
     }
     
     public void write(ResultSet rs) throws SQLException {
-
-        while (rs.next()) {
-            System.out.print("Column 1 returned ");
-            System.out.println(rs.getString(1));
+        BufferedWriter out         = new BufferedWriter(new OutputStreamWriter(System.out));
+        ICSVWriter csvWriter       = new CSVWriterBuilder(out).build();
+        boolean includeColumnNames = true;
+        try {
+            csvWriter.writeAll(rs, includeColumnNames);
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("writer error");
         }
-
+        System.out.println("done");
     }
 
 }
