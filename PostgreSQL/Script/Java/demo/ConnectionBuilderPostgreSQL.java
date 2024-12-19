@@ -18,12 +18,12 @@ public class ConnectionBuilderPostgreSQL {
     private static final String  SSL_MODE_DEFAULT = "require";
 
     private static String getHost() {
-        return System.getenv("PG_SERVER_HOSTNAME");
+        return System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME);
     }
 
     protected static String getURL() {
-        String url  = System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME);
-        String host = System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME);
+        String url  = System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_URL);
+        String host = getHost();
         if ( url == null ) {
             if ( host == null ) {
                 throw new IllegalArgumentException("URL or host is missing.");
