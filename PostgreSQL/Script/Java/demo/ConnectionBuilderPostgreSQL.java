@@ -20,7 +20,7 @@ public class ConnectionBuilderPostgreSQL {
         return System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME);
     }
     
-    private static Integer getPort() {
+    protected static Integer getPort() {
         return PORT_DEFAULT;
     }
 
@@ -70,8 +70,7 @@ public class ConnectionBuilderPostgreSQL {
         props.setProperty("sslmode",  getSSLMode());
         
         try {
-            Connection conn = DriverManager.getConnection(url, props);
-            return conn;
+            return DriverManager.getConnection(url, props);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("database connection not established");

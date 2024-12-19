@@ -1,6 +1,9 @@
 package demo;
 
+import java.util.Properties;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import software.amazon.awssdk.services.rds.RdsClient;
 import software.amazon.awssdk.http.urlconnection.UrlConnectionHttpClient;
@@ -43,13 +46,15 @@ public class ConnectionBuilderRDS extends ConnectionBuilderPostgreSQL {
         String  host = getHostname();
         Integer port = getPort();
         String  user = getUsername();
-        GenerateAuthenticationTokenRequest request = GenerateAuthenticationTokenRequest.builder()
-                .hostname(host)
-                .port(port)
-                .username(user)
+        GenerateAuthenticationTokenRequest request 
+            = GenerateAuthenticationTokenRequest.builder()
+                .hostname (host)
+                .port     (port)
+                .username (user)
                 .build();
         
-        RdsClient rds = RdsClient.builder()
+        RdsClient rds 
+            = RdsClient.builder()
                 .httpClientBuilder(UrlConnectionHttpClient.builder())
                 .build();
 
@@ -58,8 +63,19 @@ public class ConnectionBuilderRDS extends ConnectionBuilderPostgreSQL {
 
     public static Connection getConnection() {
 
-        Connection conn  = null;
-        return conn;
+        String url = getURL();
+        
+        Properties props = new Properties();
+        props.setProperty("user",     getUsername());
+        props.setProperty("password", getPassword());
+        props.setProperty("sslmode",  getSSLMode());
+        
+        try {
+            return DriverManager.getConnection(url, props);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("database connection not established");
+        }
 
     }
 
