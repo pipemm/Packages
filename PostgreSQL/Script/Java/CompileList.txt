@@ -1,7 +1,7 @@
+demo/IReader
+demo/IWriter
+demo/GeneralReader
+demo/GeneralOpenCSVWriter
 demo/ConnectionBuilderPostgreSQL
 demo/ConnectionBuilderRDS
-demo/ReaderInterface
-demo/GeneralReader
-demo/WriterInterface
-demo/GeneralOpenCSVWriter
 demo/Tester

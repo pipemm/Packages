@@ -2,7 +2,7 @@ package demo;
 
 import java.sql.ResultSet;
 
-interface WriterInterface {
+interface IWriter {
 
     public int write(ResultSet rs);
 

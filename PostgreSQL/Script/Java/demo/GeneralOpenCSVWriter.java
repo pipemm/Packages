@@ -5,7 +5,9 @@ import java.lang.SecurityManager;
 
 import com.opencsv.CSVWriter;
 
-public class GeneralOpenCSVWriter implements WriterInterface {
+import demo.IWriter;
+
+public class GeneralOpenCSVWriter implements IWriter {
 
     public GeneralOpenCSVWriter(String p) {
 

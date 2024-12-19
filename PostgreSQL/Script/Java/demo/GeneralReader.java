@@ -5,10 +5,11 @@ import java.nio.file.Path;
 import java.nio.file.Files;
 import java.io.File;
 import java.io.IOException;
+import java.lang.RuntimeException;
 
-import demo.ReaderInterface;
+import demo.IReader;
 
-public class GeneralReader implements ReaderInterface {
+public class GeneralReader implements IReader {
 
     private String filePath;
     private File   file;
@@ -39,8 +40,13 @@ public class GeneralReader implements ReaderInterface {
         return baseName;
     }
 
-    public String getContent() throws IOException {
-        return new String(Files.readAllBytes(file.toPath()));
+    public String getContent() {
+        try {
+            return new String(Files.readAllBytes(file.toPath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("reader error");
+        }
     }
 
 }

@@ -13,10 +13,10 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import demo.ReaderInterface;
+import demo.IReader;
 import demo.GeneralReader;
 
-import demo.WriterInterface;
+import demo.IWriter;
 import demo.GeneralOpenCSVWriter;
 
 import demo.ConnectionBuilderPostgreSQL;
@@ -25,10 +25,10 @@ public class Tester {
 
     private static final String outputBaseDefault = "ResultSet";
 
-    private static ReaderInterface reader = null;
-    private static WriterInterface writer = null;
+    private static IReader reader = null;
+    private static IWriter writer = null;
     
-    private static ReaderInterface getReader(String path) {
+    private static IReader getReader(String path) {
         
         path = path.trim();
 
@@ -36,13 +36,11 @@ public class Tester {
            throw new IllegalArgumentException("SQL file name should end with .sql (" + path + ")");
         }
 
-        ReaderInterface reader = new GeneralReader(path);
-
-        return reader;
+        return new GeneralReader(path);
 
     }
 
-    private static WriterInterface getWriter(String path) {
+    private static IWriter getWriter(String path) {
 
         if ( path == null ) {
             path = "";
@@ -59,7 +57,7 @@ public class Tester {
             path     = Paths.get(path, baseName + "_" + formattedDateTime + ".csv").toString();
         }
 
-        WriterInterface writer = new GeneralOpenCSVWriter(path);
+        IWriter writer = new GeneralOpenCSVWriter(path);
         System.out.println(path);
 
         return writer;
@@ -100,7 +98,7 @@ public class Tester {
                 System.out.print("Column 1 returned ");
                 System.out.println(rs.getString(1));
             }
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } 
 

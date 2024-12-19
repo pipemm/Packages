@@ -2,10 +2,10 @@ package demo;
 
 import java.io.IOException;
 
-interface ReaderInterface {
+interface IReader {
 
     public String getBaseName();
 
-    public String getContent() throws IOException;
+    public String getContent();
 
 }
