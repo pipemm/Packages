@@ -10,7 +10,6 @@ public class ConnectionBuilderPostgreSQL {
 
     private static final String ENVIRONMENT_VARIABLE_NAME_DB_SERVER_URL       = "PG_SERVER_URL";
     private static final String ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME  = "PG_SERVER_HOSTNAME";
-    private static final String ENVIRONMENT_VARIABLE_NAME_DB_SERVER_PORT      = "PG_SERVER_PORT";
     private static final String ENVIRONMENT_VARIABLE_NAME_DB_ACCOUNT_USERNAME = "PG_ACOUNT_USER";
     private static final String ENVIRONMENT_VARIABLE_NAME_DB_ACCOUNT_PASSWORD = "PG_ACOUNT_PASSWORD";
 
@@ -20,6 +19,10 @@ public class ConnectionBuilderPostgreSQL {
     private static String getHost() {
         return System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME);
     }
+    
+    private static Integer getPort() {
+        return PORT_DEFAULT;
+    }
 
     protected static String getURL() {
         String url  = System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_URL);
@@ -28,8 +31,8 @@ public class ConnectionBuilderPostgreSQL {
             if ( host == null ) {
                 throw new IllegalArgumentException("URL or host is missing.");
             }
-            String port = System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_PORT);
-            if ( port != null ) {
+            Integer port = getPort();
+            if ( port > 0 & port != PORT_DEFAULT ) {
                 host += ":" + port;
             }
             url = "jdbc:postgresql://" + host + "/";

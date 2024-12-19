@@ -11,14 +11,18 @@ fi
 
 FolderClass='Class/'
 mkdir --parent "${FolderClass%/}/"
+CLASSPATH="${FolderClass%/}/"
 
 FolderSDK='DevelopmentKit/'
-CLASSPATH='.'
 for j in ${PWD%/}/${FolderSDK%/}/*.jar
 do
   CLASSPATH="$CLASSPATH:${j}"
 done
-CLASSPATH="$CLASSPATH:${PWD%/}/${FolderClass%/}/"
+for j in ${PWD%/}/Dependency/**/*.jar
+do
+  CLASSPATH="$CLASSPATH:${j}"
+done
+
 
 cat "${FileList}" |
   while read -r line
