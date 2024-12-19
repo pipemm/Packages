@@ -16,7 +16,7 @@ public class ConnectionBuilderPostgreSQL {
     private static final Integer PORT_DEFAULT     = 5432;
     private static final String  SSL_MODE_DEFAULT = "require";
 
-    private static String getHost() {
+    private static String getHostname() {
         return System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME);
     }
     
@@ -26,7 +26,7 @@ public class ConnectionBuilderPostgreSQL {
 
     protected static String getURL() {
         String url  = System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_URL);
-        String host = getHost();
+        String host = getHostname();
         if ( url == null ) {
             if ( host == null ) {
                 throw new IllegalArgumentException("URL or host is missing.");

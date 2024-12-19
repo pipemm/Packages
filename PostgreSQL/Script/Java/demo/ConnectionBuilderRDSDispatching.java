@@ -11,40 +11,9 @@ import software.amazon.awssdk.services.rds.model.GenerateAuthenticationTokenRequ
 
 import demo.ConnectionBuilderPostgreSQL;
 
-public class ConnectionBuilderRDS extends ConnectionBuilderPostgreSQL {
+public class ConnectionBuilderRDSDispatching extends ConnectionBuilderRDS {
 // Amazon Relational Database Service (RDS)
 // https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Connecting.Java.html#UsingWithRDS.IAMDBAuth.Connecting.Java.AuthToken
-
-    private static final String ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME  = "RDS_SERVER_HOSTNAME";
-    private static final String ENVIRONMENT_VARIABLE_NAME_DB_ACCOUNT_USERNAME = "RDS_ACOUNT_USER";
-
-    protected static String getHostname() {
-        String hostname = System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME);
-        if ( hostname == null ) {
-            throw new IllegalArgumentException("hostname is missing");
-        }
-        return hostname;
-    }
-
-    protected static String getURL() {
-        String host = getHostname();
-        if ( host == null ) {
-            throw new IllegalArgumentException("URL or host is missing.");
-        }
-        Integer port = getPort();
-        if ( port > 0 ) {
-            host += ":" + port;
-        }
-        return "jdbc:postgresql://" + host + "/";
-    }
-    
-    protected static String getUsername() {
-        String username = System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_ACCOUNT_USERNAME);
-        if ( username == null ) {
-            throw new IllegalArgumentException("username is missing");
-        }
-        return username;
-    }
 
     private static String getPassword() {
 

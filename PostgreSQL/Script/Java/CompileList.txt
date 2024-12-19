@@ -4,4 +4,5 @@ demo/GeneralReader
 demo/GeneralOpenCSVWriter
 demo/ConnectionBuilderPostgreSQL
 demo/ConnectionBuilderRDS
+demo/ConnectionBuilderRDSDispatching
 demo/Tester
