@@ -4,7 +4,7 @@ import java.nio.file.Paths;
 import java.nio.file.Path; 
 import java.io.File;
 
-import java.io.OutputStreamWriter;
+import java.io.FileWriter;
 import java.io.BufferedWriter;
 
 import java.sql.ResultSet;
@@ -21,13 +21,12 @@ import demo.IWriter;
 
 public class GeneralOpenCSVWriter implements IWriter {
 
-    private String filePath;
-    private File   file;
+    private File file;
 
     public GeneralOpenCSVWriter(String p) {
 
-        filePath  = p;
-        Path path = Paths.get(filePath);
+        String filePath = p;
+        Path path       = Paths.get(filePath);
         if( path.getNameCount() == 0 ) {
             throw new IllegalArgumentException("wrong path " + path);
         }
@@ -42,17 +41,17 @@ public class GeneralOpenCSVWriter implements IWriter {
     }
     
     public void write(ResultSet rs) throws SQLException {
-        BufferedWriter out         = new BufferedWriter(new OutputStreamWriter(System.out));
-        ICSVWriter csvWriter       = new CSVWriterBuilder(out).build();
         boolean includeColumnNames = true;
-        try {
+        try (
+            BufferedWriter out = new BufferedWriter(new FileWriter(file.toString()));
+        ) {
+            ICSVWriter csvWriter = new CSVWriterBuilder(out).build();
             csvWriter.writeAll(rs, includeColumnNames);
-            out.flush();
+            //out.flush();
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("writer error");
         }
-        System.out.println("done");
     }
 
 }

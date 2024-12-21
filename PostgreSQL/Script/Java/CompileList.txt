@@ -2,7 +2,7 @@ demo/IReader
 demo/IWriter
 demo/GeneralReader
 demo/GeneralOpenCSVWriter
-demo/ConnectionBuilderPostgreSQL
+demo/ConnectionBuilder
 demo/ConnectionBuilderRDS
-demo/ConnectionBuilderRDSDispatching
+demo/ConnectionBuilderRDSDeprecated
 demo/Tester

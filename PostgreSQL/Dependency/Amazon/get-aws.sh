@@ -16,6 +16,8 @@ url-connection-client
 utils
 http-client-spi
 sdk-core
+secretsmanager
+aws-core
 ' |
   sed '/^$/d' |
   while read -r mvn_artifact_id

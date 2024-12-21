@@ -19,7 +19,7 @@ import demo.GeneralReader;
 import demo.IWriter;
 import demo.GeneralOpenCSVWriter;
 
-import demo.ConnectionBuilderPostgreSQL;
+import demo.ConnectionBuilder;
 
 public class Tester {
 
@@ -86,12 +86,12 @@ public class Tester {
         }
 
         try (
-            Connection conn = ConnectionBuilderPostgreSQL.getConnection();
+            Connection conn = ConnectionBuilder.getConnection();
             Statement  st   = conn.createStatement()
         ){
             System.out.println("connection established");
 
-            String sql = reader.getContent();
+            String sql   = reader.getContent();
 
             ResultSet rs = st.executeQuery(sql);
 

@@ -5,23 +5,33 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionBuilderPostgreSQL {
+public class ConnectionBuilder {
 // https://jdbc.postgresql.org/documentation/use/#connection-parameters
 
-    private static final String ENVIRONMENT_VARIABLE_NAME_DB_SERVER_URL       = "PG_SERVER_URL";
-    private static final String ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME  = "PG_SERVER_HOSTNAME";
-    private static final String ENVIRONMENT_VARIABLE_NAME_DB_ACCOUNT_USERNAME = "PG_ACOUNT_USER";
-    private static final String ENVIRONMENT_VARIABLE_NAME_DB_ACCOUNT_PASSWORD = "PG_ACOUNT_PASSWORD";
+    private static final String 
+        ENVIRONMENT_VARIABLE_NAME_DB_SERVER_URL       = "DB_SERVER_URL";
+    private static final String 
+        ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME  = "DB_SERVER_HOSTNAME";
+    private static final String 
+        ENVIRONMENT_VARIABLE_NAME_DB_DATABASE_NAME    = "DB_DATABASE_NAME";
+    private static final String 
+        ENVIRONMENT_VARIABLE_NAME_DB_ACCOUNT_USERNAME = "DB_ACOUNT_USER";
+    private static final String 
+        ENVIRONMENT_VARIABLE_NAME_DB_ACCOUNT_PASSWORD = "DB_ACOUNT_PASSWORD";
 
-    private static final Integer PORT_DEFAULT     = 5432;
-    private static final String  SSL_MODE_DEFAULT = "require";
+    private static final int    PORT_DEFAULT     = 5432;
+    private static final String SSL_MODE_DEFAULT = "require";
 
-    private static String getHostname() {
+    protected static String getHostname() {
         return System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_SERVER_HOSTNAME);
     }
     
-    protected static Integer getPort() {
+    protected static int getPort() {
         return PORT_DEFAULT;
+    }
+
+    protected static String getDabaseName() {
+        return System.getenv(ENVIRONMENT_VARIABLE_NAME_DB_DATABASE_NAME);
     }
 
     protected static String getURL() {
@@ -31,11 +41,15 @@ public class ConnectionBuilderPostgreSQL {
             if ( host == null ) {
                 throw new IllegalArgumentException("URL or host is missing.");
             }
-            Integer port = getPort();
+            int port = getPort();
             if ( port > 0 & port != PORT_DEFAULT ) {
                 host += ":" + port;
             }
-            url = "jdbc:postgresql://" + host + "/";
+            String dbName = getDabaseName();
+            if ( dbName == null ) {
+                dbName = "";
+            }
+            url = "jdbc:postgresql://" + host + "/" + dbName;
         }
         return url;
     }
@@ -60,7 +74,7 @@ public class ConnectionBuilderPostgreSQL {
         return SSL_MODE_DEFAULT;
     }
 
-    public static Connection getConnection() {
+    public static Connection getConnection() throws SQLException {
 
         String url = getURL();
         
@@ -69,12 +83,7 @@ public class ConnectionBuilderPostgreSQL {
         props.setProperty("password", getPassword());
         props.setProperty("sslmode",  getSSLMode());
         
-        try {
-            return DriverManager.getConnection(url, props);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException("database connection not established");
-        }
+        return DriverManager.getConnection(url, props);
 
     }
 
