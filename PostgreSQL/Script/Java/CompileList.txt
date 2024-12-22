@@ -1,3 +1,5 @@
+demo/BufferedWriter
+demo/S3Writer
 demo/IReader
 demo/IWriter
 demo/GeneralReader

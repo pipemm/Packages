@@ -14,12 +14,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import demo.IReader;
-import demo.GeneralReader;
-
 import demo.IWriter;
+import demo.GeneralReader;
 import demo.GeneralCSVWriter;
-
 import demo.ConnectionBuilder;
+
+//import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import demo.BufferedWriter;
 
 public class Tester {
 
@@ -100,7 +102,10 @@ public class Tester {
         } catch (SQLException e) {
             e.printStackTrace();
         } 
-
+        
+        //BufferedWriter w = new BufferedWriter(new OutputStreamWriter(System.out));
+        //BufferedWriter w = new BufferedWriter(null);
+        //BufferedWriter w = new BufferedWriter(null);
     }
 
 }

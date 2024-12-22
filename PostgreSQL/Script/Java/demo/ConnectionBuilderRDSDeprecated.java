@@ -9,7 +9,7 @@ import software.amazon.awssdk.http.urlconnection.UrlConnectionHttpClient;
 import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
 
-import demo.ConnectionBuilderPostgreSQL;
+import demo.ConnectionBuilderRDS;
 
 public class ConnectionBuilderRDSDeprecated extends ConnectionBuilderRDS {
 // Amazon Relational Database Service (RDS)
