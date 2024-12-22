@@ -181,9 +181,9 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         env:
-          PG_SERVER_URL      : "${{ secrets.PG_SERVER_URL }}"
-          PG_ACOUNT_USER     : "${{ secrets.PG_ACOUNT_USER }}"
-          PG_ACOUNT_PASSWORD : "${{ secrets.PG_ACOUNT_PASSWORD }}"
+          DB_SERVER_URL      : "${{ secrets.DB_SERVER_URL }}"
+          DB_ACOUNT_USER     : "${{ secrets.DB_ACOUNT_USER }}"
+          DB_ACOUNT_PASSWORD : "${{ secrets.DB_ACOUNT_PASSWORD }}"
         run: |
           bash Script/Bash/Tester.sh
 

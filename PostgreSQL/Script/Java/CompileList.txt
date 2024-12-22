@@ -1,7 +1,7 @@
 demo/IReader
 demo/IWriter
 demo/GeneralReader
-demo/GeneralOpenCSVWriter
+demo/GeneralCSVWriter
 demo/ConnectionBuilder
 demo/ConnectionBuilderRDS
 demo/ConnectionBuilderRDSDeprecated

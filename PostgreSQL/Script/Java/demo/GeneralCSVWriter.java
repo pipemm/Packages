@@ -19,11 +19,11 @@ import com.opencsv.CSVWriter;
 
 import demo.IWriter;
 
-public class GeneralOpenCSVWriter implements IWriter {
+public class GeneralCSVWriter implements IWriter {
 
     private File file;
 
-    public GeneralOpenCSVWriter(String p) {
+    public GeneralCSVWriter(String p) {
 
         String filePath = p;
         Path path       = Paths.get(filePath);

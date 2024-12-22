@@ -17,7 +17,7 @@ import demo.IReader;
 import demo.GeneralReader;
 
 import demo.IWriter;
-import demo.GeneralOpenCSVWriter;
+import demo.GeneralCSVWriter;
 
 import demo.ConnectionBuilder;
 
@@ -57,7 +57,7 @@ public class Tester {
             path     = Paths.get(path, baseName + "_" + formattedDateTime + ".csv").toString();
         }
 
-        IWriter writer = new GeneralOpenCSVWriter(path);
+        IWriter writer = new GeneralCSVWriter(path);
         System.out.println(path);
 
         return writer;
