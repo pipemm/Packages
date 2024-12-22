@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.io.File;
 
 import java.io.FileWriter;
-import java.io.BufferedWriter;
+//import java.io.BufferedWriter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +19,7 @@ import com.opencsv.CSVWriter;
 import com.opencsv.ResultSetHelperService;
 
 import demo.IWriter;
+import demo.BufferedWriter;
 
 public class GeneralCSVWriter implements IWriter {
 

@@ -19,10 +19,6 @@ import demo.GeneralReader;
 import demo.GeneralCSVWriter;
 import demo.ConnectionBuilder;
 
-//import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
-import demo.BufferedWriter;
-
 public class Tester {
 
     private static final String outputBaseDefault = "ResultSet";
@@ -103,9 +99,6 @@ public class Tester {
             e.printStackTrace();
         } 
         
-        //BufferedWriter w = new BufferedWriter(new OutputStreamWriter(System.out));
-        //BufferedWriter w = new BufferedWriter(null);
-        //BufferedWriter w = new BufferedWriter(null);
     }
 
 }
