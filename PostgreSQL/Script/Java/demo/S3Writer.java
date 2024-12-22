@@ -12,13 +12,15 @@ import software.amazon.awssdk.services.s3.model.CreateMultipartUploadRequest;
 import software.amazon.awssdk.services.s3.model.CreateMultipartUploadResponse;
 import software.amazon.awssdk.services.s3.model.UploadPartRequest;
 import software.amazon.awssdk.services.s3.model.UploadPartResponse;
+import software.amazon.awssdk.services.s3.model.CompleteMultipartUploadRequest;
+import software.amazon.awssdk.services.s3.model.CompleteMultipartUploadResponse;
+import software.amazon.awssdk.services.s3.model.CompletedMultipartUpload;
 import software.amazon.awssdk.core.sync.RequestBody;
 
 
 import demo.S3Tool;
 
 public class S3Writer extends Writer {
-    // https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpu-upload-object.html
     // https://docs.aws.amazon.com/code-library/latest/ug/java_2_s3_code_examples.html
 
     private static final int BUFFER_SIZE_MINIMUM =      5 *1024*1024; // 5 MiB
@@ -33,19 +35,24 @@ public class S3Writer extends Writer {
     private Integer             partNumber;
     
     public S3Writer(String bucketName, String keyName) {
-        CreateMultipartUploadRequest request   = CreateMultipartUploadRequest.builder()
-                                                    .bucket(bucketName)
-                                                    .key(keyName)
-                                                    .build();
-        CreateMultipartUploadResponse response = S3Tool.S3Client().createMultipartUpload(request);
+        createUpload(bucketName, keyName);
+        this.buffer   = new char[BUFFER_SIZE/2];
+        this.position = 0;
+    }
+    
+    private void createUpload(String bucketName, String keyName) {
+        CreateMultipartUploadRequest request
+                            = CreateMultipartUploadRequest.builder()
+                                .bucket(bucketName)
+                                .key(keyName)
+                                .build();
+        CreateMultipartUploadResponse response 
+                            = S3Tool.S3Client().createMultipartUpload(request);
         this.uploadID       = response.uploadId();
         this.bucketName     = response.bucket();
         this.keyName        = response.key();
-
         this.completedParts = new ArrayList<CompletedPart>();
         this.partNumber     = 0;
-        this.buffer   = new char[BUFFER_SIZE/2];
-        this.position = 0;
     }
 
     private int min(int a, int b) {
@@ -63,7 +70,7 @@ public class S3Writer extends Writer {
 
     public void write(char[] cbuf, int off, int len) throws IOException {
         ensureOpen();
-        if (uploadID == null) {
+        if (cbuf == null) {
             throw new NullPointerException();
         }
         Objects.checkFromIndexSize(off, len, cbuf.length);
@@ -100,7 +107,7 @@ public class S3Writer extends Writer {
                             .bucket(bucketName)
                             .key(keyName)
                             .uploadId(uploadID)
-                            .contentLength((long) data.getBytes().length)
+                            .contentLength((long) data.getBytes().length)  // can we remove it?
                             .build();
             UploadPartResponse response 
                         = S3Tool.S3Client().uploadPart(
@@ -119,7 +126,17 @@ public class S3Writer extends Writer {
     }
 
     private void completeMultipartUpload() {
-
+        CompletedMultipartUpload completedUpload 
+                        = CompletedMultipartUpload.builder()
+                            .parts(completedParts)
+                            .build();
+        CompleteMultipartUploadRequest request 
+                        = CompleteMultipartUploadRequest.builder()
+                            .bucket(bucketName)
+                            .key(keyName)
+                            .uploadId(uploadID)
+                            .multipartUpload(completedUpload)
+                            .build();
     }
 
     public void close() throws IOException {
