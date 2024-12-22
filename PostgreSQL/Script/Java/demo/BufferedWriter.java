@@ -26,7 +26,9 @@ public class BufferedWriter extends Writer {
     }
 
     private int min(int a, int b) {
-        if (a < b) return a;
+        if (a < b) {
+            return a;
+        }
         return b;
     }
 
@@ -47,7 +49,7 @@ public class BufferedWriter extends Writer {
         int clen = len;
         while (clen > 0) {
             int spaceLeft = buffer.length - position;
-            int lenToCopy = min(len, spaceLeft);
+            int lenToCopy = min(clen, spaceLeft);
             System.arraycopy(cbuf, coff, buffer, position, lenToCopy);
             position += lenToCopy;
             coff     += lenToCopy;
