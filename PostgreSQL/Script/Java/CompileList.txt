@@ -1,4 +1,5 @@
 demo/BufferedWriter
+demo/S3Tool
 demo/S3Writer
 demo/IReader
 demo/IWriter
@@ -7,4 +8,5 @@ demo/GeneralCSVWriter
 demo/ConnectionBuilder
 demo/ConnectionBuilderRDS
 demo/ConnectionBuilderRDSDeprecated
+demo/Handler
 demo/Tester

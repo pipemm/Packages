@@ -19,7 +19,7 @@ import com.opencsv.CSVWriter;
 import com.opencsv.ResultSetHelperService;
 
 import demo.IWriter;
-import demo.BufferedWriter;
+import demo.BufferedWriter; // use the custom BufferedWriter instead of the standard one
 
 public class GeneralCSVWriter implements IWriter {
 

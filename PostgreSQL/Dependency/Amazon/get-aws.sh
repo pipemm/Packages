@@ -11,6 +11,7 @@ mvn_group_id='software.amazon.awssdk'
 mvn_packaging='jar'
 
 echo '
+s3
 rds
 url-connection-client
 utils
