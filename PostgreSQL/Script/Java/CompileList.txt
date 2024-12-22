@@ -6,6 +6,7 @@ demo/IWriter
 demo/WriterCSVHelper
 demo/GeneralReader
 demo/GeneralCSVWriter
+demo/S3Reader
 demo/S3CSVWriter
 demo/ConnectionBuilder
 demo/ConnectionBuilderRDS
