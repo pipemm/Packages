@@ -161,6 +161,14 @@ jobs:
           # Destination path. Supports basic tilde expansion.
           path: PostgreSQL/DevelopmentKit/
 
+      - uses: actions/download-artifact@v4
+          ## https://github.com/actions/download-artifact
+        with:
+          # Name of the artifact to download.
+          name: super-csv-latest
+          # Destination path. Supports basic tilde expansion.
+          path: PostgreSQL/DevelopmentKit/
+
       - name: Check Environment
         working-directory: PostgreSQL/
         shell: bash

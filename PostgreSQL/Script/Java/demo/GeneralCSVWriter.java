@@ -6,14 +6,14 @@ import java.io.File;
 import java.io.IOException;
 
 import java.io.FileWriter;
-//import java.io.BufferedWriter;
+import java.io.BufferedWriter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import demo.WriterCSVHelper;
 import demo.IWriter;
-import demo.BufferedWriter; // use the custom BufferedWriter instead of the standard one
+//import demo.BufferedWriter; // use the custom BufferedWriter instead of the standard one
 
 public class GeneralCSVWriter implements IWriter {
 
@@ -31,7 +31,7 @@ public class GeneralCSVWriter implements IWriter {
     public void write(ResultSet rs) throws SQLException {
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(file.toString()));
-            WriterCSVHelper.writeSuperCSV(rs,out);
+            WriterCSVHelper.writeOpenCSV(rs,out);
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("writer error");
