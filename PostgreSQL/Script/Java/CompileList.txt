@@ -3,6 +3,7 @@ demo/S3Tool
 demo/S3Writer
 demo/IReader
 demo/IWriter
+demo/WriterCSVHelper
 demo/GeneralReader
 demo/GeneralCSVWriter
 demo/S3CSVWriter

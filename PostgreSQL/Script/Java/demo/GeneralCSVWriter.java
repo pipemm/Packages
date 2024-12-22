@@ -66,6 +66,7 @@ public class GeneralCSVWriter implements IWriter {
             ICsvResultSetWriter writer = new CsvResultSetWriter(out, CsvPreference.STANDARD_PREFERENCE);
         ) {
             writer.write(rs);
+            out.flush();
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("writer error");
