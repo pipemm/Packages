@@ -26,6 +26,7 @@ public class S3Tool {
         // https://docs.aws.amazon.com/AmazonS3/latest/API/s3_example_s3_Scenario_URIParsing_section.html
         // https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/http-configuration.html
         return S3Client().utilities().parseUri(URI.create(path));
+        // to do check the validity of URI here, instead of the downstream processes.
     }
 
 }

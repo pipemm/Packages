@@ -9,8 +9,6 @@ import java.io.FileWriter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.lang.SecurityManager;
-import java.lang.SecurityException;
 import java.io.IOException;
 
 import com.opencsv.ICSVWriter;

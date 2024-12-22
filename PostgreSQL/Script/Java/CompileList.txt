@@ -5,6 +5,7 @@ demo/IReader
 demo/IWriter
 demo/GeneralReader
 demo/GeneralCSVWriter
+demo/S3CSVWriter
 demo/ConnectionBuilder
 demo/ConnectionBuilderRDS
 demo/ConnectionBuilderRDSDeprecated
