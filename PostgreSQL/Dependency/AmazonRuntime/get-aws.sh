@@ -13,14 +13,18 @@ mvn_packaging='jar'
 ## https://github.com/aws/aws-sdk-java-v2/tree/master/http-client-spi/src/main/java
 
 echo '
-s3
-rds
-url-connection-client
-utils
 http-client-spi
-sdk-core
-secretsmanager
-aws-core
+identity-spi
+regions
+retries-spi
+profiles
+endpoints-spi
+http-auth-spi
+http-auth-aws
+http-auth
+auth
+json-utils
+third-party-jackson-core
 ' |
   sed '/^$/d' |
   while read -r mvn_artifact_id

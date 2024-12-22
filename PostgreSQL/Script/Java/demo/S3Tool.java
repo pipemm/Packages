@@ -1,4 +1,4 @@
-package mi;
+package demo;
 
 import java.net.URI;
 

@@ -2,12 +2,17 @@
 
 FolderClass='Class/'
 FolderSDK='DevelopmentKit/'
-CLASSPATH='.'
+CLASSPATH="${FolderClass%/}/"
 for j in ${PWD%/}/${FolderSDK%/}/*.jar
 do
   CLASSPATH="$CLASSPATH:${j}"
 done
-CLASSPATH="$CLASSPATH:${PWD%/}/${FolderClass%/}/"
+FolderDepend='Dependency/'
+for j in ${PWD%/}/${FolderDepend%/}/**/*.jar
+do
+  CLASSPATH="$CLASSPATH:${j}"
+done
+echo "${CLASSPATH}"
 
 FolderOut='OutputCSV/'
 mkdir --parent "${FolderOut%/}/"
