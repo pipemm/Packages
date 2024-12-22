@@ -16,6 +16,7 @@ import java.io.IOException;
 import com.opencsv.ICSVWriter;
 import com.opencsv.CSVWriterBuilder;
 import com.opencsv.CSVWriter;
+import com.opencsv.ResultSetHelperService;
 
 import demo.IWriter;
 
@@ -45,7 +46,13 @@ public class GeneralCSVWriter implements IWriter {
         try (
             BufferedWriter out = new BufferedWriter(new FileWriter(file.toString()));
         ) {
-            ICSVWriter csvWriter = new CSVWriterBuilder(out).build();
+            ResultSetHelperService service = new ResultSetHelperService();
+            service.setDateFormat("yyyy-MM-dd");
+            service.setDateTimeFormat("yyyy-MM-dd HH:mm:ss");
+            ICSVWriter csvWriter = 
+                new CSVWriterBuilder(out)
+                    .withResultSetHelper(service)
+                    .build();
             csvWriter.writeAll(rs, includeColumnNames);
             //out.flush();
         } catch (IOException e) {
