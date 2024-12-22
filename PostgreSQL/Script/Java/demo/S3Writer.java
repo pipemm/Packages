@@ -13,7 +13,6 @@ import software.amazon.awssdk.services.s3.model.CreateMultipartUploadResponse;
 import software.amazon.awssdk.services.s3.model.UploadPartRequest;
 import software.amazon.awssdk.services.s3.model.UploadPartResponse;
 import software.amazon.awssdk.services.s3.model.CompleteMultipartUploadRequest;
-import software.amazon.awssdk.services.s3.model.CompleteMultipartUploadResponse;
 import software.amazon.awssdk.services.s3.model.CompletedMultipartUpload;
 import software.amazon.awssdk.core.sync.RequestBody;
 
@@ -36,7 +35,7 @@ public class S3Writer extends Writer {
     
     public S3Writer(String bucketName, String keyName) {
         createUpload(bucketName, keyName);
-        this.buffer   = new char[BUFFER_SIZE/2];
+        this.buffer   = new char[BUFFER_SIZE];
         this.position = 0;
     }
     
@@ -137,6 +136,7 @@ public class S3Writer extends Writer {
                             .uploadId(uploadID)
                             .multipartUpload(completedUpload)
                             .build();
+        S3Tool.S3Client().completeMultipartUpload(request);
     }
 
     public void close() throws IOException {

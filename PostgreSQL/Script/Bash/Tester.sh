@@ -12,7 +12,6 @@ for j in ${PWD%/}/${FolderDepend%/}/**/*.jar
 do
   CLASSPATH="$CLASSPATH:${j}"
 done
-echo "${CLASSPATH}"
 
 FolderOut='OutputCSV/'
 mkdir --parent "${FolderOut%/}/"

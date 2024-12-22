@@ -70,7 +70,6 @@ public class BufferedWriter extends Writer {
 
     private void flushBuffer() throws IOException {
         if (position > 0) {
-            System.out.println("saving");
             out.write(buffer, 0, position);
             position = 0;
         }
