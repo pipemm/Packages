@@ -3,8 +3,12 @@ package demo;
 import java.io.Writer;
 import java.io.IOException;
 import java.util.List;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.nio.charset.Charset;
+import java.nio.CharBuffer;
+import java.nio.ByteBuffer;
 
 import software.amazon.awssdk.services.s3.model.CompletedPart;
 import software.amazon.awssdk.services.s3.model.CreateMultipartUploadRequest;
@@ -22,35 +26,53 @@ import demo.S3Tool;
 
 public class S3Writer extends Writer {
     // https://docs.aws.amazon.com/code-library/latest/ug/java_2_s3_code_examples.html
-
+    
+    private static final Logger logger = LoggerFactory.getLogger(S3Writer.class);
     private static final int BUFFER_SIZE_MINIMUM =      5 *1024*1024; // 5 MiB
     private static final int BUFFER_SIZE_MAXIMUM = 5 *1024*1024*1024; // 5 GiB
     private static final int BUFFER_SIZE         = BUFFER_SIZE_MINIMUM;
-    private char[]           buffer;
-    private int              position;
-    private String           bucketName;
-    private String           keyName;
-    private String           uploadID;
+    private char[] buffer;
+    private int    position;
+    private String bucketName;
+    private String keyName;
+    private String              uploadID;
     private List<CompletedPart> completedParts;
-    private Integer             partNumber;
+    private int                 partNumber;
     
     public S3Writer(String bucketName, String keyName) {
         createUpload(bucketName, keyName);
         this.buffer   = new char[BUFFER_SIZE];
         this.position = 0;
     }
-    
+
+    private byte[] toBytes(char[] chars) {
+    // encodeArrayLoop
+    // https://github.com/corretto/corretto-21/blob/develop/src/java.base/share/classes/sun/nio/cs/UTF_8.java
+        CharBuffer charBuffer = CharBuffer.wrap(chars);
+        ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(charBuffer);
+        byte[]     bytes      = Arrays.copyOfRange(
+                                    byteBuffer.array(),
+                                    byteBuffer.position(), 
+                                    byteBuffer.limit()
+                                );
+        return bytes;
+    }
+
     private void createUpload(String bucketName, String keyName) {
         CreateMultipartUploadRequest request
                             = CreateMultipartUploadRequest.builder()
                                 .bucket(bucketName)
                                 .key(keyName)
                                 .build();
+        logger.info( "CreateMultipartUpload request sending" );
         CreateMultipartUploadResponse response 
                             = S3Tool.S3Client().createMultipartUpload(request);
         this.uploadID       = response.uploadId();
         this.bucketName     = response.bucket();
         this.keyName        = response.key();
+        logger.info( "CreateMultipartUpload responded" );
+        logger.info( "upload id: " + this.uploadID );
+        logger.info( "s3 object: " + S3Tool.getS3URL(bucketName,keyName) );
         this.completedParts = new ArrayList<CompletedPart>();
         this.partNumber     = 0;
     }
@@ -100,15 +122,17 @@ public class S3Writer extends Writer {
 
     private void flushBuffer() throws IOException {
         if (position > 0) {
-            String data = new String(buffer,0,position);
             partNumber += 1;
+            String data = new String(buffer,0,position);
             UploadPartRequest request
                         = UploadPartRequest.builder()
                             .bucket(bucketName)
                             .key(keyName)
                             .uploadId(uploadID)
-                            .contentLength((long) data.getBytes().length)  // can we remove it?
+                            .partNumber(partNumber)
                             .build();
+            logger.info( "UploadPart request sending" );
+            logger.info( "part: " + partNumber );
             UploadPartResponse response 
                         = S3Tool.S3Client().uploadPart(
                             request,
@@ -121,6 +145,8 @@ public class S3Writer extends Writer {
                     .eTag(eTag)
                     .build()
                 );
+            logger.info( "UploadPart responded" );
+            logger.info( "ETag: " + eTag );
             position = 0;
         }
     }
@@ -137,7 +163,11 @@ public class S3Writer extends Writer {
                             .uploadId(uploadID)
                             .multipartUpload(completedUpload)
                             .build();
+        logger.info( "upload id: " + uploadID );
+        logger.info( "CompletedMultipartUpload request sending" );
         S3Tool.S3Client().completeMultipartUpload(request);
+        logger.info( "CompletedMultipartUpload responded" );
+        logger.info( "s3 object: " + S3Tool.getS3URL(bucketName,keyName) );
     }
 
     public void close() throws IOException {
