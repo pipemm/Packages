@@ -44,11 +44,12 @@ public class S3Writer extends Writer {
         this.position = 0;
     }
 
-    private ByteBuffer toByteBuffer(char[] chars) {
+    private RequestBody getRequestBody() {
     // encodeArrayLoop
     // https://github.com/corretto/corretto-21/blob/develop/src/java.base/share/classes/sun/nio/cs/UTF_8.java
-        CharBuffer charBuffer = CharBuffer.wrap(chars);
-        return Charset.forName("UTF-8").encode(charBuffer);
+        CharBuffer charBuffer = CharBuffer.wrap(buffer,0,position);
+        ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(charBuffer);
+        return RequestBody.fromRemainingByteBuffer(byteBuffer);
     }
 
     private void createUpload(String bucketName, String keyName) {
@@ -70,7 +71,7 @@ public class S3Writer extends Writer {
         this.partNumber     = 0;
     }
 
-    private int min(int a, int b) {
+    private static int min(int a, int b) {
         if (a < b) {
             return a;
         }
