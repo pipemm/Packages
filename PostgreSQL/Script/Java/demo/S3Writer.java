@@ -128,10 +128,7 @@ public class S3Writer extends Writer {
             logger.info( "UploadPart request sending" );
             logger.info( "part: " + partNumber );
             UploadPartResponse response 
-                        = S3Tool.S3Client().uploadPart(
-                            request,
-                            data
-                            );
+                        = S3Tool.S3Client().uploadPart(request,data);
             String eTag = response.eTag();
             completedParts.add(
                 CompletedPart.builder()
