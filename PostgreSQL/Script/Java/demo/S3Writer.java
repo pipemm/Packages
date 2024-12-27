@@ -3,7 +3,6 @@ package demo;
 import java.io.Writer;
 import java.io.IOException;
 import java.util.List;
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.nio.charset.Charset;
@@ -45,17 +44,11 @@ public class S3Writer extends Writer {
         this.position = 0;
     }
 
-    private byte[] toBytes(char[] chars) {
+    private ByteBuffer toByteBuffer(char[] chars) {
     // encodeArrayLoop
     // https://github.com/corretto/corretto-21/blob/develop/src/java.base/share/classes/sun/nio/cs/UTF_8.java
         CharBuffer charBuffer = CharBuffer.wrap(chars);
-        ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(charBuffer);
-        byte[]     bytes      = Arrays.copyOfRange(
-                                    byteBuffer.array(),
-                                    byteBuffer.position(), 
-                                    byteBuffer.limit()
-                                );
-        return bytes;
+        return Charset.forName("UTF-8").encode(charBuffer);
     }
 
     private void createUpload(String bucketName, String keyName) {
