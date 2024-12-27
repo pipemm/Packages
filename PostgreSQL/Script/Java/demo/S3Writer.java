@@ -117,7 +117,7 @@ public class S3Writer extends Writer {
     private void flushBuffer() throws IOException {
         if (position > 0) {
             partNumber += 1;
-            String data = new String(buffer,0,position);
+            RequestBody data = getRequestBody();
             UploadPartRequest request
                         = UploadPartRequest.builder()
                             .bucket(bucketName)
@@ -130,7 +130,7 @@ public class S3Writer extends Writer {
             UploadPartResponse response 
                         = S3Tool.S3Client().uploadPart(
                             request,
-                            RequestBody.fromString(data)
+                            data
                             );
             String eTag = response.eTag();
             completedParts.add(
