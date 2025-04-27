@@ -125,3 +125,11 @@ jobs:
         run: |
           .\PowerShell\Download-Zip.ps1
 
+      - name: Upload Artifact - x64
+        if  : ${{ env.ArtifactName != '' }}
+        uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact?tab=readme-ov-file#inputs
+        with:
+          name: ${{ env.ArtifactName }}
+          path: |
+            Node/Unzipped/
