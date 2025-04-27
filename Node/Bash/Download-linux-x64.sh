@@ -9,6 +9,7 @@ FolderReleases='Releases/'
 FolderDownload='Download/'
 mkdir --parent "${FolderDownload%/}/"
 FolderUnzipped='Unzipped/'
+mkdir --parent "${FolderUnzipped%/}/"
 
 url_prefix='https://nodejs.org/dist/'
 url_download="${url_prefix%/}/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz"
