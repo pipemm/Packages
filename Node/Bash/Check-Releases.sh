@@ -12,8 +12,8 @@ then
     head --lines=1
   )
 fi
-FolderDownload='Releases/'
-mkdir --parent "${FolderDownload%/}/"
+FolderReleases='Releases/'
+mkdir --parent "${FolderReleases%/}/"
 
 LatestJSON=$(
   curl 'https://nodejs.org/en/download' \
@@ -38,7 +38,7 @@ LatestJSON=$(
       node "${getContext}" 'data'
   done |
   jq '.[3]?.releases' |
-  tee "${FolderDownload%/}/releases.json" |
+  tee "${FolderReleases%/}/releases.json" |
   jq '[.[] | select(.isLts)]' |
   jq 'sort_by(.major, .endOfLife) | reverse' |
   jq --compact-output '.[0]? | {major, version, versionWithPrefix, releaseDate}'
@@ -51,9 +51,9 @@ curl "https://nodejs.org/en/blog/release/${VERSION}" \
   sed '0,/Hash: SHA256/d' |
   sed '/^--/,$d' |
   sed '/^$/d' |
-  tee "${FolderDownload%/}/release-sha256.txt" "${FolderDownload%/}/release-${VERSION}-sha256.txt" |
+  tee "${FolderReleases%/}/release-sha256.txt" "${FolderReleases%/}/release-${VERSION}-sha256.txt" |
   sed 's/^[0-9a-z]\{64\}[ ]\+//' |
-  tee "${FolderDownload%/}/release-${VERSION}-files.txt"
+  tee "${FolderReleases%/}/release-files.txt" "${FolderReleases%/}/release-${VERSION}-files.txt"
 
 if [[ -n "${GITHUB_ENV}" ]]
 then
