@@ -9,7 +9,7 @@ FolderReleases='Releases/'
 FolderDownload='Download/'
 mkdir -p "${FolderDownload%/}/"
 FolderUnzipped='Unzipped/'
-mkdir -p "${Unzipped%/}/"
+mkdir -p "${FolderUnzipped%/}/"
 
 url_prefix='https://nodejs.org/dist/'
 url_download="${url_prefix%/}/${NODE_VERSION}/node-${NODE_VERSION}-darwin-arm64.tar.gz"
