@@ -157,3 +157,12 @@ jobs:
           name: ${{ env.ArtifactName }}
           path: |
             Node/Unzipped/
+
+      - name: Upload Artifact - latest
+        if  : ${{ env.ArtifactName != '' }}
+        uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact?tab=readme-ov-file#inputs
+        with:
+          name: node-latest-darwin-arm64
+          path: |
+            Node/Unzipped/
