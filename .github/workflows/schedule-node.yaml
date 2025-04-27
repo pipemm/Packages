@@ -22,12 +22,43 @@ on:
       - 'Node/**.*'
 
   workflow_dispatch:
+    inputs:
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      system-windows:
+        description: 'Windows Version'
+        required: true
+        default: 'windows-latest'
+        type: choice
+        options:
+        - windows-latest
+        - windows-2025
+        - windows-2022
+        - windows-2019
+      system-macos:
+        description: 'macOS Version'
+        required: true
+        default: 'macos-latest'
+        type: choice
+        options:
+        - macos-latest
+        - macos-14
+        - macos-15
+      system-linux:
+        description: 'Linux Version'
+        required: true
+        default: 'ubuntu-latest'
+        type: choice
+        options:
+        - ubuntu-latest
+        - ubuntu-24.04
+        - ubuntu-22.04
+        - ubuntu-20.04
 
 jobs:
 
   Releases-Information:
     
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
     environment: CURL
@@ -68,4 +99,24 @@ jobs:
           name: node-latest-win-x64
           path: |
             Node/Unzipped/
+
+  Windows-Latest:
+    runs-on: ${{ inputs.system-windows || 'windows-latest' }}
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md
+    needs: 
+      - Releases-Information
+
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - name: Get Zip
+        working-directory: Node/
+        shell: pwsh
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          'Testing'
 
