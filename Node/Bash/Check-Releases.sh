@@ -45,20 +45,27 @@ LatestJSON=$(
   jq 'sort_by(.major, .endOfLife) | reverse' |
   jq --compact-output '.[0]? | {major, version, versionWithPrefix, releaseDate}'
 )
-VERSION=$(echo "${LatestJSON}" | jq --raw-output '.versionWithPrefix?')
+NODE_VERSION=$(echo "${LatestJSON}" | jq --raw-output '.versionWithPrefix?')
 
-curl "https://nodejs.org/en/blog/release/${VERSION}" \
+curl "https://nodejs.org/en/blog/release/${NODE_VERSION}" \
   --header 'rsc: 1' \
   --header "user-agent: ${UserAgent}" |
   sed '0,/Hash: SHA256/d' |
   sed '/^--/,$d' |
   sed '/^$/d' |
-  tee "${FolderReleases%/}/release-sha256.txt" "${FolderReleases%/}/release-${VERSION}-sha256.txt" |
+  tee "${FolderReleases%/}/release-sha256.txt" "${FolderReleases%/}/release-${NODE_VERSION}-sha256.txt" |
   sed 's/^[0-9a-z]\{64\}[ ]\+//' |
-  tee "${FolderReleases%/}/release-files.txt" "${FolderReleases%/}/release-${VERSION}-files.txt"
+  tee "${FolderReleases%/}/release-files.txt" "${FolderReleases%/}/release-${NODE_VERSION}-files.txt"
 
 if [[ -n "${GITHUB_ENV}" ]]
 then
-  echo "VERSION=${VERSION}"
-  echo "VERSION=${VERSION}" >> "${GITHUB_ENV}"
+  echo "NODE_VERSION=${NODE_VERSION}"
+  echo "NODE_VERSION=${NODE_VERSION}" >> "${GITHUB_ENV}"
+fi
+
+if [[ -n "${GITHUB_OUTPUT}" ]]
+then
+  ## https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/passing-information-between-jobs
+  echo "NODE_VERSION=${NODE_VERSION}"
+  echo "NODE_VERSION=${NODE_VERSION}" >> "${GITHUB_OUTPUT}"
 fi
