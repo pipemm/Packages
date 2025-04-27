@@ -7,7 +7,7 @@ fi
 
 FolderReleases='Releases/'
 FolderDownload='Download/'
-mkdir --parent "${FolderDownload%/}/"
+mkdir -parent "${FolderDownload%/}/"
 FolderUnzipped='Unzipped/'
 
 url_prefix='https://nodejs.org/dist/'
