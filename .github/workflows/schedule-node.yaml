@@ -25,11 +25,12 @@ on:
 
 jobs:
 
-  Recommanded-Version:
+  Releases:
     
     runs-on: ubuntu-latest
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
       ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
+    environment: CURL
 
     steps:
       
@@ -46,9 +47,16 @@ jobs:
 
       - name: Upload Artifact - Releases
         uses: actions/upload-artifact@v4
-          ## https://github.com/actions/upload-artifact
+          ## https://github.com/actions/upload-artifact?tab=readme-ov-file#inputs
         with:
           name: Releases
           path: |
             Node/Releases/*.*
 
+      - name: Test
+        if: ${{ env.VERSION != '' }}
+        working-directory: Node/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          echo "${VERSION}"

@@ -43,15 +43,20 @@ LatestJSON=$(
   jq 'sort_by(.major, .endOfLife) | reverse' |
   jq --compact-output '.[0]? | {major, version, versionWithPrefix, releaseDate}'
 )
-Version=$(echo "${LatestJSON}" | jq --raw-output '.versionWithPrefix?')
-echo "${LatestJSON}" | jq --raw-output '.versionWithPrefix?'
+VERSION=$(echo "${LatestJSON}" | jq --raw-output '.versionWithPrefix?')
 
-curl "https://nodejs.org/en/blog/release/${Version}" \
+curl "https://nodejs.org/en/blog/release/${VERSION}" \
   --header 'rsc: 1' \
   --header "user-agent: ${UserAgent}" |
   sed '0,/Hash: SHA256/d' |
   sed '/^--/,$d' |
   sed '/^$/d' |
-  tee "${FolderDownload%/}/release-sha256.txt" "${FolderDownload%/}/release-${Version}-sha256.txt" |
+  tee "${FolderDownload%/}/release-sha256.txt" "${FolderDownload%/}/release-${VERSION}-sha256.txt" |
   sed 's/^[0-9a-z]\{64\}[ ]\+//' |
-  tee "${FolderDownload%/}/release-${Version}-files.txt"
+  tee "${FolderDownload%/}/release-${VERSION}-files.txt"
+
+if [[ -n "${GITHUB_ENV}" ]]
+then
+  echo "VERSION=${VERSION}"
+  echo "VERSION=${VERSION}" >> "${GITHUB_ENV}"
+fi
