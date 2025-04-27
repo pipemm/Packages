@@ -18,7 +18,7 @@ targz_download="${FolderDownload%/}/${filename}"
 curl --output "${targz_download}" "${url_download}"
 tar --extract --xz --file="${targz_download}" --directory="${FolderUnzipped%/}/"
 
-ArtifactName="${filename%.tar.gz}"
+ArtifactName="${filename%.tar.xz}"
 
 if [[ -n "${GITHUB_ENV}" ]]
 then
