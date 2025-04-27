@@ -41,8 +41,8 @@ on:
         type: choice
         options:
         - macos-latest
-        - macos-14
         - macos-15
+        - macos-14
       system-linux:
         description: 'Linux Version'
         required: true
@@ -159,10 +159,48 @@ jobs:
             Node/Unzipped/
 
       - name: Upload Artifact - latest
-        if  : ${{ env.ArtifactName != '' }}
         uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact?tab=readme-ov-file#inputs
         with:
           name: node-latest-darwin-arm64
+          path: |
+            Node/Unzipped/
+
+  Linux-Latest:
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
+    needs: 
+      - Releases-Information
+
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - name: Get Package
+        working-directory: Node/
+        env:
+          NODE_VERSION: ${{needs.Releases-Information.outputs.node-version}}
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash Bash/Download-linux-x64.sh
+
+      - name: Upload Artifact - x64
+        if  : ${{ env.ArtifactName != '' }}
+        uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact?tab=readme-ov-file#inputs
+        with:
+          name: ${{ env.ArtifactName }}
+          path: |
+            Node/Unzipped/
+
+      - name: Upload Artifact - latest
+        uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact?tab=readme-ov-file#inputs
+        with:
+          name: node-latest-linux-x64
           path: |
             Node/Unzipped/
