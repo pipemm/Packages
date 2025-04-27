@@ -11,5 +11,9 @@ New-Item -Path "${FolderDownload}" -ItemType Directory -Force;
 [System.String]${NodeVersion} = [System.Environment]::GetEnvironmentVariable('NODE_VERSION');
 [System.String]${Uri}         = "https://nodejs.org/dist/${NodeVersion}/node-${NodeVersion}-win-x64.zip";
 [System.String]${FileName}    = [System.IO.Path]::GetFileName("${Uri}");
+[System.String]${OutFile}     = Join-Path -Path "${FolderDownload}" -ChildPath "${FileName}";
 ${Uri};
-Join-Path -Path "${FolderDownload}" -ChildPath "${FileName}";
+
+
+Invoke-WebRequest -Uri "${Uri}" `
+  -OutFile "${OutFile}"
