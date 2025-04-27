@@ -90,7 +90,7 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash Bash/Dowload-x64.sh
+          bash Bash/Download-x64.sh
 
       - name: Upload Artifact - x64
         uses: actions/upload-artifact@v4
