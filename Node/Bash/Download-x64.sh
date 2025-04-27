@@ -1,13 +1,14 @@
 #!/usr/bin/bash
 
-if [[ -z "${VERSION}" ]]
+FolderReleases='Releases/'
+if [[ ! -f "${FolderReleases%/}/release-files.txt" ]]
 then
   exit 1
 fi
 
-FolderReleases='Releases/'
 FolderDownload='Download/'
 mkdir --parent "${FolderDownload%/}/"
+FolderUnzipped='Unzipped/'
 
 url_prefix='https://nodejs.org/dist/'
 
@@ -22,5 +23,6 @@ cat "${FolderReleases%/}/release-files.txt" |
     url_download="${url_prefix%/}/${ver_node}/${filename}"
     zip_download="${FolderDownload%/}/${filename}"
     curl --output "${zip_download}" "${url_download}"
+    unzip "${zip_download}" -d "${FolderUnzipped%/}/"
   done
 

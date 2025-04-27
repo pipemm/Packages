@@ -60,3 +60,12 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           echo "${VERSION}"
+
+      - name: Upload Artifact - x64
+        uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact?tab=readme-ov-file#inputs
+        with:
+          name: node-latest-win-x64
+          path: |
+            Node/Unzipped/
+
