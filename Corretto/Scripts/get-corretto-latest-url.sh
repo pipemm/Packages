@@ -1,12 +1,11 @@
 #!/usr/bin/bash
 
 ## https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/downloads-list.html
-## https://aws.amazon.com/corretto/faqs/#support_calendar
 
 corretto_version=17
 cpu_arch='x64'
-host_os='linux'     ## 'linux' 'al2023'
-package_type='jdk'  ## 'jdk' 'jre'
+host_os='linux'     ## 'linux'  'al2023'
+package_type='jdk'  ## 'jdk'    'jre'
 file_extension='tar.gz'
 
 url_domain='https://corretto.aws/'
