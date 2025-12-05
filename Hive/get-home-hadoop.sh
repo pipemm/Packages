@@ -7,5 +7,7 @@ cd "${ThisPath}"
 FolderPackage='Packages/'
 FolderBinary="${FolderPackage%/}/Binaries/"
 
-ls ${FolderBinary%/}/hadoop*
+ls --directory -1 ${PWD%/}/${FolderBinary%/}/hadoop*/ |
+  tac |
+  head --lines=1
 
