@@ -10,8 +10,6 @@ FolderOutput='TestOutput/'
 HADOOP_HOME=$(bash get-home-hadoop.sh)
 PATH="${PATH}:${HADOOP_HOME%/}/bin/"
 
-##ls ${HADOOP_HOME%/}/etc/hadoop/*.xml
-
 mkdir --parent "${FolderInput%/}/"
 cp ${HADOOP_HOME%/}/etc/hadoop/*.xml "${FolderInput%/}/"
 JAR_EXAMPLE=$(
@@ -19,10 +17,12 @@ JAR_EXAMPLE=$(
   head --lines=1
 )
 
-${HADOOP_HOME%/}/bin/hadoop jar "${JAR_EXAMPLE}" grep "${FolderInput}" "${FolderOutput}" 'dfs[a-z.]+'
+hadoop jar "${JAR_EXAMPLE}" grep "${FolderInput%/}/" "${FolderOutput%/}/" 'dfs[a-z.]+'
 
 echo 'Showing Input ...'
 ls "${FolderInput%/}/"
+
+echo "HADOOP_HOME=${HADOOP_HOME}"
 
 echo 'Showing Output ...'
 cat "${FolderOutput%/}/"*
