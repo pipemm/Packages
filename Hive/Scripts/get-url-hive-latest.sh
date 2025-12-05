@@ -12,7 +12,7 @@ curl --silent "${URL_DOWNLOAD_PAGE}" |
   while read -r url0
   do
     curl --silent "${url0}" |
-      sed --silent 's!^.*href="\([^"]\+/\)".*$!\1!p' |
+      sed --silent 's!^.* href="\([^"]\+/\)".*$!\1!p' |
       sed --silent "/^hive-[0-9.]\+\/$/p" |
       sort --reverse --version-sort |
       while read -r url1
@@ -24,7 +24,7 @@ curl --silent "${URL_DOWNLOAD_PAGE}" |
   while read -r url2
   do
     curl --silent "${url2}" |
-      sed --silent 's!^.*href="\(apache-hive-[^"]\+\)".*$!\1!p' |
+      sed --silent 's!^.* href="\(apache-hive-[^"]\+\)".*$!\1!p' |
       while read -r url3
       do
         echo "${url2%/}/${url3#/}"
