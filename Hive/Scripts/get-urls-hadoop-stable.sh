@@ -7,6 +7,7 @@ versionsed='/^stable\//'
 ## - https://dlcdn.apache.org/hadoop/common/
 ## - https://dlcdn.apache.org/hadoop/common/stable/
 ## - https://dlcdn.apache.org/hadoop/common/stable/hadoop-3.4.2.tar.gz
+## https://hadoop.apache.org/releases.html
 URL_COMMON_PAGE='https://www.apache.org/dyn/closer.cgi/hadoop/common/'
 curl --silent "${URL_COMMON_PAGE}" |
   sed '/Alternate download locations are suggested below\./q' |

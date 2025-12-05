@@ -4,7 +4,7 @@ ThisScript=$(realpath "${0}")
 ThisPath="${ThisScript%/*}/"
 cd "${ThisPath}"
 
-sh_urls='get-urls-hadoop-stable.sh'
+sh_urls='get-urls-hadoop-3.sh'
 urls=$(bash "${sh_urls}")
 
 (
@@ -16,5 +16,5 @@ urls=$(bash "${sh_urls}")
     sed --silent '/hadoop-[0-9.]\+\.tar\.gz$/p' |
     sort --reverse --version-sort |
     head --lines=1
-) |
-  head --lines=1
+) | head --lines=1
+
