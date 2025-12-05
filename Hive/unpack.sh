@@ -38,7 +38,8 @@ CONFIG_HIVE_FILE="${HIVE_HOME_VAR%/}/conf/hive-site.xml"
 if [[ ! -f "${CONFIG_HIVE_FILE}" ]]
 then
   ## HIVE-20421
-  cp "${CONFIG_HIVE_TEMPLATE}" "${CONFIG_HIVE_FILE}"
+  cat "${CONFIG_HIVE_TEMPLATE}" |
+    sed 's/&#8;/ /g' > "${CONFIG_HIVE_FILE}"
 fi
 
 ########## HIVE UNPACK #########################################################
