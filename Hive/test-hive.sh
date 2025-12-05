@@ -26,6 +26,7 @@ FolderSQL='HiveSQL/'
 ls "${FolderSQL%/}/"*.sql |
   while read -r SQLFile
   do
-    echo "Executing ${SQLFile} ..."
+    echo "Executing ${SQLFile##*/} ..."
     hive-oneline "${SQLFile}"
   done
+
