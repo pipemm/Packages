@@ -13,7 +13,5 @@ ls ${FolderPackage%/}/Downloads*/hadoop-*.tar.gz |
   while read -r tarfile
   do
     tar -xzf "${tarfile}" -C "${FolderBinary%/}/"
-    pwd
   done
 
-pwd
