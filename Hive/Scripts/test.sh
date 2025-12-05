@@ -25,3 +25,5 @@ bash "${sh_urls}" |
     curl --silent "${url}" |
       tar --file=- --gunzip --list --verbose > full.log
   done
+
+diff lean.log full.log > diff.log
