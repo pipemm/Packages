@@ -13,7 +13,7 @@ bash "${sh_urls}" |
   while read -r url
   do
     curl --silent "${url}" |
-      tar --file=- --gunzip --list > lean.log
+      tar --file=- --gunzip --list --verbose > lean.log
   done
 
 bash "${sh_urls}" | 
@@ -23,7 +23,6 @@ bash "${sh_urls}" |
   while read -r url
   do
     curl --silent "${url}" |
-      tar --file=- --gunzip --list > full.log
+      tar --file=- --gunzip --list --verbose > full.log
   done
 
-diff lean.log full.log > diff.log
