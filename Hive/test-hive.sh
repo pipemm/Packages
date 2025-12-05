@@ -11,12 +11,21 @@ PATH="${PATH}:${HIVE_HOME_VAR%/}/bin/:${HADOOP_HOME_VAR%/}/bin/"
 
 beeline --version
 
-script='HiveSQL/test.sql'
+hive-oneline() {
+  local sqlfile="$1"
+  env HADOOP_CLIENT_OPTS='-Ddisable.quoting.for.sv=false' beeline \
+    -u 'jdbc:hive2://localhost:10000/' \
+    --outputformat=csv2 --showHeader=true --nullemptystring=true \
+    --hivevar hive.resultset.use.unique.column.names=false \
+    --silent=false \
+    -f "${sqlfile}"
+}
 
-env HADOOP_CLIENT_OPTS='-Ddisable.quoting.for.sv=false' beeline \
-  -u 'jdbc:hive2://localhost:10000/' \
-  --outputformat=csv2 --showHeader=true --nullemptystring=true \
-  --hivevar hive.resultset.use.unique.column.names=false \
-  --silent=false \
-  -f "${script}"
 
+FolderSQL='HiveSQL/'
+ls "${FolderSQL%/}/"*.sql |
+  while read -r SQLFile
+  do
+    echo "Executing ${SQLFile} ..."
+    hive-oneline "${SQLFile}"
+  done
