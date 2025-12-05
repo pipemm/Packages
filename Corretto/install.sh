@@ -19,7 +19,7 @@ urls=$(bash "${sh_url}")
 
 sha512_target=$(
   echo "${urls}" |
-  sed --silent '/tar\.gz\.sha512$/p' |
+  sed --silent '/\.tar\.gz\.sha512$/p' |
   head --lines=1 |
   while read -r url
   do
@@ -29,10 +29,37 @@ sha512_target=$(
 
 url_download=$(
   echo "${urls}" |
-  sed --silent '/tar\.gz$/p' |
+  sed --silent '/\.tar\.gz$/p' |
   head --lines=1
 )
 file_path=$(save_path "${url_download}")
+echo "Downloading ${file_path##*/}"
 curl --output "${file_path}" "${url_download}"
-echo "Target SHA512: ${sha512_target}"
-sha512sum "${file_path}" 
+echo    "Target SHA512: ${sha512_target}"
+echo -n 'Actual SHA512: '
+sha512sum "${file_path}" |
+  cut --delimiter=' ' --fields=1
+
+sha512_target=$(
+  echo "${urls}" |
+  sed --silent '/\.zip\.sha512$/p' |
+  head --lines=1 |
+  while read -r url
+  do
+    curl --silent "${url}"
+  done
+)
+
+url_download=$(
+  echo "${urls}" |
+  sed --silent '/\.zip$/p' |
+  head --lines=1
+)
+file_path=$(save_path "${url_download}")
+echo "Downloading ${file_path##*/}"
+curl --output "${file_path}" "${url_download}"
+echo    "Target SHA512: ${sha512_target}"
+echo -n 'Actual SHA512: '
+sha512sum "${file_path}" |
+  cut --delimiter=' ' --fields=1
+
