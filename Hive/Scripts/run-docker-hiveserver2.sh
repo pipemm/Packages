@@ -4,29 +4,25 @@
 
 HIVE_VERSION=$(
   url_page='https://hub.docker.com/v2/namespaces/apache/repositories/hive/tags'
-  while true
+  while [[ -n "${url_page}" ]]
   do
     datastore=$(
       curl --silent --show-error --fail --retry 3 --retry-delay 2 "${url_page}" |
-      jq --raw-output '.next, .results[].name'
+      jq --raw-output '.next // empty , .results[].name'
     )
     sleep 0.5
     echo "${datastore}" |
       tail --lines=+2
     url_page=$(
       echo "${datastore}" |
-      head --lines=1
+      head --lines=1 |
+      sed --silent '/^http/p'
     )
-    if [[ "${url_page}" == 'null' ]]
-    then
-      break
-    fi
   done |
     sed --silent '/^[0-9.]\+$/p' |
     sort --reverse --version-sort |
     head --lines=1
 )
-
 
 
 ## https://hive.apache.org/development/quickstart/
