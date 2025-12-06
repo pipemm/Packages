@@ -40,7 +40,7 @@ docker run --detach \
 
 docker ps
 
-ss --tcp --udp --listening --numeric
+ss --tcp --udp --listening --numeric --processes
 
 docker logs "${CONTAINER_NAME}"
 
