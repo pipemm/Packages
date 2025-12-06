@@ -31,16 +31,5 @@ ls ${FolderPackage%/}/Downloads*/apache-hive-*.tar.gz |
     tar -xzf "${tarfile}" -C "${FolderBinary%/}/"
   done
 
-HIVE_HOME_VAR=$(bash get-home-hive.sh)
-CONFIG_HIVE_TEMPLATE="${HIVE_HOME_VAR%/}/conf/hive-default.xml.template"
-CONFIG_HIVE_FILE="${HIVE_HOME_VAR%/}/conf/hive-site.xml"
-
-if [[ ! -f "${CONFIG_HIVE_FILE}" ]]
-then
-  ## HIVE-20421
-  cat "${CONFIG_HIVE_TEMPLATE}" |
-    sed 's/&#8;/ /g' > "${CONFIG_HIVE_FILE}"
-fi
-
 ########## HIVE UNPACK #########################################################
 ################################################################################
