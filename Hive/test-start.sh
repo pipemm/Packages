@@ -20,7 +20,7 @@ cd "${FolderWork%/}/"
 schematool -dbType derby -initSchema
 hive --service metastore > hive-metastore.log 2>&1 &
 
-hiveserver2 --help
+hiveserver2 --hiveconf hive.server2.thrift.port=10000 --hiveconf hive.metastore.port=9083 --hiveconf hive.rot.logger=DEBUG,console
 
 ## hive --service hiveserver2 --hiveconf hive.server2.thrift.port=10000 --hiveconf hive.root.logger=DEBUG,console
 
