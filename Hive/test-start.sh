@@ -9,9 +9,16 @@ HIVE_HOME_VAR=$(bash get-home-hive.sh)
 
 PATH="${PATH}:${HIVE_HOME_VAR%/}/bin/:${HADOOP_HOME_VAR%/}/bin/"
 
-hive --service metastore
+FolderWork='TestDir/'
+mkdir --parent "${FolderWork%/}/"
 
-##schematool -dbType derby -initSchema
+schematool --help
+
+schematool -dbType derby -initSchema
+
+##hive --service metastore
+
+
 
 ##hive --service hiveserver2 --hiveconf hive.root.logger=TRACE,console
 
