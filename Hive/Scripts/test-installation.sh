@@ -5,11 +5,20 @@ ThisPath="${ThisScript%/*}/"
 cd "${ThisPath}"
 
 sh_path='../get-path-new.sh'
-PATH=$(bash "${sh_path}")
+if [[ -f "${sh_path}" ]]
+then
+  PATH=$(bash "${sh_path}")
+fi
+
+echo "PATH=${PATH}"
 
 which -a java
 java --version
-hadoop --help
+java --help
+
+which -a javac
+javac --version
+javac --help
 
 which -a hadoop
 hadoop version
@@ -18,3 +27,4 @@ hadoop --help
 which -a beeline
 beeline --version
 beeline --help
+

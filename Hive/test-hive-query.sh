@@ -4,14 +4,6 @@ ThisScript=$(realpath "${0}")
 ThisPath="${ThisScript%/*}/"
 cd "${ThisPath}"
 
-HADOOP_HOME_VAR=$(bash get-home-hadoop.sh)
-HIVE_HOME_VAR=$(bash get-home-hive.sh)
-
-PATH="${PATH}:${HIVE_HOME_VAR%/}/bin/:${HADOOP_HOME_VAR%/}/bin/"
-
-
-beeline --version
-
 hive-oneline() {
   local sqlfile="$1"
   env HADOOP_CLIENT_OPTS='-Ddisable.quoting.for.sv=false' beeline \
@@ -37,7 +29,7 @@ ls "${FolderSQL%/}/"*.sql |
     hive-oneline "${sql_file}" > "${csv_file}"
     echo "Saved to ${csv_file}."
     wc --lines "${csv_file}"
-    md5sum "${csv_file}"
+    cat "${csv_file}" | md5sum | sed 's/ .*//'
   done
 
 

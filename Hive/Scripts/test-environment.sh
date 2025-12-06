@@ -21,3 +21,6 @@ curl --help all
 which -a jq
 jq --version
 jq --help
+
+echo "PATH=${PATH}"
+
