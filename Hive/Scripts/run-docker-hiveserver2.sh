@@ -6,13 +6,17 @@ HIVE_VERSION=$(
   url_page='https://hub.docker.com/v2/namespaces/apache/repositories/hive/tags'
   while true
   do
-    url_page_next=$(
-      curl "${url_page}" |
-      jq --raw-output '.next'
+    datastore=$(
+      curl --silent --show-error --fail --retry 3 --retry-delay 2 "${url_page}" |
+      jq --raw-output '.next, .results[].name'
     )
-    curl "${url_page}" |
-      jq --raw-output '.results[].name'
-    url_page="${url_page_next}"
+    sleep 0.5
+    echo "${datastore}" |
+      tail --lines=+2
+    url_page=$(
+      echo "${datastore}" |
+      head --lines=1
+    )
     if [[ "${url_page}" == 'null' ]]
     then
       break
