@@ -22,17 +22,17 @@ ls "${FolderSQL%/}/"*.sql |
   while read -r sql_file
   do
     sql_name="${sql_file##*/}"
-    echo "Executing ${sql_name} ..."
     base_name="${sql_name%.sql}"
     TIMESTAMP=$(TZ=UTC date +%Y%m%d%H%M%S)
     csv_file="${PWD%/}/${FolderOutput%/}/${base_name}_${TIMESTAMP}.csv"
-    hive-oneline "${sql_file}" > "${csv_file}"
-    echo "Saved to ${csv_file}."
-    cat "${csv_file}" |
+    echo "Executing ${sql_name} ..."
+    hive-oneline "${sql_file}"  |
       tee \
-        >( echo 'LINES     : '$( wc --lines                 | sed 's/ .*//' ) ) \
+        >( echo 'MD5(DATA) : '$( tail --lines='+2' | md5sum | sed 's/ .*//' ) ) \
         >( echo 'MD5       : '$(                     md5sum | sed 's/ .*//' ) ) \
-        >( echo 'MD5(DATA) : '$( tail --lines='+2' | md5sum | sed 's/ .*//' ) )
+        >( echo 'LINES     : '$( wc --lines                 | sed 's/ .*//' ) ) \
+        > "${csv_file}"
+    echo "Saved to ${csv_file}."
   done
 
 
