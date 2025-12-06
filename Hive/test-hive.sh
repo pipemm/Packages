@@ -30,4 +30,4 @@ ls "${FolderSQL%/}/"*.sql |
     hive-oneline "${SQLFile}"
   done
 
-schematool --help
+

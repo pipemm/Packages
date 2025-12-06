@@ -9,5 +9,7 @@ HIVE_HOME_VAR=$(bash get-home-hive.sh)
 
 PATH="${PATH}:${HIVE_HOME_VAR%/}/bin/:${HADOOP_HOME_VAR%/}/bin/"
 
-hive --service hiveserver2 --hiveconf hive.root.logger=DEBUG,console
+schematool -dbType derby -initSchema
+
+hive --service hiveserver2 --hiveconf hive.root.logger=TRACE,console
 
