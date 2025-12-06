@@ -22,7 +22,7 @@ hive-oneline() {
 }
 
 
-FolderSQL='HiveSQL/'
+FolderSQL='HiveQL/'
 ls "${FolderSQL%/}/"*.sql |
   while read -r SQLFile
   do
@@ -30,3 +30,4 @@ ls "${FolderSQL%/}/"*.sql |
     hive-oneline "${SQLFile}"
   done
 
+schematool --help
