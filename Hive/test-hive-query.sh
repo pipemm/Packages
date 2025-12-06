@@ -33,6 +33,7 @@ ls "${FolderSQL%/}/"*.sql |
         >( echo 'LINES     : '$( wc --lines                 | sed 's/ .*//' ) ) \
         > "${csv_file}"
     echo "Saved to ${csv_file}."
+    sleep 0.01
   done
 
 
