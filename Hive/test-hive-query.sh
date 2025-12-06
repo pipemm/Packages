@@ -28,8 +28,11 @@ ls "${FolderSQL%/}/"*.sql |
     csv_file="${PWD%/}/${FolderOutput%/}/${base_name}_${TIMESTAMP}.csv"
     hive-oneline "${sql_file}" > "${csv_file}"
     echo "Saved to ${csv_file}."
-    wc --lines "${csv_file}"
-    cat "${csv_file}" | md5sum | sed 's/ .*//'
+    cat "${csv_file}" |
+      tee \
+        >( echo 'LINES     : '$( wc --lines                 | sed 's/ .*//' ) ) \
+        >( echo 'MD5       : '$(                     md5sum | sed 's/ .*//' ) ) \
+        >( echo 'MD5(DATA) : '$( tail --lines='+2' | md5sum | sed 's/ .*//' ) )
   done
 
 
