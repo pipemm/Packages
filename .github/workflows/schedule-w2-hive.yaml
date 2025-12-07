@@ -147,11 +147,15 @@ jobs:
       - name: Adopt Variable
         working-directory: Hive/
         env:
-          NAME_HADOOP: "${{ needs.Downloads.outputs.hadoop_name }}"
+          NAME_HADOOP : "${{ needs.Downloads.outputs.hadoop-name }}"
+          NAME_HIVE   : "${{ needs.Downloads.outputs.hive-name }}"
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          echo "NAME_HADOOP=${NAME_HADOOP}"
+          echo "NAME_HADOOP=${NAME_HADOOP}" |
+            tee --append "${GITHUB_ENV}"
+          echo "NAME_HIVE=${NAME_HIVE}" |
+            tee --append "${GITHUB_ENV}"
 
       - name: Check Environment
         working-directory: Hive/
@@ -159,6 +163,8 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           bash 'Scripts/test-environment.sh'
+          echo "NAME_HADOOP=${NAME_HADOOP}"
+          echo "NAME_HIVE=${NAME_HIVE}"
 
       - name: Run Docker
         working-directory: Hive/
@@ -166,3 +172,16 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           bash 'Scripts/run-docker-hiveserver2-latest.sh'
+
+      - name: Execute Queries
+        working-directory: Hive/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash 'execute-hive-query.sh'
+
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: 'csv-files'
+          path: 'Hive/TestOutput/'
