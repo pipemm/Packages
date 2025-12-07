@@ -178,12 +178,13 @@ jobs:
           name: "${{ env.NAME_HIVE }}"
           path: "Hive/Packages/Binaries/${{ env.NAME_HIVE }}"
 
-      - name: Unpack
+      - name: Test Installation
         working-directory: Hive/
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           bash 'Scripts/test-installation.sh'
+          ls Packages/Binaries/
 
       - name: Run Docker
         working-directory: Hive/
