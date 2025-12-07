@@ -25,9 +25,9 @@ WITH
     ),
     `seedtable` AS (
     SELECT
-        TRUNC(`seeddate`.`date_start` INTERVAL -1 YEAR,'YEAR')
+        TRUNC(`seeddate`.`date_start` INTERVAL '-1' YEAR, 'YEAR')
                 AS `date_start`,
-        TRUNC(`seeddate`.`date_end`   INTERVAL  2 YEAR,'YEAR')
+        TRUNC(`seeddate`.`date_end`   INTERVAL  '2' YEAR, 'YEAR')
                 AS `date_end`,
         `generatortable`.`aposition`
                 AS `num`
