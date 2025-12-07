@@ -68,7 +68,7 @@ then
   package_name="${file_path##*/}"
   package_name="${package_name%.tar.gz}"
   NAME_HIVE="${package_name}"
-  echo "NAME_HADOOP=${NAME_HIVE}" |
+  echo "NAME_HIVE=${NAME_HIVE}" |
     tee --append "${GITHUB_ENV}"
 fi
 
