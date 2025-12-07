@@ -2,11 +2,13 @@
 WITH
     `seeddata` AS (
     SELECT
-        CAST(CURRENT_DATE AS INT) 
-                AS `int_column`
+        CURRENT_DATE
+                AS `date_column`
     )
 SELECT
-    `int_column`
+    `date_column`,
+    CAST(`date_column` AS DATE)
+            AS `int_column`
 FROM
     `seeddata`
 ;

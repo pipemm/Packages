@@ -24,6 +24,7 @@ hive-query 'SHOW FUNCTIONS;' |
   do
     query_describe="DESCRIBE FUNCTION \`${function_name^^}\`;"
     echo "${query_describe}"
-  done
+  done |
+  hive-stdin
 
 
