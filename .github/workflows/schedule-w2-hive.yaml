@@ -205,6 +205,7 @@ jobs:
           FolderOutput='TestOutput/'
           mkdir --parent "${FolderOutput%/}/"
           bash 'Scripts/get-hive-functions.sh' > "${FolderOutput%/}/functions.log"
+          cat "${FolderOutput%/}/functions.log"
 
       - name: Execute Queries
         working-directory: Hive/
