@@ -42,7 +42,7 @@ SELECT
     `date_start`,
     `date_end`,
     `num`,
-    `date_start` + INTERVAL `num` DAY
+    `date_start` + INTERVAL (`num`) DAY
             AS `date_column`
 FROM
     `seedtable`
