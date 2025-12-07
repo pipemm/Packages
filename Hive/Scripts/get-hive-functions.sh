@@ -10,6 +10,7 @@ hive-query() {
     -e "${sql_query}"
 }
 
-hive-query 'SHOW FUNCTIONS;'
+hive-query 'SHOW FUNCTIONS;' |
+  tail --lines='+2'
 
 
