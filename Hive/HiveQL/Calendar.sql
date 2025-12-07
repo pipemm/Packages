@@ -15,15 +15,8 @@ WITH
                 AS `spaces`
     ),
     `generatortable` AS (
-    SELECT
-        `ts`.`spaces`,
-        `ta`.`aposition`, 
-        `ta`.`avalue`
-    FROM
-        `seedspaces` `ts` -- table spaces
-        LATERAL VIEW
-        POSEXPLODE(SPLIT(`ts`.`spaces`,' ')) `ta`   -- table array
-                AS `aposition`, `avalue`
+    SELECT POSEXPLODE(SPLIT(SPACE(10000-1),' '))
+                AS (`position`, `value`)
     ),
 ---------- SEED DATA -----------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -33,19 +26,19 @@ WITH
                 AS `date_start`,
         TRUNC(`seeddate`.`date_end`   + INTERVAL 2 YEAR, 'YEAR')
                 AS `date_end`,
-        `generatortable`.`aposition`
-                AS `num`
+        `generatortable`.`position`
+                AS `days`
     FROM
         `seeddate`, `generatortable`
     )
 SELECT
     `date_start`,
     `date_end`,
-    `num`,
-    `date_start` + INTERVAL (`num`) DAY
+    `days`,
+    `date_start` + INTERVAL (`days`) DAY
             AS `date_column`
 FROM
     `seedtable`
 ORDER BY
-    `num` ASC
+    `days` ASC
 ;
