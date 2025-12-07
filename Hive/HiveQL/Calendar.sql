@@ -15,7 +15,7 @@ WITH
                 AS `spaces`
     ),
     `generatortable` AS (
-    SELECT POSEXPLODE(SPLIT(SPACE(10000-1),' '))
+    SELECT POSEXPLODE(SPLIT(SPACE(100000-1),' '))
                 AS (`position`, `value`)
     ),
 ---------- SEED DATA -----------------------------------------------------------
@@ -39,18 +39,28 @@ WITH
                 AS `date_column`
     FROM
         `seedtable`
+    ),
+    `calendartable` AS (
+    SELECT
+        `date_start`,
+        `date_end`,
+        CAST(`date_column` AS DATE)
+                AS `date_column`,
+        WEEKOFYEAR(`date_column`)
+                AS `week_of_year`,
+        EXTRACT(DAYOFWEEK from `date_column`)   
+                AS `day_of_week`
+    FROM
+        `datetable`
+    WHERE
+        `date_column` BETWEEN `date_start` AND `date_end`
     )
 SELECT
-    `date_start`,
-    `date_end`,
-    CAST(`date_column` AS DATE)
-            AS `date_column`,
-    WEEKOFYEAR(`date_column`)
-            AS `week_of_year`,
-    EXTRACT(DAYOFWEEK from `date_column`)   
-            AS `day_of_week`
+    `date_column`,
+    `week_of_year`,
+    `day_of_week`
 FROM
-    `datetable`
+    `calendartable`
 ORDER BY
     `date_column` ASC
 ;
