@@ -4,6 +4,22 @@ WITH
     SELECT
         CURRENT_DATE
                 AS `date_column`
+    ),
+    `seedspaces` AS (
+    SELECT
+        SPACE(10000-1)
+                AS `spaces`
+    ),
+    `generatortable` AS (
+    SELECT
+        `ts`.`spaces`,
+        `ta`.`aposition`, 
+        `ta`.`avalue`
+    FROM
+        `seedspaces` `ts` -- table spaces
+        LATERAL VIEW
+        POSEXPLODE(SPLIT(`ts`.`spaces`,' ')) `ta`   -- table array
+                AS `aposition`, `avalue`
     )
 SELECT
     `date_column`,

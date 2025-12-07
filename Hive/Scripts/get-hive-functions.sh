@@ -31,4 +31,4 @@ hive-query 'SHOW FUNCTIONS;' |
   sed 's/^tab_name$/--------------------------------------------------------------------------------/' |
   sed 's/^"\(.*\)"$/\1/'
 
-
+## https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF
