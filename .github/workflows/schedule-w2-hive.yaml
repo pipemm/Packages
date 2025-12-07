@@ -193,7 +193,8 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           bash 'Scripts/run-docker-hiveserver2-v3.sh'
-          sleep 5
+          sleep 10
+          sleep  5
 
       - name: List Functions
         working-directory: Hive/

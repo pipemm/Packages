@@ -10,6 +10,14 @@ hive-query() {
     -e "${sql_query}"
 }
 
+hive-stdin() {
+  env HADOOP_CLIENT_OPTS='-Ddisable.quoting.for.sv=false' beeline \
+    -u 'jdbc:hive2://localhost:10000/' \
+    --outputformat=csv2 --showHeader=true --nullemptystring=true \
+    --hivevar hive.resultset.use.unique.column.names=false \
+    --silent=false
+}
+
 hive-query 'SHOW FUNCTIONS;' |
   tail --lines='+2' |
   while read -r function_name
