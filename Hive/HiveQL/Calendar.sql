@@ -41,7 +41,9 @@ WITH
 SELECT
     `date_start`,
     `date_end`,
-    `num`
+    `num`,
+    `date_start` + INTERVAL `num` DAY
+            AS `date_column`
 FROM
     `seedtable`
 ORDER BY
