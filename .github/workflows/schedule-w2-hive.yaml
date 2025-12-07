@@ -1,6 +1,6 @@
 
 name: Hive
-run-name: Hive (${{ github.event }})
+run-name: Hive (${{ github.event_name }})
 
 on:
   
@@ -39,6 +39,9 @@ jobs:
 
   Downloads:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }} 
+    outputs:
+      hadoop-name : ${{ steps.step-output.outputs.hadoop_name }}
+      hive-name   : ${{ steps.step-output.outputs.hive_name }}
 
     steps:
       - name: Checkout
@@ -94,9 +97,71 @@ jobs:
         with:
           name: "${{ env.NAME_HADOOP }}"
           path: "${{ env.PATH_HADOOP }}"
+          compression-level: 0
 
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
           name: 'hadoop-latest'
           path: "${{ env.PATH_HADOOP }}"
+          compression-level: 0
+
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: "${{ env.NAME_HIVE }}"
+          path: "${{ env.PATH_HIVE }}"
+          compression-level: 0
+
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: 'hive-latest'
+          path: "${{ env.PATH_HIVE }}"
+          compression-level: 0
+
+      - id: step-output
+        name: Output for Other Jobs
+        working-directory: Hive/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          hadoop_name="${NAME_HADOOP}"
+          echo "hadoop_name=${hadoop_name}" |
+            tee --append "${GITHUB_OUTPUT}"
+          hive_name="${NAME_HIVE}"
+          echo "hive_name=${hive_name}" |
+            tee --append "${GITHUB_OUTPUT}"
+
+  Queries:
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }} 
+    needs: 
+    - Downloads
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - name: Adopt Variable
+        working-directory: Hive/
+        env:
+          NAME_HADOOP: "${{ needs.Downloads.outputs.hadoop_name }}"
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          echo "NAME_HADOOP=${NAME_HADOOP}"
+
+      - name: Check Environment
+        working-directory: Hive/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash 'Scripts/test-environment.sh'
+
+      - name: Run Docker
+        working-directory: Hive/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash 'Scripts/run-docker-hiveserver2-latest.sh'
