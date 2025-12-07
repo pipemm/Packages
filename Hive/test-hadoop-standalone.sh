@@ -8,7 +8,7 @@ FolderInput='TestInput/'
 FolderOutput='TestOutput/'
 
 HADOOP_HOME_VAR=$(bash get-home-hadoop.sh)
-PATH="${PATH}:${HADOOP_HOME_VAR%/}/bin/"
+PATH="${PATH}:${HADOOP_HOME_VAR%/}/bin"
 
 mkdir --parent "${FolderInput%/}/"
 cp ${HADOOP_HOME_VAR%/}/etc/hadoop/*.xml "${FolderInput%/}/"

@@ -24,6 +24,7 @@ on:
   workflow_dispatch:
     inputs:
       ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
       system-linux:
         description: 'Linux Version'
         required: true
@@ -33,14 +34,11 @@ on:
         - ubuntu-latest
         - ubuntu-24.04
         - ubuntu-22.04
-        - ubuntu-20.04
 
 jobs:
 
   Download:
-    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }}
-      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
-      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }} 
 
     steps:
       - name: Checkout
@@ -54,9 +52,26 @@ jobs:
         run: |
           bash 'Scripts/test-environment.sh'
 
-      - name: Download
+      - name: Download and Unpack
         working-directory: Hive/
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           bash download.sh
+          bash unpack.sh
+
+      - name: General Test
+        working-directory: Hive/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash 'Scripts/test-installation.sh'
+
+      - name: Test Hadoop
+        working-directory: Hive/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash 'test-hadoop-standalone.sh'
+
+

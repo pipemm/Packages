@@ -36,6 +36,9 @@ echo -n 'Actual SHA512: '
 sha512sum "${file_path}" |
   cut --delimiter=' ' --fields=1
 
+package_name="${file_path##*/}"
+package_name="${package_name%.tar.gz}"
+
 ########## HADOOP Download #####################################################
 ################################################################################
 ########## HIVE Download #######################################################
