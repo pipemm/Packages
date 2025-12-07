@@ -16,6 +16,8 @@ Exception in thread "main" java.lang.UnsupportedClassVersionError: org/apache/hi
 
 ```
 https://repo1.maven.org/maven2/org/apache/hive/hive-jdbc/4.2.0/
+https://hive.apache.org/docs/latest/user/hiveserver2-overview/#jdbc-client
+https://hive.apache.org/docs/latest/admin/setting-up-hiveserver2/
 
 ```
 
