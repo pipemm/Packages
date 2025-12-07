@@ -6,7 +6,7 @@ on:
   
   schedule:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
-    - cron:  '54 6  *  *  TUE'
+    - cron:  '23 1  *  *  TUE'
           #   │  │  │  │  │
           #   │  │  │  │  └─── day of the week  (0–6, SUN-SAT)
           #   │  │  │  └────── month            (1–12)
