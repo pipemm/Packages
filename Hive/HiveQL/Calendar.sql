@@ -1,9 +1,11 @@
 
 WITH
-    `seeddata` AS (
+    `seeddate` AS (
     SELECT
-        CURRENT_DATE
-                AS `date_column`
+        DATE '1994-04-19'
+                AS `date_start`,
+        CURRENT_DATE()
+                AS `date_end`
     ),
     `seedspaces` AS (
     SELECT
@@ -22,15 +24,10 @@ WITH
                 AS `aposition`, `avalue`
     )
 SELECT
-    `date_column`,
-    CAST(100 AS DATE)
-            AS `date_column_1`,
-    CAST(200 AS DATE)
-            AS `date_column_2`,
-    CAST(300.0 AS DATE)
-            AS `date_column_3`,
-    CAST(400.0 AS DATE)
-            AS `date_column_4`
+    TRUNC(`date_start` INTERVAL -1 YEAR,'YEAR')
+            AS `date_start`,
+    TRUNC(`date_end`   INTERVAL  2 YEAR,'YEAR')
+            AS `date_end`
 FROM
-    `seeddata`
+    `seeddate`
 ;
