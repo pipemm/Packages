@@ -178,12 +178,14 @@ jobs:
           name: "${{ env.NAME_HIVE }}"
           path: "Hive/Packages/Binaries/${{ env.NAME_HIVE }}"
 
-      - name: Test Installation
+      - name: Installation and Test
         working-directory: Hive/
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          ##bash 'Scripts/test-installation.sh'
+          chmod a+x Packages/Binaries/hadoop-*/bin/*
+          chmod a+x Packages/Binaries/apache-hive-*-bin/bin/*
+          bash 'Scripts/test-installation.sh'
           ls Packages/Binaries/hadoop-3.3.6/
           ls Packages/Binaries/apache-hive-3.1.3-bin/
 
