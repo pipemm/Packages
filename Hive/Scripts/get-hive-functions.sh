@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-hive-oneline() {
+hive-query() {
   local sql_statement="$1"
   env HADOOP_CLIENT_OPTS='-Ddisable.quoting.for.sv=false' beeline \
     -u 'jdbc:hive2://localhost:10000/' \
@@ -10,5 +10,5 @@ hive-oneline() {
     -e "${sql_statement}"
 }
 
-hive-oneline 'SHOW FUNCTIONS;'
+hive-query 'SHOW FUNCTIONS;'
 

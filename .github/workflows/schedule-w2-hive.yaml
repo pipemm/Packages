@@ -186,8 +186,6 @@ jobs:
           chmod a+x Packages/Binaries/hadoop-*/bin/*
           chmod a+x Packages/Binaries/apache-hive-*-bin/bin/*
           bash 'Scripts/test-installation.sh'
-          ls Packages/Binaries/hadoop-3.3.6/
-          ls Packages/Binaries/apache-hive-3.1.3-bin/
 
       - name: Run Docker
         working-directory: Hive/
@@ -201,6 +199,7 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
+          bash 'Scripts/run-docker-hiveserver2-v3.sh'
           export PATH=$(bash get-path-new.sh)
           echo "PATH=${PATH}"
           bash 'execute-hive-query.sh'
