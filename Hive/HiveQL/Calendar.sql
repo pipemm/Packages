@@ -22,12 +22,24 @@ WITH
         LATERAL VIEW
         POSEXPLODE(SPLIT(`ts`.`spaces`,' ')) `ta`   -- table array
                 AS `aposition`, `avalue`
+    ),
+    `seedtable` AS (
+    SELECT
+        TRUNC(`seeddate`.`date_start` INTERVAL -1 YEAR,'YEAR')
+                AS `date_start`,
+        TRUNC(`seeddate`.`date_end`   INTERVAL  2 YEAR,'YEAR')
+                AS `date_end`,
+        `generatortable`.`aposition`
+                AS `num`
+    FROM
+        `seeddate`, `generatortable`
     )
 SELECT
-    TRUNC(`date_start` INTERVAL -1 YEAR,'YEAR')
-            AS `date_start`,
-    TRUNC(`date_end`   INTERVAL  2 YEAR,'YEAR')
-            AS `date_end`
+    `date_start`,
+    `date_end`,
+    `num`
 FROM
-    `seeddate`
+    `seedtable`
+ORDER BY
+    `num` ASC
 ;
