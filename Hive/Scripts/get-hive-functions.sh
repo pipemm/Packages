@@ -11,6 +11,5 @@ hive-query() {
 }
 
 hive-query 'SHOW FUNCTIONS;' |
-  tail --lines='+2'
-
+  tail --lines='+2' 
 
