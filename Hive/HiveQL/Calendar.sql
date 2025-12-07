@@ -45,7 +45,7 @@ WITH
         `date_start`,
         `date_end`,
         CAST(`date_column` AS DATE)
-                AS `date_column`,
+                AS `calendar_date`,
         WEEKOFYEAR(`date_column`)
                 AS `week_of_year`,
         EXTRACT(DAYOFWEEK from `date_column`)   
@@ -56,11 +56,11 @@ WITH
         `date_column` BETWEEN `date_start` AND `date_end`
     )
 SELECT
-    `date_column`,
+    `calendar_date`,
     `week_of_year`,
     `day_of_week`
 FROM
     `calendartable`
 ORDER BY
-    `date_column` ASC
+    `calendar_date` ASC
 ;
