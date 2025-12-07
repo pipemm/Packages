@@ -7,7 +7,7 @@ WITH
     )
 SELECT
     `date_column`,
-    CAST(`date_column` AS DATE)
+    CAST(`date_column` AS BIGINT)
             AS `int_column`
 FROM
     `seeddata`

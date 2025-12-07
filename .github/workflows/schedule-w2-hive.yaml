@@ -203,7 +203,7 @@ jobs:
         run: |
           export PATH=$(bash get-path-new.sh)
           echo "PATH=${PATH}"
-          bash 'Scripts/get-hive-functions.sh'
+          bash 'Scripts/get-hive-functions.sh' > TestOutput/functions.log
 
       - name: Execute Queries
         working-directory: Hive/

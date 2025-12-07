@@ -22,8 +22,9 @@ hive-query 'SHOW FUNCTIONS;' |
   tail --lines='+2' |
   while read -r function_name
   do
-    query_describe="DESCRIBE FUNCTION \`${function_name^^}\`;"
-    echo "${query_describe}"
+    query_describe_1="DESCRIBE FUNCTION \`${function_name^^}\`;"
+    query_describe_2="DESCRIBE FUNCTION EXTENDED \`${function_name^^}\`;"
+    echo "${query_describe_1}"
   done |
   hive-stdin
 
