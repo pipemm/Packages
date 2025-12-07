@@ -11,6 +11,7 @@ WITH
     ),
     `datecolumns` AS (
     SELECT 
+        `bigint_column`,
         --CAST(`bigint_column` AS TIMESTAMP)
         --        AS `date_column_1`,
         --CAST(`bigint_column` / 1000.0 AS TIMESTAMP)
@@ -25,6 +26,7 @@ WITH
         `seeddata`
     )
 SELECT 
+    `bigint_column`,
     --`date_column_1`,
     --`date_column_2`,
     `date_column_3`,
@@ -32,4 +34,6 @@ SELECT
     `date_column_5`
 FROM 
     `datecolumns`
+ORDER BY
+    `bigint_column` ASC
 ;

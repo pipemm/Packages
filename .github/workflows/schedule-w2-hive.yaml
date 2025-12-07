@@ -166,6 +166,26 @@ jobs:
           echo "NAME_HADOOP=${NAME_HADOOP}"
           echo "NAME_HIVE=${NAME_HIVE}"
 
+      - uses: actions/download-artifact@v5
+          ## https://github.com/actions/download-artifact
+        with:
+          name: "${NAME_HADOOP}"
+          path: 'Packages/Downloads/'
+
+      - uses: actions/download-artifact@v5
+          ## https://github.com/actions/download-artifact
+        with:
+          name: "${NAME_HIVE}"
+          path: 'Packages/Downloads/'
+
+      - name: Unpack
+        working-directory: Hive/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash 'unpack.sh'
+          bash 'Scripts/test-installation.sh'
+
       - name: Run Docker
         working-directory: Hive/
         shell: bash
@@ -178,6 +198,8 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
+          export PATH=$(bash get-path-new.sh)
+          echo "PATH=${PATH}"
           bash 'execute-hive-query.sh'
 
       - uses: actions/upload-artifact@v4
