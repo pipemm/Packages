@@ -37,7 +37,7 @@ on:
 
 jobs:
 
-  Download:
+  Downloads:
     runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }} 
 
     steps:
@@ -66,8 +66,6 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           bash 'Scripts/test-installation.sh'
-          echo "HOME_HADOOP=${HOME_HADOOP}"
-          echo "HOME_HIVE=${HOME_HIVE}"
 
       - name: Test Hadoop
         working-directory: Hive/
@@ -76,4 +74,18 @@ jobs:
         run: |
           bash 'test-hadoop-standalone.sh'
 
+      - name: Prepare Artifact
+        working-directory: Hive/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          echo "NAME_HADOOP=${NAME_HADOOP}"
+          PATH_HADOOP=$(bash get-home-hadoop.sh)
+          echo "PATH_HADOOP=${PATH_HADOOP%/}/" |
+            tee --append "${GITHUB_ENV}"
+
+          echo "NAME_HIVE=${NAME_HIVE}"
+          PATH_HIVE=$(bash get-home-hive.sh)
+          echo "PATH_HIVE=${PATH_HIVE%/}/" |
+            tee --append "${GITHUB_ENV}"
 
