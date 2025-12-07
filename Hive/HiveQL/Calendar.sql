@@ -11,7 +11,7 @@ WITH
     ),
     `seedspaces` AS (
     SELECT
-        SPACE(10000-1)
+        SPACE(100000-1)
                 AS `spaces`
     ),
     `generatortable` AS (
@@ -30,15 +30,27 @@ WITH
                 AS `days`
     FROM
         `seeddate`, `generatortable`
+    ),
+    `datetable` AS (
+    SELECT
+        `date_start`,
+        `date_end`,
+        `date_start` + INTERVAL (`days`) DAY
+                AS `date_column`
+    FROM
+        `seedtable`
     )
 SELECT
     `date_start`,
     `date_end`,
-    `days`,
-    `date_start` + INTERVAL (`days`) DAY
-            AS `date_column`
+    CAST(`date_column` AS DATE)
+            AS `date_column`,
+    WEEKOFYEAR(`date_column`)
+            AS `week_of_year`,
+    EXTRACT(DAYOFWEEK from `date_column`)   
+            AS `day_of_week`
 FROM
-    `seedtable`
+    `datetable`
 ORDER BY
-    `days` ASC
+    `date_column` ASC
 ;
