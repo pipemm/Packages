@@ -157,6 +157,14 @@ jobs:
           echo "NAME_HIVE=${NAME_HIVE}" |
             tee --append "${GITHUB_ENV}"
 
+      - name: Run Docker
+        working-directory: Hive/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash 'Scripts/run-docker-hiveserver2-v3.sh'
+          sleep 10
+
       - name: Check Environment
         working-directory: Hive/
         shell: bash
@@ -186,15 +194,6 @@ jobs:
           chmod a+x Packages/Binaries/hadoop-*/bin/*
           chmod a+x Packages/Binaries/apache-hive-*-bin/bin/*
           bash 'Scripts/test-installation.sh'
-
-      - name: Run Docker
-        working-directory: Hive/
-        shell: bash
-          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
-        run: |
-          bash 'Scripts/run-docker-hiveserver2-v3.sh'
-          sleep 10
-          sleep  5
 
       - name: List Functions
         working-directory: Hive/

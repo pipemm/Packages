@@ -25,7 +25,7 @@ hive-query 'SHOW FUNCTIONS;' |
     function_name="${function_name^^}"
     query_describe_1="DESCRIBE FUNCTION \`${function_name}\`;"
     query_describe_2="DESCRIBE FUNCTION EXTENDED \`${function_name}\`;"
-    echo "${query_describe_1}"
+    echo "${query_describe_2}"
   done |
   hive-stdin |
   sed 's/^tab_name$/--------------------------------------------------------------------------------/'
