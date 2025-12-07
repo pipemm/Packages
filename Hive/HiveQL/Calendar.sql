@@ -22,9 +22,9 @@ WITH
 --------------------------------------------------------------------------------
     `seedtable` AS (
     SELECT
-        TRUNC(`seeddate`.`date_start` - INTERVAL 1 YEAR, 'YEAR')
+        CAST(TRUNC(`seeddate`.`date_start` - INTERVAL 1 YEAR, 'YEAR') AS DATE)
                 AS `date_start`,
-        TRUNC(`seeddate`.`date_end`   + INTERVAL 2 YEAR, 'YEAR')
+        CAST(TRUNC(`seeddate`.`date_end`   + INTERVAL 2 YEAR, 'YEAR') AS DATE)
                 AS `date_end`,
         `generatortable`.`position`
                 AS `days`
