@@ -14,8 +14,8 @@ hive-query 'SHOW FUNCTIONS;' |
   tail --lines='+2' |
   while read -r function_name
   do
-    echo "${function_name}"
     query_describe="DESCRIBE FUNCTION \`${function_name^^}\`;"
+    echo "${query_describe}"
   done
 
 
