@@ -66,6 +66,8 @@ jobs:
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
           bash 'Scripts/test-installation.sh'
+          echo "HOME_HADOOP=${HOME_HADOOP}"
+          echo "HOME_HIVE=${HOME_HIVE}"
 
       - name: Test Hadoop
         working-directory: Hive/

@@ -11,8 +11,6 @@ mkdir --parent "${FolderBinary%/}/"
 ################################################################################
 ########## HADOOP UNPACK #######################################################
 
-tarfile=$(bash get-package-hadoop.sh)
-
 ls ${FolderPackage%/}/Downloads*/hadoop-*.tar.gz |
   tac |
   head --lines=1 |
@@ -30,7 +28,7 @@ ls ${FolderPackage%/}/Downloads*/apache-hive-*.tar.gz |
   head --lines=1 |
   while read -r tarfile
   do
-    tar -xzf "${tarfile}" -C "${FolderBinary%/}/"
+    tar --extract --gunzip --file="${tarfile}" --directory="${FolderBinary%/}/"
   done
 
 ########## HIVE UNPACK #########################################################

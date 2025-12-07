@@ -36,8 +36,15 @@ echo -n 'Actual SHA512: '
 sha512sum "${file_path}" |
   cut --delimiter=' ' --fields=1
 
-package_name="${file_path##*/}"
-package_name="${package_name%.tar.gz}"
+########## FOR GITHIB ##########
+if [[ -f "${GITHUB_ENV}" ]]
+then
+  package_name="${file_path##*/}"
+  package_name="${package_name%.tar.gz}"
+  NAME_HADOOP="${package_name}"
+  echo "NAME_HADOOP=${NAME_HADOOP}" |
+    tee --append "${GITHUB_ENV}"
+fi
 
 ########## HADOOP Download #####################################################
 ################################################################################
@@ -54,6 +61,16 @@ echo    "Target SHA256: ${hash_target}"
 echo -n 'Actual SHA256: '
 sha256sum "${file_path}" |
   cut --delimiter=' ' --fields=1
+
+########## FOR GITHIB ##########
+if [[ -f "${GITHUB_ENV}" ]]
+then
+  package_name="${file_path##*/}"
+  package_name="${package_name%.tar.gz}"
+  NAME_HIVE="${package_name}"
+  echo "NAME_HADOOP=${NAME_HIVE}" |
+    tee --append "${GITHUB_ENV}"
+fi
 
 ########## HIVE Download #######################################################
 ################################################################################

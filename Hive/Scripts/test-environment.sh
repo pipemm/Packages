@@ -18,6 +18,14 @@ curl --help
 curl --help category
 curl --help all
 
+which -a tar
+tar --version
+tar --help
+
+which -a tee
+tee --version
+tee --help
+
 which -a jq
 jq --version
 jq --help
