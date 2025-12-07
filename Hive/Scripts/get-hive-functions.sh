@@ -12,3 +12,4 @@ hive-query() {
 
 hive-query 'SHOW FUNCTIONS;'
 
+
