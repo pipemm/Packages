@@ -7,8 +7,10 @@ WITH
     )
 SELECT
     `date_column`,
+    CAST(`date_column` AS INT)
+            AS `int_column`,
     CAST(`date_column` AS BIGINT)
-            AS `int_column`
+            AS `bigint_column`
 FROM
     `seeddata`
 ;

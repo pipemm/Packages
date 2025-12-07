@@ -203,7 +203,9 @@ jobs:
         run: |
           export PATH=$(bash get-path-new.sh)
           echo "PATH=${PATH}"
-          bash 'Scripts/get-hive-functions.sh' > TestOutput/functions.log
+          FolderOutput='TestOutput/'
+          mkdir --parent "${FolderOutput%/}/"
+          bash 'Scripts/get-hive-functions.sh' > "${FolderOutput%/}/functions.log"
 
       - name: Execute Queries
         working-directory: Hive/
