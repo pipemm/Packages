@@ -61,7 +61,7 @@ jobs:
         shell: bash
           ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
         run: |
-          bash download.sh
+          bash download-3.sh
           bash unpack.sh
 
       - name: General Test
