@@ -169,13 +169,13 @@ jobs:
       - uses: actions/download-artifact@v5
           ## https://github.com/actions/download-artifact
         with:
-          name: "${NAME_HADOOP}"
+          name: "${{ env.NAME_HADOOP }}"
           path: 'Packages/Downloads/'
 
       - uses: actions/download-artifact@v5
           ## https://github.com/actions/download-artifact
         with:
-          name: "${NAME_HIVE}"
+          name: "${{ env.NAME_HIVE }}"
           path: 'Packages/Downloads/'
 
       - name: Unpack

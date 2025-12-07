@@ -4,11 +4,11 @@ ThisScript=$(realpath "${0}")
 ThisPath="${ThisScript%/*}/"
 cd "${ThisPath}"
 
-sh_url_hadoop='Scripts/get-url-hadoop-stable.sh'
-sh_hash_hadoop='Scripts/get-checksum-hadoop-stable.sh'
+sh_url_hadoop='Scripts/get-url-hadoop-3.sh'
+sh_hash_hadoop='Scripts/get-checksum-hadoop-3.sh'
 
-sh_url_hive='Scripts/get-url-hive-latest.sh'
-sh_hash_hive='Scripts/get-checksum-hive-latest.sh'
+sh_url_hive='Scripts/get-url-hive-3.sh'
+sh_hash_hive='Scripts/get-checksum-hive-3.sh'
 
 ################################################################################
 
