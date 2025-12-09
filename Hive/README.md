@@ -19,7 +19,7 @@ https://repo1.maven.org/maven2/org/apache/hive/hive-jdbc/4.2.0/
 https://hive.apache.org/docs/latest/user/hiveserver2-overview/#jdbc-client
 https://hive.apache.org/docs/latest/admin/setting-up-hiveserver2/
 
-https://api.adoptium.net/q/swagger-ui/#/Release%20Info/getAvailableReleases
+https://api.adoptium.net/q/swagger-ui/
 https://api.adoptium.net/v3/info/available_releases
 https://api.adoptium.net/v3/assets/latest/25/hotspot
 
