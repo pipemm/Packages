@@ -17,5 +17,6 @@ curl "${url_api_releases}" |
       jq '[.[] | select(.os | IN("linux", "windows", "mac"))]' |
       jq '[.[] | select(.image_type | IN("jdk", "jre"))]' |
       jq '[.[] | select(.architecture == "x64")]' |
-      jq '[.[] | {architecture,image_type,os,package}]'
+      jq '[.[] | {arch:.architecture,image_type,os,checksum:.package.checksum,checksum_link:.package.checksum_link,link:.package.link,name:.package.name}]' |
+      jq --raw-output '.[] | .link, .checksum_link'
   done
