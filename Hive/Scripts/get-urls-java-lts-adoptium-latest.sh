@@ -7,7 +7,7 @@ url_api_releases="${url_api_server%/}/v3/info/available_releases"
 jvm_impl='hotspot'
 
 curl --silent --show-error --fail --retry 3 --retry-delay 2 "${url_api_releases}" |
-  jq --raw-output '.available_releases | sort_by(.) | reverse | .[]' |
+  jq --raw-output '.available_lts_releases | sort_by(.) | reverse | .[]' |
   head --lines=1 |
   while read -r feature_version
   do
