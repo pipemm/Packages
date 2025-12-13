@@ -33,3 +33,28 @@ ls ${FolderPackage%/}/Downloads*/apache-hive-*.tar.gz |
 
 ########## HIVE UNPACK #########################################################
 ################################################################################
+########## JDK UNPACK ##########################################################
+
+ls ${FolderPackage%/}/Downloads*/OpenJDK*-jdk_x64_linux_hotspot_*.tar.gz |
+  tac |
+  head --lines=1 |
+  while read -r tarfile
+  do
+    tar --extract --gunzip --file="${tarfile}" --directory="${FolderBinary%/}/"
+  done
+
+########## JDK UNPACK ##########################################################
+################################################################################
+########## JRE UNPACK ##########################################################
+
+ls ${FolderPackage%/}/Downloads*/OpenJDK*-jre_x64_linux_hotspot_*.tar.gz |
+  tac |
+  head --lines=1 |
+  while read -r tarfile
+  do
+    tar --extract --gunzip --file="${tarfile}" --directory="${FolderBinary%/}/"
+  done
+
+########## JRE UNPACK ##########################################################
+################################################################################
+
