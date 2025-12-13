@@ -10,6 +10,17 @@ then
   PATH=$(bash "${sh_path}")
 fi
 
+sh_home_jre='../get-home-java-jre.sh'
+if [[ -f "${sh_home_jre}" ]]
+then
+  JAVA_HOME_VAR=$(bash "${sh_home_jre}")
+  JAVA_HOME_BIN="${JAVA_HOME_VAR%/}/bin/"
+  if [[ -d "${JAVA_HOME_BIN}" ]]
+  then
+    PATH="${JAVA_HOME_BIN%/}:${PATH}"
+  fi
+fi
+
 echo "PATH=${PATH}"
 
 which -a java

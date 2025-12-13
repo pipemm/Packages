@@ -94,6 +94,11 @@ jobs:
           echo "PATH_HIVE=${PATH_HIVE%/}/" |
             tee --append "${GITHUB_ENV}"
 
+          echo "NAME_JRE=${NAME_JRE}"
+          PATH_JRE=$(bash get-home-java-jre.sh)
+          echo "PATH_JRE=${PATH_JRE%/}/" |
+            tee --append "${GITHUB_ENV}"
+
       - uses: actions/upload-artifact@v4
           ## https://github.com/actions/upload-artifact
         with:
@@ -122,6 +127,13 @@ jobs:
           path: "${{ env.PATH_HIVE }}"
           compression-level: 0
 
+      - uses: actions/upload-artifact@v4
+          ## https://github.com/actions/upload-artifact
+        with:
+          name: "${{ env.NAME_JRE }}"
+          path: "${{ env.PATH_JRE }}"
+          compression-level: 0
+
       - id: step-output
         name: Output for Other Jobs
         working-directory: Hive/
@@ -131,8 +143,13 @@ jobs:
           hadoop_name="${NAME_HADOOP}"
           echo "hadoop_name=${hadoop_name}" |
             tee --append "${GITHUB_OUTPUT}"
+
           hive_name="${NAME_HIVE}"
           echo "hive_name=${hive_name}" |
+            tee --append "${GITHUB_OUTPUT}"
+
+          jre_name="${NAME_JRE}"
+          echo "jre_name=${jre_name}" |
             tee --append "${GITHUB_OUTPUT}"
 
   Queries:
