@@ -68,7 +68,7 @@ then
   package_name="${file_path##*/}"
   package_name="${package_name%.tar.gz}"
   NAME_JRE="${package_name}"
-  echo "NAME_HADOOP=${NAME_JRE}" |
+  echo "NAME_JRE=${NAME_JRE}" |
     tee --append "${GITHUB_ENV}"
 fi
 
