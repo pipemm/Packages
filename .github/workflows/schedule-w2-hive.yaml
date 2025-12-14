@@ -248,6 +248,8 @@ jobs:
           PATH=$(bash get-path-new.sh)
           export PATH="${BIN_JAVA%/}:${PATH}"
           echo "PATH=${PATH}"
+          java --version
+
           bash 'execute-hive-query.sh'
 
       - uses: actions/upload-artifact@v4
