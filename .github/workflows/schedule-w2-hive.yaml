@@ -248,7 +248,7 @@ jobs:
           PATH=$(bash get-path-new.sh)
           export PATH="${BIN_JAVA%/}:${PATH}"
           echo "PATH=${PATH}"
-          java --version
+          ls "${BIN_JAVA%/}/"
 
           bash 'execute-hive-query.sh'
 
