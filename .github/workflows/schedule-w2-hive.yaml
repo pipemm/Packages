@@ -101,35 +101,35 @@ jobs:
           echo "PATH_JRE=${PATH_JRE%/}/" |
             tee --append "${GITHUB_ENV}"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
           ## https://github.com/actions/upload-artifact
         with:
           name: "${{ env.NAME_HADOOP }}"
           path: "${{ env.PATH_HADOOP }}"
           compression-level: 0
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
           ## https://github.com/actions/upload-artifact
         with:
           name: 'hadoop-latest'
           path: "${{ env.PATH_HADOOP }}"
           compression-level: 0
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
           ## https://github.com/actions/upload-artifact
         with:
           name: "${{ env.NAME_HIVE }}"
           path: "${{ env.PATH_HIVE }}"
           compression-level: 0
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
           ## https://github.com/actions/upload-artifact
         with:
           name: 'apache-hive-latest-bin'
           path: "${{ env.PATH_HIVE }}"
           compression-level: 0
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
           ## https://github.com/actions/upload-artifact
         with:
           name: "${{ env.NAME_JRE }}"
