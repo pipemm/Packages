@@ -16,6 +16,9 @@ hive-oneline() {
 
 FolderOutput='TestOutput/'
 mkdir --parent "${FolderOutput%/}/"
+LogStdOut="${FolderOutput%/}/t.stdout.log"
+LogStdErr="${FolderOutput%/}/t.stderr.log"
+LogFile="${FolderOutput%/}/t.log"
 
 FolderSQL='HiveQL/'
 ls "${FolderSQL%/}/"*.sql |
@@ -34,6 +37,9 @@ ls "${FolderSQL%/}/"*.sql |
         > "${csv_file}"
     echo "Saved to ${csv_file}."
     sleep 0.01
-  done
+  done |
+  tee >(
+    1> "${LogStdOut}" 2> "${LogStdErr}"
+  )
 
 
