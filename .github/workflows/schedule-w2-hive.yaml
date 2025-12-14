@@ -178,7 +178,7 @@ jobs:
           echo "NAME_HIVE=${NAME_HIVE}" |
             tee --append "${GITHUB_ENV}"
           echo "NAME_JRE=${NAME_JRE}" |
-            tee --append "${NAME_JRE}"
+            tee --append "${GITHUB_ENV}"
 
       - name: Run Docker
         working-directory: Hive/

@@ -40,6 +40,8 @@ ls "${FolderSQL%/}/"*.sql |
   done |
   tee >(
     1> "${LogStdOut}" 2> "${LogStdErr}"
+  ) >(
+    1> "${LogFile}" 2>&1
   )
 
 
