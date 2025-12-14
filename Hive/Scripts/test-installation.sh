@@ -10,7 +10,7 @@ then
   PATH=$(bash "${sh_path}")
 fi
 
-##
+#
 sh_home_jre='../get-home-java-jre.sh'
 if [[ -f "${sh_home_jre}" ]]
 then

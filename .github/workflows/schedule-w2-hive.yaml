@@ -197,19 +197,19 @@ jobs:
           echo "NAME_HADOOP=${NAME_HADOOP}"
           echo "NAME_HIVE=${NAME_HIVE}"
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v7
           ## https://github.com/actions/download-artifact
         with:
           name: "${{ env.NAME_HADOOP }}"
           path: "Hive/Packages/Binaries/${{ env.NAME_HADOOP }}/"
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v7
           ## https://github.com/actions/download-artifact
         with:
           name: "${{ env.NAME_HIVE }}"
           path: "Hive/Packages/Binaries/${{ env.NAME_HIVE }}/"
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v7
           ## https://github.com/actions/download-artifact
         with:
           name: "${{ env.NAME_JRE }}"
@@ -223,6 +223,7 @@ jobs:
           chmod a+x Packages/Binaries/hadoop-*/bin/*
           chmod a+x Packages/Binaries/apache-hive-*-bin/bin/*
           bash 'Scripts/test-installation.sh'
+          ls "${BIN_JAVA%/}/"
 
       - name: List Functions
         working-directory: Hive/
@@ -233,6 +234,7 @@ jobs:
           PATH=$(bash get-path-new.sh)
           export PATH="${BIN_JAVA%/}:${PATH}"
           echo "PATH=${PATH}"
+          ls "${BIN_JAVA%/}/"
 
           FolderOutput='TestOutput/'
           mkdir --parent "${FolderOutput%/}/"
@@ -248,7 +250,6 @@ jobs:
           PATH=$(bash get-path-new.sh)
           export PATH="${BIN_JAVA%/}:${PATH}"
           echo "PATH=${PATH}"
-          ls "${BIN_JAVA%/}/"
 
           bash 'execute-hive-query.sh'
 
