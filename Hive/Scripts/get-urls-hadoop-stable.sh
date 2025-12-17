@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-versionsed='/^stable\//'
+versionsed='/^stable$/'
 
 ## https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html
 ## - http://www.apache.org/dyn/closer.cgi/hadoop/common/
@@ -18,11 +18,12 @@ curl --silent "${URL_COMMON_PAGE}" |
   do
     curl --silent "${url0}" |
       sed --silent 's!^.*href="\([^"]\+/\)".*$!\1!p' |
+      sed --silent 's!/$!!p' |
       sed --silent "${versionsed}p" |
       sort --reverse --version-sort |
       while read -r url1
       do
-        echo "${url0%/}/${url1#/}"
+        echo "${url0%/}/${url1}/"
       done
   done |
   head --lines=1 |
