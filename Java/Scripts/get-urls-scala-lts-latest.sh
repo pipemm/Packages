@@ -9,7 +9,7 @@ OWNER='scala'
 REPO='scala3'
 
 sh_tls_version='get-version-scala-lts-latest.sh'
-TAG=$(bash "${sh_tls_version}")
+TAG=$(bash "${sh_tls_version}" | head --lines=1)
 
 ## https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-a-release-by-tag-name
 API_URL="${API_ENDPOINT%/}/repos/${OWNER}/${REPO}/releases/tags/${TAG}"
