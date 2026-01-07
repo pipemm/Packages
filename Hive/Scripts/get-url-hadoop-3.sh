@@ -2,7 +2,7 @@
 
 ThisScript=$(realpath "${0}")
 ThisPath="${ThisScript%/*}/"
-cd "${ThisPath}"
+cd "${ThisPath%/}/"
 
 sh_urls='get-urls-hadoop-3.sh'
 urls=$(bash "${sh_urls}")
