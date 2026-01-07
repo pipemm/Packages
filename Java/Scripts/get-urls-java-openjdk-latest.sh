@@ -2,7 +2,7 @@
 
 url_page='https://openjdk.org/projects/jdk/'
 
-curl --silent "${url_page}" |
+curl --silent --show-error --fail "${url_page}" |
   sed --silent '/(GA [0-9\/]\+)/p' |
   sed --silent 's!^.* href="\([0-9]\+\)\/".*$!\1!p' |
   while read -r ver
@@ -12,7 +12,7 @@ curl --silent "${url_page}" |
   head --lines=1 |
   while read -r urlp
   do
-    curl --silent --show-error --fail --retry 3 --retry-delay 2 "${urlp}" |
+    curl --silent --show-error --fail "${urlp}" |
       sed --silent '/available from Oracle/p' |
       sed --silent 's! href="\([^"]\+\)"!\n\1\n!gp' |
       sed --silent '/^http[s]\?:\/\/jdk\.java\.net\/[0-9]\+$/p' |
@@ -20,7 +20,7 @@ curl --silent "${url_page}" |
   done |
   while read -r urlpg
   do
-    curl --silent --location --show-error --fail --retry 3 --retry-delay 2 "${urlpg}" |
+    curl --silent --show-error --fail --location "${urlpg}" |
       sed --silent 's!^.* href="\([^"]\+\)".*$!\1!p' |
       sed --silent '/^https:\/\/download\.java\.net\/java\/GA\/jdk/p'
   done
