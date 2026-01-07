@@ -20,7 +20,7 @@ file_extension='tar.gz'
 url_domain='https://corretto.aws/'
 url_latest_original="${url_domain%/}/downloads/latest/amazon-corretto-${corretto_version}-${cpu_arch}-${host_os}-${package_type}.${file_extension}"
 
-curl --silent --show-error --fail --retry 3 --retry-delay 2 --head "${url_latest_original}" |
+curl --silent --show-error --fail --head "${url_latest_original}" |
   sed --silent 's!^location: !!p' |
   head --lines=1 |
   while read -r url_file
