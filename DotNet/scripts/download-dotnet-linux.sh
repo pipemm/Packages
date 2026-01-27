@@ -2,7 +2,7 @@
 
 ThisScript=$(realpath "${0}")
 ThisPath="${ThisScript%/*}/"
-cd "${ThisPath}"
+cd "${ThisPath%/}/"
 
 variety='sdk-lts'
 ##      'sdk-lts'
