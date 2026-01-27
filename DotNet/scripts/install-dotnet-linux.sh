@@ -1,9 +1,5 @@
 #!/usr/bin/bash
 
-ThisScript=$(realpath "${0}")
-ThisPath="${ThisScript%/*}/"
-cd "${ThisPath%/}/"
-
 InstallName='dotnet'
 FolderHome="${HOME%/}/"
 FolderPack="${FolderHome%/}/.packages/"
@@ -19,9 +15,9 @@ find "${FolderDown%/}/" -type f -name '*.tar.gz' -print |
     packname="${packname%.tar.gz}"
     FolderInstall2="${FolderInstall%/}/${packname}/"
     echo "${FolderInstall2}"
-    if [[ ! -f "${FolderInstall2%/}/" ]]
+    if [[ ! -d "${FolderInstall2%/}/" ]]
     then
-      tar --list --ungzip --file="${pack}" |
-        head --lines=5
+      mkdir --parent "${FolderInstall2%/}/"
+      tar --extract --ungzip --verbose --file="${pack}" --directory="${FolderInstall2%/}/"
     fi
   done
