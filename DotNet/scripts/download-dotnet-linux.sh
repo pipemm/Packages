@@ -4,13 +4,27 @@ ThisScript=$(realpath "${0}")
 ThisPath="${ThisScript%/*}/"
 cd "${ThisPath}"
 
-variety='sdk'
-##      'sdk'
+variety='sdk-lts'
 ##      'sdk-lts'
-##      'runtime'
+##      'sdk-sts'
 ##      'runtime-lts'
-sh_url="get-url-dotnet-${variety}-latest-linux.sh"
-sh_checksum="get-checksum-dotnet-${variety}-latest-linux.sh"
+##      'runtime-sts'
+varity0=$(
+  echo "${variety}" |
+  cut --delimiter='-' --fields=1
+)
+lts_sts=$(
+  echo "${variety}" |
+  cut --delimiter='-' --fields=2
+)
+if [[ "${lts_sts}" == 'lts' ]]
+then
+  varity_lts_sts="dotnet-${lts_sts}"
+else
+  varity_lts_sts='dotnet'
+fi
+sh_url="get-url-${varity_lts_sts}-latest-linux.sh"
+sh_checksum="get-checksum-${varity_lts_sts}-latest-linux.sh"
 checksum_type='sha512'
 
 FolderHome="${HOME%/}/"
@@ -18,8 +32,8 @@ FolderPack="${FolderHome%/}/.packages/"
 FolderDown="${FolderPack%/}/Downloads/DotNet/"
 mkdir --parent "${FolderDown%/}/"
 
-url_download=$(bash "${sh_url}")
-checksum_target=$(bash "${sh_checksum}")
+url_download=$(bash "${sh_url}" "${varity0}")
+checksum_target=$(bash "${sh_checksum}" "${varity0}")
 checksum_cli="${checksum_type,,}sum"
 checksum_name="${checksum_type^^}"
 

@@ -1,6 +1,15 @@
 #!/usr/bin/bash
 
-sed_pattern_pack='/\/sdk-[0-9.]\+-linux-x64-binaries$/'
+variety="${1}"
+if [[ "${variety,,}" == 'runtime' ]]
+then
+  variety='runtime'
+else
+  variety='sdk'
+fi
+
+sed_pattern_pack1='/\/\(sdk\|runtime\)-[0-9.]\+-linux-x64-binaries$/'
+sed_pattern_pack2="/\/\(${variety}\)-[0-9.]\+-linux-x64-binaries$/"
 
 url_domain='https://dotnet.microsoft.com/'
 url_page="${url_domain%/}/download/dotnet"
@@ -16,7 +25,8 @@ curl --silent --show-error --fail "${url_page}" |
     curl --silent --show-error --fail "${url_version}"
   done |
   sed --silent 's!^.* href="\([^"]\+\/\(sdk\|runtime\)-[^"]*\)".*$!\1!p' |
-  sed --silent "${sed_pattern_pack}p" |
+  sed --silent "${sed_pattern_pack1}p" |
+  sed --silent "${sed_pattern_pack2}p" |
   sort --reverse --version-sort |
   head --lines=1 |
   while read -r urlpart
