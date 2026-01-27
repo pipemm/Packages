@@ -4,8 +4,13 @@ ThisScript=$(realpath "${0}")
 ThisPath="${ThisScript%/*}/"
 cd "${ThisPath}"
 
-sh_url='get-url-dotnet-sdk-lts-latest-linux.sh'
-sh_checksum='get-checksum-dotnet-sdk-lts-latest-linux.sh'
+variety='sdk'
+##      'sdk'
+##      'sdk-lts'
+##      'runtime'
+##      'runtime-lts'
+sh_url="get-url-dotnet-${variety}-latest-linux.sh"
+sh_checksum="get-checksum-dotnet-${variety}-latest-linux.sh"
 checksum_type='sha512'
 
 FolderHome="${HOME%/}/"
