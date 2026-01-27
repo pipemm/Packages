@@ -14,10 +14,13 @@ find "${FolderDown%/}/" -type f -name '*.tar.gz' -print |
     packname="${pack##*/}"
     packname="${packname%.tar.gz}"
     FolderInstall2="${FolderInstall%/}/${packname}/"
-    echo "${FolderInstall2}"
+
     if [[ ! -d "${FolderInstall2%/}/" ]]
     then
+      echo "installing to ${FolderInstall2%/}/ ..."
       mkdir --parent "${FolderInstall2%/}/"
       tar --extract --ungzip --verbose --file="${pack}" --directory="${FolderInstall2%/}/"
+    else
+      echo "install location exists : ${FolderInstall2%/}/"
     fi
   done
