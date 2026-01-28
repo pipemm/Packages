@@ -9,4 +9,7 @@ ProjectName='Demo'
 sh_env='../scripts/env-dotnet-linux.sh'
 bash "${sh_env}"
 
-dotnet new console --name 'Demo' --output '.'
+if [[ ! -f "${ProjectName}.csproj" ]]
+then
+  dotnet new console --name "${ProjectName}" --output '.'
+fi
