@@ -4,7 +4,7 @@ ThisScript=$(realpath "${0}")
 ThisPath="${ThisScript%/*}/"
 cd "${ThisPath%/}/"
 
-variety='sdk-lts'
+variety="${1:-sdk-lts}"
 ##      'sdk-lts'
 ##      'sdk-sts'
 ##      'runtime-lts'

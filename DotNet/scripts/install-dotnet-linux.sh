@@ -1,10 +1,9 @@
 #!/usr/bin/bash
 
-InstallName='dotnet'
 FolderHome="${HOME%/}/"
 FolderPack="${FolderHome%/}/.packages/"
 FolderDown="${FolderPack%/}/Downloads/DotNet/"
-FolderInstall="${FolderPack%/}/${InstallName}/"
+FolderInstall="${FolderPack%/}/dotnet/runtime/"
 
 find "${FolderDown%/}/" -type f -name '*.tar.gz' -print |
   sort --reverse --version-sort |

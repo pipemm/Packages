@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-FolderPackage="${HOME%/}/.packages/dotnet/"
+FolderPackage="${HOME%/}/.packages/dotnet/runtime/"
 if [[ -d "${FolderPackage%/}/" ]]
 then
   PACKAGE_LOCATION=$(
@@ -14,6 +14,6 @@ then
   PACKAGE_LOCATION="${PACKAGE_LOCATION%/}/"
   PACKAGE_NAME="${PACKAGE_LOCATION%/}"
   PACKAGE_NAME="${PACKAGE_NAME##*/}"
-  PATH="${PACKAGE_LOCATION%/}:${PATH}"
+  export PATH="${PACKAGE_LOCATION%/}:${PATH}"
 fi
 
