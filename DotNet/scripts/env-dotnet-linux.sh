@@ -9,11 +9,15 @@ then
   )
 fi
 
-if [[ -n "${PACKAGE_LOCATION%/}/" ]]
+if [[ -n "${PACKAGE_LOCATION}" ]]
 then
   PACKAGE_LOCATION="${PACKAGE_LOCATION%/}/"
   PACKAGE_NAME="${PACKAGE_LOCATION%/}"
   PACKAGE_NAME="${PACKAGE_NAME##*/}"
   export PATH="${PACKAGE_LOCATION%/}:${PATH}"
+  if [[ -n "${DOTNET_ROOT}" ]]
+  then
+    export DOTNET_ROOT="${PACKAGE_LOCATION%/}/"
+  fi
 fi
 

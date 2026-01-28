@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 echo "PATH=${PATH}"
+echo "DOTNET_ROOT=${DOTNET_ROOT}"
 
 which -a dotnet
 dotnet --version
