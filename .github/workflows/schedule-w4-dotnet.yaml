@@ -1,0 +1,72 @@
+
+name: DotNet
+run-name: DotNet (${{ github.run_id }})
+  ## https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#run-name
+
+on:
+  
+  schedule:
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+    - cron:  '23 1  *  *  TUE'
+          #   │  │  │  │  │
+          #   │  │  │  │  └─── day of the week  (0–6, SUN-SAT)
+          #   │  │  │  └────── month            (1–12)
+          #   │  │  └───────── day of the month (1–31)
+          #   │  └──────────── hour             (0–23)
+          #   └─────────────── minute           (0–59)
+
+  push:
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push
+    branches:
+      - 'main'
+    paths:
+      - 'DotNet/**.*'
+
+  workflow_dispatch:
+    inputs:
+      ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      ## https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
+      system-linux:
+        description: 'Linux Version'
+        required: true
+        default: 'ubuntu-latest'
+        type: choice
+        options:
+        - ubuntu-latest
+        - ubuntu-24.04
+        - ubuntu-22.04
+
+jobs:
+
+  Downloads:
+    runs-on: ${{ inputs.system-linux || 'ubuntu-latest' }} 
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          ## https://github.com/actions/checkout
+
+      - name: Check Initial Environment
+        working-directory: DotNet/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          sh_test='scripts/test-env-linux.sh'
+          bash "${sh_test}"
+
+      - name: Download
+        working-directory: DotNet/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          bash 'install_runtime.sh' sdk-lts
+
+      - name: Check Environment
+        working-directory: DotNet/
+        shell: bash
+          ## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iddefaultsrunshell
+        run: |
+          sh_env='scripts/env-dotnet-linux.sh'
+          sh_test='scripts/test-env-linux.sh'
+          source "${sh_env}"
+          bash "${sh_test}"
